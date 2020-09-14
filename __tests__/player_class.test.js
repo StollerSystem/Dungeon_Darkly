@@ -26,9 +26,9 @@ describe('Player', () => {
     expect(player2.equip.body).toContain(armor);
   });
 
-  test('test 4 should check if a players ability score meets a target value or higher', () => {    
-    expect(player2.abilityScoreCheck('str',15)).toEqual(false);
-    expect(player2.abilityScoreCheck('wis',8)).toEqual(true);
+  test('test 4 should check if a players ability score matches a target value or higher', () => {    
+    expect(player2.abilityScoreMatch('str',15)).toEqual(false);
+    expect(player2.abilityScoreMatch('wis',8)).toEqual(true);
   });
 
   test('test 5 should create a player object with a status property that is held by a new status object', () => {    

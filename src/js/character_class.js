@@ -75,7 +75,7 @@ export class Character {
     this.equip[slot].push(item);
   }
 
-  abilityScoreCheck(score,target) {
+  abilityScoreMatch(score,target) {
     let abilityScores = this.abilityScores
     let checked = abilityScores[score]
     if (checked >= target){
@@ -84,6 +84,12 @@ export class Character {
       return false;
     }
   }
+
+  // abilityScoreCheck(score,checkMod) {
+  //   let abilityScores = this.abilityScores;
+  //   let checkMod = abilityScores.scoreMod[score];
+  //   return rpg.roll(1,20,checkMod);
+  // }
   
   equipCheck(){
     let totalAcBonus = 0;
@@ -94,4 +100,21 @@ export class Character {
     }
     this.baseAc += totalAcBonus;
   }
-}
+
+  // combatStart(target){
+  //   let initiativeOrder = [];
+  //   let roundCount = 0;
+  //   if (this.status.some(status => status.hidden === 'true')){
+  //     // run a stealth check vs target perception check
+      
+  //     target.status.surprised = 'true' // while round < 1. alt: if round >=1, surprised = false
+  //   }
+
+
+// master check
+
+  // }
+
+
+
+} // end Character class
