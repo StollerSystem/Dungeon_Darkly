@@ -9,8 +9,17 @@ $(document).ready(function(){
   let game = new Game([],[],[],[])
   game.addEnvironment("Castle Room","dark and scary",[],[],[],[])
   
-  let goblin = game.addMonster(id,name,mainType,cr,hp,mp,inv,behaviors,str,dex,con,wis,int,chr,lck)
+  let goblin = game.addMonster(1,"Goblin","goblin",1,5,0,[],[],8,10,8,6,6,6,6)
   game.environments[0].monsters.push(goblin)
+
+  let potion = game.addItem("potion",1,1,5,1,[],[],"common")
+  game.environments[0].items.push(potion)
+ 
+  let dagger = game.addWeapon(3,6, "dagger",2,1,5,1,[],[],"common") 
+  game.environments[0].items.push(dagger)
+ 
+  let leatherArmor  = game.addArmor(3,"leather","Leather Armor",3,5,5,1,)
+  game.environments[0].items.push(leatherArmor)
 
   $("form").submit(function(event){
     event.preventDefault();
@@ -65,8 +74,6 @@ $(document).ready(function(){
     
     let player1 = game.addPlayer(nameInput,raceInput,pclassInput,1,0,hp,mp,0,[],strInput,dexInput,conInput,wisInput,intInput,chrInput,lckInput);
     game.environments[0].players.push(player1);    
-  })
-    
-    
+  })    
 
 });

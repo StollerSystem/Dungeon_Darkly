@@ -36,13 +36,13 @@ export default class Game {
     return newItem;
   }
 
-  addWeapon(atk,dam,name,Id,worth,Hp,level,status,flags,rarity) {
-    let newWeapon = new Weapon(atk,dam,name,Id,worth,Hp,level,status,flags,rarity)
+  addWeapon(slot,atk,dam,name,Id,worth,Hp,level,status,flags,rarity) {
+    let newWeapon = new Weapon(slot,atk,dam,name,Id,worth,Hp,level,status,flags,rarity)
     return newWeapon;
   }
 
-  addArmor(acBonus,type,name,Id,worth,Hp,level,status,flags,rarity) {
-    let newArmor = new Armor(acBonus,type,name,Id,worth,Hp,level,status,flags,rarity)
+  addArmor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity) {
+    let newArmor = new Armor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity)
     return newArmor;
   }
 
