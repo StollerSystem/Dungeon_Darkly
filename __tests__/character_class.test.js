@@ -34,9 +34,16 @@ describe('AbilityScores', () => {
   });
 
   test('test 3 should roll an ability score check from a player object', () => {
-    let player3 = rpg.addPlayer("jake","human","wizard","6","40","20","60","30",[],10,10,10,10,10,10,10);
+    let player3 = rpg.addPlayer("jake","human","wizard","6","40","20","60","30",[],16,10,10,10,10,10,10);
     let player3StrCheck = player3.abilityScoreCheck('str');
     expect(player3StrCheck).toBeGreaterThanOrEqual(4);
     expect(player3StrCheck).toBeLessThanOrEqual(23);
+  });
+
+  test('test 4 should roll an attack roll from a player object', () => {
+    let player4 = rpg.addPlayer("jake","human","wizard","6","40","20","60","30",[],16,10,10,10,10,10,10);
+    let player4AttackRoll = player4.attackRoll();
+    expect(player4AttackRoll).toBeGreaterThanOrEqual(4);
+    expect(player4AttackRoll).toBeLessThanOrEqual(23);
   });
 });
