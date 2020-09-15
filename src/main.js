@@ -3,15 +3,17 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 // import Game from './js/game_class.js';
-import Command from './js/command_parser.js';
+// import Command from './js/command_parser.js';
 import GameInit from './js/GameInit.js';
 
 
 $("#userInput").submit(function(event){
   event.preventDefault();  
-  Command.inputParser($("#input").val());
+  // Command.inputParser($("#input").val());
   $("#input").val("");
 });
+
+
 
 
 
