@@ -107,7 +107,7 @@ body {
   height: 500px;
   border: solid rgb(162, 0, 255);
   overflow: auto;
-  resize: both;
+  resize: vertical;
 }
 #monstStatDisplay {
     /* float: center; */
@@ -117,6 +117,6 @@ body {
     border: solid rgb(255, 0, 0);
     color: red;
     overflow: auto;
-    resize: both;
+    resize: vertical;
   }
 
