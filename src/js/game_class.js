@@ -69,6 +69,7 @@ export default class Game {
   }
 
   inputParser(input) {
+
     let splitString = input.toLowerCase().split(" ");
     // LOOK
     if (splitString[0] === "look"||splitString[0] === "l") {
@@ -78,7 +79,8 @@ export default class Game {
       } else {
         target = ""
       }
-      console.log("look function:",target)
+      //console.log("look function:",target)
+      this.environments[0].players[0].look(target);
     } 
 
     //look(target);

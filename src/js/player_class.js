@@ -17,4 +17,10 @@ export class Player extends Character{
     this.equip = new Equip();
     this.baseAc = 10+ abilityScores.scoreMod('dex');
   }  
+
+  look(target) {
+    console.log("player look function:",target)
+  }
+
+
 }
