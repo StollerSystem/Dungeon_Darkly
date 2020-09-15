@@ -2,57 +2,24 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import Game from './js/game_class.js';
+// import Game from './js/game_class.js';
 import Command from './js/command_parser.js';
+import GameInit from './js/GameInit.js';
 
 
-//console.log("test1")
 $("#userInput").submit(function(event){
-  event.preventDefault();
-  //console.log($("#input").val())
+  event.preventDefault();  
   Command.inputParser($("#input").val());
   $("#input").val("");
 });
 
-// function displayText(output) {
-//   $("#output").append("ouput: ",output," ")
-// }
+
 
 
 $(document).ready(function(){
-  console.log("test2")
-  let game = new Game([],[],[],[]);
-  console.log(game)
-  // test build out game!
-
-  game.addEnvironment("Castle Room","dark and scary",[],[],[],[]);
-  
-  let goblin = game.addMonster(1,"Goblin","goblin",1,5,0,[],[],8,10,8,6,6,6,6);
-  game.environments[0].monsters.push(goblin)
-
-  let potion = game.addItem("potion",1,1,5,1,[],[],"common");
-  game.environments[0].items.push(potion);
- 
-  let dagger = game.addWeapon(3,6, "dagger",2,1,5,1,[],[],"common");
-  game.environments[0].items.push(dagger);
- 
-  let leatherArmor  = game.addArmor(3,"leather","Leather Armor",3,5,5,1,);
-  game.environments[0].items.push(leatherArmor);
-
-
-// COMMAND LINE TEST!
-
-  
-
-
-
-
-
-
-
-
-
   // Character creation logic 
+  let game = GameInit.getGame();
+  console.log(game.environments)
 
   $("form").submit(function(event){
     event.preventDefault();
