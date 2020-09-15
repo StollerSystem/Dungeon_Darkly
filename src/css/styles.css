@@ -25,6 +25,18 @@ body {
   color: greenyellow;
   font-family: "VT323",monospace;
 }
+#charCreateDiv {
+  padding: 10px;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-top: 50px;
+  width: 75%;
+  height: 800px;
+  overflow: auto;
+  border: solid rgb(255, 72, 0);
+  border-width: 3px;
+  resize: auto;
+}
 #charCreateBtn {
   background-color: transparent;
   color: rgb(248, 81, 3);
@@ -63,7 +75,7 @@ body {
 }
 #gameplay-screen #commandForm {
   resize: both;
-  border: solid rgb(61, 47, 255);
+  border: solid rgb(203, 9, 252);
   border-width: 2px;
   padding: 5px;
   /* position: fixed; */
@@ -98,10 +110,8 @@ body {
 }
 #gameplay-screen {
   font-size: 20px;
-  /* float: center */
 }
 #charStatDisplay {
-  /* float: center; */
   margin-top: 5px;
   width: 100%;
   height: 500px;
@@ -110,7 +120,6 @@ body {
   resize: vertical;
 }
 #monstStatDisplay {
-    /* float: center; */
     margin-top: 5px;
     width: 100%;
     height: 500px;
@@ -120,3 +129,20 @@ body {
     resize: vertical;
   }
 
+  .typewriter {
+    overflow: hidden;
+    border-right: .15em solid greenyellow; /* The typwriter cursor */
+    white-space: wrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 0.6s steps(40, end),
+      blink-caret .75s step-end infinite;
+  }
+  
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
