@@ -1,4 +1,4 @@
-// import $ from 'jquery';
+import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
@@ -20,6 +20,23 @@ $(document).ready(function(){
  
   let leatherArmor  = game.addArmor(3,"leather","Leather Armor",3,5,5,1,)
   game.environments[0].items.push(leatherArmor)
+
+  $("#userInput").submit(function(event){
+    event.preventDefault();
+    console.log($("#input").val())
+    $("#input").val("")
+
+  })
+
+
+
+
+
+
+
+
+
+
 
   $("form").submit(function(event){
     event.preventDefault();

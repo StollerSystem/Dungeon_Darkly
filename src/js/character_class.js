@@ -62,7 +62,7 @@ export class Equip{
     this.mainHand = [],
     this.offHand = []
   }
-};
+}
 
 export class Character { 
   //super(id,name,abilityScores,hp,mp,inv); ref for eventual add

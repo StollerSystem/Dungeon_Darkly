@@ -67,4 +67,4 @@ export default class Game {
     console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
     return total;
   }
-};
+}
