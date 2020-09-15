@@ -1,0 +1,78 @@
+body {
+  background-color: rgb(10, 0, 0);
+  font-family:"VT323",monospace;
+  font-size: 20px;
+  color: rgb(153, 255, 0);
+  margin-left: 50px;
+}
+#main-screen {
+  color: rgb(153, 255, 0);
+}
+#mainHeader {
+  font-family: "VT323",monospace;
+  color: rgb(255, 115, 0);
+  text-shadow: 3px 3px 8px rgb(255, 238, 4);
+  animation: textShadow 4.6s infinite;
+  margin-top: 30px;
+  font-size: 20px;
+}
+#mainHeader h1 {
+  color: rgb(153, 255, 0);
+  font-size: 20px;
+  margin-top: 450px;
+}
+#char-name, #char-race, #char-class {
+  background-color: transparent;
+  border: none;
+  color: greenyellow;
+  font-family: "VT323",monospace;
+}
+#charCreateBtn {
+  background-color: transparent;
+  color: rgb(248, 81, 3);
+  border: none;
+  border-radius: 0;
+}
+#charCreateBtn:hover {
+  text-shadow: 5px 5px 5px rgb(255, 102, 0);
+  font-family: "VT323",monospace;
+}
+#inputval {
+  color: rgb(209, 26, 209);
+}
+@keyframes textShadow {
+  0% {text-shadow: 0.4389924193300864px 0 1px rgba(99, 117, 255, 0.5), -0.4389924193300864px 2px 1px rgba(50,255,0, 0.53), 0 0 3px;}
+  5% {text-shadow: 2.7928974010788217px 0 1px rgba(0,30,255,0.75), -2.7928974010788217px 2px 1px rgba(50,255,0,0.53), 0 0 3px;}
+  10% {text-shadow: 0.02956275843481219px 0 1px rgba(0,30,255,0.5), -0.02956275843481219px 2px 1px rgba(50,255,0,0.53), 0 0 3px;}
+  15% {text-shadow: 0.40218538552878136px 0 1px rgba(0,30,255,0.75), -0.40218538552878136px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  20% {text-shadow: 3.4794037899852017px 0 1px rgba(0,30,255,0.5), -3.4794037899852017px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  25% {text-shadow: 1.6125630401149584px 0 1px rgba(0,30,255,0.75), -1.6125630401149584px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  30% {text-shadow: 0.7015590085143956px 0 1px rgba(0,30,255,0.5), -0.7015590085143956px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  35% {text-shadow: 3.896914047650351px 0 1px rgba(0,30,255,0.75), -3.896914047650351px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  40% {text-shadow: 3.870905614848819px 0 1px rgba(0,30,255,0.5), -3.870905614848819px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  45% {text-shadow: 2.231056963361899px 0 1px rgba(0,30,255,0.75), -2.231056963361899px -2px 1px rgba(50,255,0,0.53), 0 0 3px;}
+  50% {text-shadow: 0.08084290417898504px 0 1px rgba(0,30,255,0.5), -0.08084290417898504px -2px 1px rgba(50,255,0,0.53), 0 0 3px;}
+  55% {text-shadow: 2.3758461067427543px 0 1px rgba(0,30,255,0.75), -2.3758461067427543px -2px 1px rgba(50,255,0,0.53), 0 0 3px;}
+  60% {text-shadow: 2.202193051050636px 0 1px rgba(0,30,255,0.5), -2.202193051050636px -2px 1px rgba(50,255,0,0.53), 0 0 3px;}
+  65% {text-shadow: 2.8638780614874975px 0 1px rgba(0,30,255,0.75), -2.8638780614874975px -2px 1px rgba(50,255,0,0.53), 0 0 3px;}
+  70% {text-shadow: 0.48874025155497314px 0 1px rgba(0,30,255,0.5), -0.48874025155497314px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  75% {text-shadow: 1.8948491305757957px 0 1px rgba(0,30,255,0.75), -1.8948491305757957px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  80% {text-shadow: 0.0833037308038857px 0 1px rgba(0,30,255,0.5), -0.0833037308038857px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  85% {text-shadow: 0.09769827255241735px 0 1px rgba(0,30,255,0.75), -0.09769827255241735px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  90% {text-shadow: 3.443339761481782px 0 1px rgba(0,30,255,0.5), -3.443339761481782px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  95% {text-shadow: 2.1841838852799786px 0 1px rgba(0,30,255,0.75), -2.1841838852799786px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+  100% {text-shadow: 2.6208764473832513px 0 1px rgba(0,30,255,0.5), -2.6208764473832513px 0 1px rgba(50,255,0,0.53), 0 0 3px;}
+}
+#gameplay-screen #commandForm {
+  margin-top: 700px;
+}
+#gameplay-screen #commandLine {
+  background-color: transparent;
+  border: none;
+}
+#gameplay-screen {
+  display: none;
+}
+
+
+

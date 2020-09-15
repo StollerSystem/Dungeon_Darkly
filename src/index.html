@@ -1,16 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="bundle.js"></script>
-  <title>SICK RPG!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+  <title>Dungeon, Darkly</title>
 </head>
+
 <body>
+<<<<<<< HEAD
   
   <form id="userInput">
     <input type="text" id="input">
   </form>
   <div id="output"></div>
+=======
+  <div id="main-screen">
+    <div class="container-fluid">
+      <div id="mainHeader">
+        <h1>_dungeon_Darkly</h1>
+        <h3>welcome to dungeon darkly, an epic text-driven rpg game!</h3>
+      </div>
+
+      <form id="char-create">
+        <div class="form-group">
+          <label for="char-name">enter_Your_Name:</label>
+          <input id="char-name" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="char-race">select_A_Race [Click_to_Change];</label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="char-race" value="Human" checked>
+              <span id="inputval">{ Human }</span>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="char-race" value="Elf">
+              <span id="inputval">{ Elf }</span>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="char-race" value="Dwarf">
+              <span id="inputval">{ Dwarf }</span>
+            </label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="char-class">Choose_Your_Class:</label>
+          <div class="radio">
+            <label>
+              <input type="radio" name="char-class" value="Warrior" checked>
+              <span id="inputval">{ Warrior }</span>
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="char-class" value="Paladin">
+              <span id="inputval">{ Paladin }</span>
+            </label>
+          </div>
+        </div>
+        <button class="btn" id="charCreateBtn">_Create Character_</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="gameplay-screen">
+    <div class="container-fluid">
+      <h3>welcome to dungeon_darkly</h3>
+      <div id="commandForm">
+        <form id="command-form">
+          <p>root@dungeon_darkly~</p>
+          <label for="commandLine">$</label>
+          <input type="text" id="commandLine">
+          <button class="btn" id="commandLineBtn">_submit_</button>
+        </form>
+      </div>
+    </div>
+  </div>
+>>>>>>> master
 </body>
+
 </html>
