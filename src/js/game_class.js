@@ -15,34 +15,34 @@ export default class Game {
   }
 
   addEnvironment(name,description,items,monsters,players,exits) {
-    let newEnvironment = new Environment(name,description,items,monsters,players,exits)
+    let newEnvironment = new Environment(name,description,items,monsters,players,exits);
     this.environments.push(newEnvironment);
   }  
   
   addPlayer(name,race,pclass,level,xp,hp,mp,hunger,inv,str,dex,con,wis,int,chr,lck) {
-    let abilityScores = new AbilityScores(str,dex,con,wis,int,chr,lck)
-    let newPlayer = new Player(name,abilityScores,race,pclass,level,xp,hp,mp,hunger,inv)
+    let abilityScores = new AbilityScores(str,dex,con,wis,int,chr,lck);
+    let newPlayer = new Player(name,abilityScores,race,pclass,level,xp,hp,mp,hunger,inv);
     return newPlayer;
   }
   
   addMonster(id,name,mainType,cr,hp,mp,inv,behaviors,str,dex,con,wis,int,chr,lck) {
-    let abilityScores = new AbilityScores(str,dex,con,wis,int,chr,lck)
-    let newMonster = new Monster(id,name,abilityScores,mainType,cr,hp,mp,inv,behaviors)
+    let abilityScores = new AbilityScores(str,dex,con,wis,int,chr,lck);
+    let newMonster = new Monster(id,name,abilityScores,mainType,cr,hp,mp,inv,behaviors);
     return newMonster;
   }
     
   addItem(name,Id,worth,Hp,level,status,flags,rarity) {
-    let newItem = new Item(name,Id,worth,Hp,level,status,flags,rarity)
+    let newItem = new Item(name,Id,worth,Hp,level,status,flags,rarity);
     return newItem;
   }
 
-  addWeapon(atk,dam,name,Id,worth,Hp,level,status,flags,rarity) {
-    let newWeapon = new Weapon(atk,dam,name,Id,worth,Hp,level,status,flags,rarity)
+  addWeapon(slot,atk,dam,name,Id,worth,Hp,level,status,flags,rarity) {
+    let newWeapon = new Weapon(slot,atk,dam,name,Id,worth,Hp,level,status,flags,rarity);
     return newWeapon;
   }
 
-  addArmor(acBonus,type,name,Id,worth,Hp,level,status,flags,rarity) {
-    let newArmor = new Armor(acBonus,type,name,Id,worth,Hp,level,status,flags,rarity)
+  addArmor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity) {
+    let newArmor = new Armor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity);
     return newArmor;
   }
 
@@ -67,4 +67,4 @@ export default class Game {
     console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
     return total;
   }
-};
+}

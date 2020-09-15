@@ -14,6 +14,6 @@ export default class Monster extends Character{
     this.inv = inv,
     this.equip = new Equip(),
     this.baseAc = 10+ abilityScores.scoreMod('dex'),  
-    this.behaviors = behaviors 
+    this.behaviors = behaviors; 
   }  
 }
