@@ -1,20 +1,20 @@
 export class AbilityScores {
   constructor(str,dex,con,wis,int,chr,lck) {
-    this.str = str
-    this.dex = dex
-    this.con = con
-    this.wis = wis
-    this.int = int
-    this.chr = chr
-    this.lck = lck 
+    this.str = str;
+    this.dex = dex;
+    this.con = con;
+    this.wis = wis;
+    this.int = int;
+    this.chr = chr;
+    this.lck = lck; 
   }
 
   scoreMod (score) {
-    let mod = (this[score]-10)/2
+    let mod = (this[score]-10)/2;
     if (mod < 0) {
-      return Math.floor(mod)
+      return Math.floor(mod);
     } else {
-      return parseInt(mod)
+      return parseInt(mod);
     }
   }  
 }
@@ -42,7 +42,7 @@ export class Status{
     this.starving = false,
     this.stunned = false,
     this.surprised = false,
-    this.unconscious = false
+    this.unconscious = false;
   }
 }
 
@@ -60,9 +60,9 @@ export class Equip{
     this.waist = [],
     this.legs = [],
     this.mainHand = [],
-    this.offHand = []
+    this.offHand = [];
   }
-};
+}
 
 export class Character { 
   //super(id,name,abilityScores,hp,mp,inv); ref for eventual add
@@ -98,8 +98,8 @@ export class Character {
   }
 
   abilityScoreMatch(score,target) {
-    let abilityScores = this.abilityScores
-    let checked = abilityScores[score]
+    let abilityScores = this.abilityScores;
+    let checked = abilityScores[score];
     if (checked >= target){
       return true;
     } else {
