@@ -44,29 +44,29 @@ describe('Game', () => {
   });  
 
   test('Test 7 should add an item to an environment', () => {
-    let sword = rpg.addItem("Sword",1,1,10,1,[],[],"common");
-    rpg.addEnvironment("Castle","A dusty castle, long abandoned and full of monsters and secrets.",[sword],[],[],[]);
-    expect(rpg.environments[0].items[0]).toEqual(sword);
+    let book = rpg.addItem("Book",1,1,10,1,[],[],"common");
+    rpg.addEnvironment("Castle","A dusty castle, long abandoned and full of monsters and secrets.",[book],[],[],[]);
+    expect(rpg.environments[0].items[0]).toEqual(book);
   });
 
   test('test 8 should create a weapon subclass', () => {
-    let sword = rpg.addWeapon("mainHand",5,5,"Sword",1,1,10,1,[],[],"common");
-    expect(sword.atk).toEqual(5);
-    expect(sword.dam).toEqual(5);
+    let sword = rpg.addWeapon("mainHand",["str",5],[1,"d",6],"Sword",1,1,10,1,[],[],"common");
+    expect(sword.atk).toEqual(["str",5]);
+    expect(sword.dam).toEqual([1,"d",6]);
     expect(sword.name).toEqual("Sword");
   });
   
   test('test 9 add a weapon to a monsters inventory',() => {
-    let sword = rpg.addWeapon("mainHand",5,5,"Sword",1,1,10,1,[],[],"common");
+    let sword = rpg.addWeapon("mainHand",["str",5],[1,"d",6],"Sword",1,1,10,1,[],[],"common");
     monster1.addItemInv(sword);
-    expect(monster1.inv[0].atk).toEqual(5);
+    expect(monster1.inv[0].atk).toEqual(["str",5]);
   });
 
   test('Test 10 should add an item, a player, and a monster to an environment, with items in the player and monsters inventory', () => {
-    let sword = rpg.addItem("Sword",1,1,10,1,[],[],"common");
-    player1.addItemInv(sword);    
-    monster1.addItemInv(sword);    
-    rpg.addEnvironment("Castle","A dusty castle, long abandoned and full of monsters and secrets.",[sword],[monster1],[player1],[]);    
+    let book = rpg.addItem("Book",1,1,10,1,[],[],"common");
+    player1.addItemInv(book);    
+    monster1.addItemInv(book);    
+    rpg.addEnvironment("Castle","A dusty castle, long abandoned and full of monsters and secrets.",[book],[monster1],[player1],[]);    
     expect(rpg.environments[0].players[0].inv[0]).toEqual(rpg.environments[0].monsters[0].inv[0] && rpg.environments[0].items[0]);
   });
 

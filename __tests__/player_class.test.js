@@ -15,9 +15,9 @@ describe('Player', () => {
   });
 
   test('test 2 should add an item to a players inv', () => {    
-    let sword = rpg.addItem("Sword",1,1,10,1,[],[],"common");
-    player2.addItemInv(sword);
-    expect(player2.inv[0]).toEqual(sword);
+    let book = rpg.addItem("Book",1,1,10,1,[],[],"common");
+    player2.addItemInv(book);
+    expect(player2.inv[0]).toEqual(book);
   });
 
   test('test 3 should add an item to a players equip', () => {    
