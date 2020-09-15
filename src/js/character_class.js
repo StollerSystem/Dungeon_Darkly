@@ -123,9 +123,9 @@ export class Character {
     this.baseAc += totalAcBonus;
   }
 
-  attackRoll(){
+  attackRoll(weapon){
     let abilityScores = this.abilityScores;
-    let attackMod = abilityScores.scoreMod.str; // add level to bab
+    let attackMod = abilityScores.scoreMod[weapon.att[0]]+weapon.att[2]+this.level;
     return this.roll(1,20,attackMod);
   }
 
