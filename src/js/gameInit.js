@@ -6,7 +6,7 @@ export default class GameInit {
     // Add CastleRoom
     game.addEnvironment("Castle Room","dark and scary",[],[],[],[]);
     let goblin = game.addMonster(1,"Goblin","goblin",1,5,0,[],[],8,10,8,6,6,6,6);
-    game.environments[0].monsters.push(goblin)
+    game.environments[0].monsters.push(goblin);
     let potion = game.addItem("potion",1,1,5,1,[],[],"common");
     game.environments[0].items.push(potion);
     let dagger = game.addWeapon(3,6, "dagger",2,1,5,1,[],[],"common");
@@ -16,7 +16,7 @@ export default class GameInit {
 
     game.addEnvironment("Torture Chamber","bloody",[],[],[],[]);
     let goblin2 = game.addMonster(1,"Goblin Torturer","goblin",1,5,0,[],[],8,10,8,6,6,6,6);
-    game.environments[1].monsters.push(goblin2)
+    game.environments[1].monsters.push(goblin2);
     let potion2 = game.addItem("poison",1,1,5,1,[],[],"common");
     game.environments[1].items.push(potion2);
     let dagger2 = game.addWeapon(3,6, "Bone Saw",2,1,5,1,[],[],"common");
@@ -32,6 +32,6 @@ export default class GameInit {
     game.environments[2].items.push(skeleton);
     let battleaxe = game.addWeapon(3,6, "battleaxe",2,1,5,1,[],[],"common");
     game.environments[2].items.push(battleaxe);
-    return game 
-    }
+    return game;
+  }
 }

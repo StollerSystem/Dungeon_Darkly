@@ -2,33 +2,20 @@ import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-<<<<<<< HEAD
 // import Game from './js/game_class.js';
 // import Command from './js/command_parser.js';
 import GameInit from './js/GameInit.js';
 
 
-$("#userInput").submit(function(event){
-  event.preventDefault();  
-  // Command.inputParser($("#input").val());
-  $("#input").val("");
-});
-
-
-
-
-
-
-$(document).ready(function(){
-  // Character creation logic 
+$(document).ready(function () {
   let game = GameInit.getGame();
-  console.log(game.environments)
-
-  $("form").submit(function(event){
+  console.log(game.environments);
+  $("#char-create").submit(function (event) {
     event.preventDefault();
-    const nameInput = $("#name").val();
-    const raceInput = $("#race").val();
-    const pclassInput = $("#pclass").val();
+    const nameInput = $("#char-name").val();
+    const raceInput = $("input:radio[name=char-race]:checked").val();
+    const pclassInput = $("input:radio[name=char-class]:checked").val();
+    console.log(nameInput, raceInput, pclassInput);
     let strInput;
     let dexInput;
     let conInput;
@@ -62,6 +49,7 @@ $(document).ready(function(){
       chrInput = 6;
       lckInput = 12;
       break;
+      // OTHER CLASSES HERE
     default:
       hp = 10;
       mp = 0;
@@ -76,22 +64,25 @@ $(document).ready(function(){
     }
     
     let player1 = game.addPlayer(nameInput,raceInput,pclassInput,1,0,hp,mp,0,[],strInput,dexInput,conInput,wisInput,intInput,chrInput,lckInput);
-    game.environments[0].players.push(player1);    
-  })    
-
-=======
-
-$(document).ready(function () {
-
-  $("#char-create").submit(function (event) {
-    event.preventDefault();
-    const name = $("#char-name").val();
-    const race = $("input:radio[name=char-race]:checked").val();
-    const charClass = $("input:radio[name=char-class]:checked").val();
-    console.log(name, race, charClass);
+    game.environments[0].players.push(player1);
+    console.log(player1);
 
     $("#main-screen").hide();
-    $("#gameplay-screen").show();
+    $("#gameplay-screen").show();    
   });
->>>>>>> master
+
+  $("#command-form").submit(function(event){
+    event.preventDefault();        
+    console.log($("#commandLine").val());
+    $("#commandLine").val("");
+  });
+
 });
+
+
+
+    
+        
+   
+
+
