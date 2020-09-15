@@ -20,6 +20,7 @@ export class Player extends Character{
 
   look(target) {
     console.log("player look function:",target)
+    
   }
 
 
