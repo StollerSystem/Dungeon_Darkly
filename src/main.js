@@ -7,7 +7,6 @@ import './css/styles.css';
 import GameInit from './js/GameInit.js';
 
 
-$(document).ready(function () {
   let game = GameInit.getGame();
   console.log(game.environments);
   $("#char-create").submit(function (event) {
@@ -76,13 +75,3 @@ $(document).ready(function () {
     console.log($("#commandLine").val());
     $("#commandLine").val("");
   });
-
-});
-
-
-
-    
-        
-   
-
-
