@@ -3,6 +3,7 @@ import { Player } from './player_class.js';
 import Monster from './monster_class.js'; 
 import { Item, Weapon, Armor } from './item_class.js';
 import { AbilityScores } from './character_class.js';
+import Display from './display_output.js';
 
 
 export default class Game {
@@ -80,11 +81,20 @@ export default class Game {
         target = ""
       }
       //console.log("look function:",target)
-      this.environments[0].players[0].look(target);
+      this.look(target);
     } 
-
-    //look(target);
   }
+    //look(target);
+    look(target) {
+      console.log("player look function:",target)
+      // this.environments[0].name
+      // this.environments[0].description
+      console.log(this.environments[0].name)
+      //$("#terminalOutput").append("<br>>" + this.environments[0].name);
+      Display.output(this.environments[0].name)
+      Display.output(this.environments[0].description)
+    }
+  
   
 
 
