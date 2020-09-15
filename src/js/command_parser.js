@@ -1,6 +1,11 @@
+import $ from 'jquery';
+
 export default class Command {
-  inputParser (input) {
-    console.log("cp",input)
+
+  static inputParser(input) {
+    //console.log("cp",input)
+    $("#output").append("CP TEST")
+    return "cp"+input
   }
   
 }
