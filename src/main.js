@@ -10,13 +10,13 @@ import Command from './js/command_parser.js';
 $("#userInput").submit(function(event){
   event.preventDefault();
   //console.log($("#input").val())
-  displayText(Command.inputParser($("#input").val()));
+  Command.inputParser($("#input").val());
   $("#input").val("");
 });
 
-function displayText(output) {
-  $("#output").append("ouput: ",output," ")
-}
+// function displayText(output) {
+//   $("#output").append("ouput: ",output," ")
+// }
 
 
 $(document).ready(function(){
