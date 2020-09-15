@@ -122,4 +122,10 @@ export class Character {
     }
     this.baseAc += totalAcBonus;
   }
+
+  attackRoll(){
+    let abilityScores = this.abilityScores;
+    let attackMod = abilityScores.scoreMod.str; // add level to bab
+    return this.roll(1,20,attackMod);
+  }
 }; // end Character class
