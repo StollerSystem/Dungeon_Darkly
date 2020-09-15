@@ -1,7 +1,6 @@
 body {
   background-color: rgb(10, 0, 0);
   font-family:"VT323",monospace;
-  font-size: 20px;
   color: rgb(153, 255, 0);
   margin-left: 50px;
 }
@@ -14,12 +13,10 @@ body {
   text-shadow: 3px 3px 8px rgb(255, 238, 4);
   animation: textShadow 4.6s infinite;
   margin-top: 30px;
-  font-size: 20px;
 }
-#mainHeader h1 {
+#mainHeader h1, #mainHeader h5 {
   color: rgb(153, 255, 0);
-  font-size: 20px;
-  margin-top: 450px;
+  font-size: 16px;
 }
 #char-name, #char-race, #char-class {
   background-color: transparent;
@@ -65,13 +62,22 @@ body {
 }
 #gameplay-screen #commandForm {
   margin-top: 700px;
+  border: solid rgb(196, 47, 255);
+  border-width: 1px;
+  padding: 5px;
+  position: fixed;
+  animation: textShadow 4.6s infinite;
 }
 #gameplay-screen #commandLine {
   background-color: transparent;
   border: none;
+  color: greenyellow;
 }
 #gameplay-screen {
   display: none;
+}
+#commandLineBtn {
+  color: black;
 }
 
 

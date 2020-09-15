@@ -15,4 +15,11 @@ $(document).ready(function () {
     $("#main-screen").hide();
     $("#gameplay-screen").show();
   });
+
+  $("#command-form").submit(function(event) {
+    event.preventDefault();
+    let command = $("#commandLine").val();
+    console.log(command);
+    $("#terminalOutput").append("<br>" + command);
+  })
 });
