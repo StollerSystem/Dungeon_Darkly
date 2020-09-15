@@ -14,13 +14,12 @@
     <div class="container-fluid">
       <div id="mainHeader">
         <h1>_dungeon_Darkly</h1>
-        <h3>welcome to dungeon darkly, an epic text-driven rpg game!</h3>
+        <h5>welcome to dungeon darkly, an epic text-driven rpg game!</h5>
       </div>
-
       <form id="char-create">
         <div class="form-group">
           <label for="char-name">enter_Your_Name:</label>
-          <input id="char-name" type="text" class="form-control">
+          <input id="char-name" type="text">
         </div>
         <div class="form-group">
           <label for="char-race">select_A_Race [Click_to_Change];</label>
@@ -58,18 +57,39 @@
             </label>
           </div>
         </div>
-        <button class="btn" id="charCreateBtn">_Create Character_</button>
+        <button class="btn" id="charCreateBtn">$>_Create Character_</button>
       </form>
     </div>
   </div>
 
   <div id="gameplay-screen">
     <div class="container-fluid">
-      <h3>welcome to dungeon_darkly</h3>
+      <div class="row">
+      <div class="col-md-6">
+      <div id="terminalOutput">
+        <h5>...</h5>
+        <h5>$<>initializing_gameplay:dungeon_darkly</h5>
+        <h5><>initializing_charObject~...</h5>
+        <h5>$<...>initializing_envir~</h5>
+        <h5>initializing_terrifying_monsters~</h5>
+        <h5>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game.</h5>
+      </div>
+      </div>
+      <div class="col-md-3">
+      <div id="charStatDisplay">
+        <h5>char_stats~</h5>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div id="monstStatDisplay">
+        <h5>monster_stats~</h5>
+      </div>
+    </div>
+  </div>
       <div id="commandForm">
         <form id="command-form">
           <p>root@dungeon_darkly~</p>
-          <label for="commandLine">$</label>
+          <label for="commandLine">$></label>
           <input type="text" id="commandLine">
           <button class="btn" id="commandLineBtn">_submit_</button>
         </form>

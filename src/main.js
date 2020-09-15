@@ -7,7 +7,6 @@ import './css/styles.css';
 import GameInit from './js/GameInit.js';
 
 
-$(document).ready(function () {
   let game = GameInit.getGame();
   console.log(game.environments);
   $("#char-create").submit(function (event) {
@@ -71,18 +70,9 @@ $(document).ready(function () {
     $("#gameplay-screen").show();    
   });
 
-  $("#command-form").submit(function(event){
-    event.preventDefault();        
-    console.log($("#commandLine").val());
-    $("#commandLine").val("");
-  });
-
-});
-
-
-
-    
-        
-   
-
-
+  $("#command-form").submit(function(event) {
+    event.preventDefault();
+    let command = $("#commandLine").val();
+    console.log(command);
+    $("#terminalOutput").append("<br>" + command);
+  })
