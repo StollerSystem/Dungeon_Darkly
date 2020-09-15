@@ -67,4 +67,23 @@ export default class Game {
     console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
     return total;
   }
+
+  inputParser(input) {
+    let splitString = input.toLowerCase().split(" ");
+    // LOOK
+    if (splitString[0] === "look"||splitString[0] === "l") {
+      let target;
+      if (splitString[1]) {
+        target = splitString[1]
+      } else {
+        target = ""
+      }
+      console.log("look function:",target)
+    } 
+
+    //look(target);
+  }
+  
+
+
 }

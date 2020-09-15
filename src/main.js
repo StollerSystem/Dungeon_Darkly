@@ -72,8 +72,9 @@ $(document).ready(function () {
   });
 
   $("#command-form").submit(function(event){
-    event.preventDefault();        
-    console.log($("#commandLine").val());
+    event.preventDefault(); 
+    game.inputParser($("#commandLine").val())      
+    //console.log($("#commandLine").val());
     $("#commandLine").val("");
   });
 
