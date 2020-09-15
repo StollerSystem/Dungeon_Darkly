@@ -74,5 +74,8 @@ body {
   display: none;
 }
 
+#commandLine {
+  color: greenyellow;
+}
 
 
