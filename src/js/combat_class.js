@@ -1,13 +1,13 @@
 export class Combat {
   constructor(){
-    this.turnOrder = [];
     this.roundCount = 1;
-    this.currentTurn;
-    this.playerTarget;
+    this.turnOrder = [];
+    this.turnIndex = 0;
+    // this.currentTurn = this.turnOrder[0];
   }
 
   combatTurn(participant,target){ // begin turn
-    let participantOrderNumber = this.turnOrder[0]//index of participant
+    // let participantOrderNumber = this.turnOrder[0]//index of participant
     if (participant.status.surprised === 'false'){
       //make attack roll
       attack = participant.attackRoll();
@@ -24,11 +24,12 @@ export class Combat {
       return this.combatEnd(participant,target);
     }
     //check if all participants have had a turn
-    if (this.currentTurn == (this.turnOrder.length -1)){
+    if (this.turnIndex == (this.turnOrder.length -1)){
       return this.roundEnd(participant,target);
     }
     //action the next participant's turn
-    return this.combatTurn(this.turnOrder[[]])
+    this.turnIndex += 1;
+    return this.combatTurn(this.turnOrder[this.turnIndex])
   } // end turn
 
   roundEnd(participant,target){
