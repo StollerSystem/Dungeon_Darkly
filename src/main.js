@@ -3,7 +3,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
 import Game from './js/game_class.js';
-
+import Command from './js/command_parser.js;'
 
 $(document).ready(function(){
   let game = new Game([],[],[],[])
@@ -21,9 +21,13 @@ $(document).ready(function(){
   let leatherArmor  = game.addArmor(3,"leather","Leather Armor",3,5,5,1,)
   game.environments[0].items.push(leatherArmor)
 
+
+// COMMAND LINE TEST!
+
   $("#userInput").submit(function(event){
     event.preventDefault();
-    console.log($("#input").val())
+    //console.log($("#input").val())
+    Command.inputParser(("#input").val())
     $("#input").val("")
 
   })
