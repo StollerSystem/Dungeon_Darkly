@@ -138,6 +138,8 @@ export class Character {
   }
 
   combatStart(participant,target){
+    let turnOrder = [];
+    // stealth-surprise check
     if (this.status.some(status => status.hidden === 'true')){
       let stealthCheck = this.abilityScoreCheck('dex');
       let perceptionCheck = [target].abilityScoreCheck('wis');
@@ -145,8 +147,19 @@ export class Character {
       [target].status.surprised = 'true';
       };
     };
-    // //roll for initiative
-    // //push the the highest number into the initiativeOrder array first, the other second
+    // roll for initiative, fill turnOrder
+    let participantInit = participant.abilityScoreCheck('dex');
+    let targetInit = target.abilityScoreCheck('dex');
+    if (participantInit >= targetInit){
+      turnOrder.push(participant);
+      turnOrder.push(target);
+    } else {
+      turnOrder.push(target);
+      turnOrder.push(participant);
+    }
+    // set the Combat turnOrder
+    [this.location].turnOrder = turnOrder;
+    // begin the combatTurn!
     return [this.location].combatTurn(participant,target);
   }; // end combatStart
 }; // end Character class
