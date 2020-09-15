@@ -137,55 +137,16 @@ export class Character {
     return this.roll(1,20,damageMod);
   }
 
-  // newCombatStart(target){
-  //   envofPlayer.combat = new Combat(player, target,etc)
-  //   if (this.status.some(status => status.hidden === 'true')){
-  //     let stealthCheck = this.abilityScoreCheck('dex');
-  //     let perceptionCheck = [target].abilityScoreCheck('wis');
-  //     if (stealthCheck > perceptionCheck){
-  //     [target].status.surprised = 'true';
-  //     };
-  //   };
-  //   //roll for initiative
-  //   //push the the highest number into the initiativeOrder array first, the other second
-  //   'first character in initiave'.attackRoll
-  //   //display output
-  //   'first character in initiave'.damRoll
-  //   //display output
-  // }
-
-
-  combatStart(target){
-    let initiativeOrder = [];
-    let roundCount = 1;
-    // if (this.status.some(status => status.hidden === 'true')){
-    //   let stealthCheck = this.abilityScoreCheck('dex');
-    //   let perceptionCheck = [target].abilityScoreCheck('wis');
-    //   if (stealthCheck > perceptionCheck){
-    //   [target].status.surprised = 'true';
-    //   };
-    // };
+  combatStart(participant,target){
+    if (this.status.some(status => status.hidden === 'true')){
+      let stealthCheck = this.abilityScoreCheck('dex');
+      let perceptionCheck = [target].abilityScoreCheck('wis');
+      if (stealthCheck > perceptionCheck){
+      [target].status.surprised = 'true';
+      };
+    };
     // //roll for initiative
     // //push the the highest number into the initiativeOrder array first, the other second
-    while (this.hp > 0 || [target].hp > 0){ // each of these are a round
-      if (roundCount > 1){
-        [target].status.surprised = 'false';
-        this.status.hidden = 'false';
-      };
-      for (let participant of initiativeOrder){ // each of these are a turn
-        if (participant.status.surprised === 'false'){
-          //make attack roll
-          attack = participant.attackRoll();
-          if (attack >= altParticipant.ac){
-          //make damage roll
-          damage = participant.damageRoll();
-          //inflict the damage
-          notParticipant.hp -= damage;
-          }
-          //any remaining turn stuff
-        };
-      }; // end the turn
-      roundCount += 1;
-    }; // end the round
+    return [this.location].combatTurn(participant,target);
   }; // end combatStart
 }; // end Character class
