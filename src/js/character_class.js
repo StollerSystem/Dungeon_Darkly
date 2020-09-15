@@ -75,6 +75,28 @@ export class Character {
     this.equip[slot].push(item);
   }
 
+  roll(num,side,mod,adj){
+    let total;
+    if (!mod){
+      total = 0;
+    } else {
+      total = mod;
+    }
+    let min;
+    if (!adj){
+      min = 1;
+    } else {
+      min = 1 + adj;
+    }
+    for (let i=0;i<num;i++){
+      let roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
+      total += roll;
+      // console.log(`d${side} rolled: ${roll}`);
+    }
+    // console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
+    return total;
+  }
+
   abilityScoreMatch(score,target) {
     let abilityScores = this.abilityScores
     let checked = abilityScores[score]
@@ -88,7 +110,7 @@ export class Character {
   abilityScoreCheck(score) {
     let abilityScores = this.abilityScores;
     let mod = abilityScores.scoreMod[score];
-    return rpg.roll(1,20,mod);
+    return this.roll(1,20,mod);
   }
   
   equipCheck(){
