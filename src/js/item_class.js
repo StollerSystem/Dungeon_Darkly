@@ -28,3 +28,12 @@ export class Armor extends Item {
     this.slot = slot;
   }
 }
+
+export class Container extends Item {
+  constructor() {
+    super(name,Id,worth,Hp,level,status,flags,rarity);
+    this.type = type;
+    this.contents = [];
+    this.capacity = capacity;
+  }
+}
