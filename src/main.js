@@ -131,8 +131,8 @@ function displayMonsterStats(monster) {
 
 // Canvas
 
-function restartGame(){
-  game = GameInit.getGame();
-  $("#gameplay-screen").hide();
-  $("#main-screen").show();
-}
+// function restartGame(){
+//   game = GameInit.getGame();
+//   $("#gameplay-screen").hide();
+//   $("#main-screen").show();
+// }
