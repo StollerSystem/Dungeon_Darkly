@@ -80,7 +80,7 @@ $("#char-create").submit(function (event) {
 $("#command-form").submit(function(event){
   event.preventDefault(); 
   let command = $("#commandLine").val();
-  $("#terminalOutput").append("<br>>>>" + command);
+  $("#terminalOutput").append(`<br>>>>><span class="yellow">${command}<span>`);
   $("#commandLine").val("");
   game.inputParser(command); 
 });    

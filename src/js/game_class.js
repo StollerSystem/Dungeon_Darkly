@@ -5,7 +5,6 @@ import { Item, Weapon, Armor } from './item_class.js';
 import { AbilityScores } from './character_class.js';
 import Display from './display_output.js';
 
-
 export default class Game {
   constructor(players,items,monsters,environments) {
     this.players = players;
@@ -84,8 +83,21 @@ export default class Game {
       //console.log("look function:",target)
       this.look(target);
     } 
-  }
 
+    //attack(target);
+    if (splitString[0] === "attack"||splitString[0] === "at"||splitString[0] === "fight") { 
+      let target;
+      if (splitString[1]) {
+        target = splitString[1];
+        this.attack(target);
+      } else {
+        target = "";
+        Display.output("Attack what?")
+      }
+      //console.log("look function:",target)
+      // this.attack(target);
+    } 
+  }
 
 
   
@@ -96,11 +108,57 @@ export default class Game {
     // this.environments[0].description
     console.log(this.environments[0].name);
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(this.environments[0].name);
+    Display.output(`<span class="blue">${this.environments[0].name}</span>`);
     Display.output(this.environments[0].description);
+    Display.output(`!!! Monster in the room: <span class="red">${this.environments[0].monsters[0].name}</span> !!!`);
   }
-  
-  
 
+  //attack(target);
+  attack(target) {
+    let location = this.environments[this.environments[0].players[0].location];
+    console.log(`player attack function. target: ${target}`);
+    if (location.combat.roundCount == 1){
+    let targetMonster;     
+    this.environments[0].monsters.forEach(function(monster){
+      if (monster.name.toLowerCase().includes(target)) {
+        targetMonster = monster
+      }
+    })
+    // this.environments[0].monsters[0]
+    //$("#terminalOutput").append("<br>>" + this.environments[0].name);
+    Display.output(`You join in battle with the ${this.environments[0].monsters[0].name}!`);
+    this.combatStart(this.environments[0].players[0],targetMonster);
+    } else {
+    location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
+    }
+  }
 
+  combatStart(participant,target){
+    let turnOrder = [];
+    // stealth-surprise check
+    // if (this.status.some(status => status.hidden === 'true')){
+    //   let stealthCheck = this.abilityScoreCheck('dex');
+    //   let perceptionCheck = [target].abilityScoreCheck('wis');
+    //   if (stealthCheck > perceptionCheck){
+    //   [target].status.surprised = 'true';
+    //   }
+    // }
+    // roll for initiative, fill turnOrder
+    let participantInit = participant.abilityScoreCheck('dex');
+    let targetInit = target.abilityScoreCheck('dex');
+    Display.output(`---rolling combat initiative---<br>${participant.name}'s init roll = ${participantInit} / ${target.name}'s init roll = ${targetInit}`)
+    console.log(`targetInit: ${targetInit}`);
+    if (participantInit >= targetInit){
+      turnOrder.push(participant);
+      turnOrder.push(target);
+    } else {
+      turnOrder.push(target);
+      turnOrder.push(participant);
+    }
+    let location = this.environments[participant.location];
+    // set the Combat turnOrder
+    location.combat.turnOrder = turnOrder;
+    // begin the combatTurn!
+    location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+  } // end combatStart
 }

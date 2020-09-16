@@ -75,7 +75,29 @@ export class Character {
     this.equip[slot].push(item);
   }
 
-  abilityScoreCheck(score,target) {
+  roll(num,side,mod,adj){
+    let total;
+    if (!mod){
+      total = 0;
+    } else {
+      total = mod;
+    }
+    let min;
+    if (!adj){
+      min = 1;
+    } else {
+      min = 1 + adj;
+    }
+    for (let i=0;i<num;i++){
+      let roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
+      total += roll;
+      // console.log(`d${side} rolled: ${roll}`);
+    }
+    // console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
+    return total;
+  }
+
+  abilityScoreMatch(score,target) {
     let abilityScores = this.abilityScores;
     let checked = abilityScores[score];
     if (checked >= target){
@@ -83,6 +105,12 @@ export class Character {
     } else {
       return false;
     }
+  }
+
+  abilityScoreCheck(score) {
+    let abilityScores = this.abilityScores;
+    let mod = abilityScores.scoreMod[score];
+    return this.roll(1,20,mod);
   }
   
   equipCheck(){
@@ -94,4 +122,38 @@ export class Character {
     }
     this.baseAc += totalAcBonus;
   }
-}
+
+  attackRoll(){
+    let weapon;
+    let attackMod;
+    if (this.equip.mainHand[0]){
+      weapon = this.equip.mainHand[0];
+      attackMod = this.abilityScores.scoreMod[weapon.atk[0]]+weapon.atk[1]+this.level;
+    } else {
+      attackMod = this.abilityScores.scoreMod('str')+this.level; 
+    }
+    return this.roll(1,20,attackMod);
+  }
+
+  damageRoll(){
+    let weapon;
+    let damageMod;
+    let damageDiceNumber;
+    let damageDiceSides;
+    if (this.equip.mainHand[0]){
+      weapon = this.equip.mainHand[0];
+      damageMod = this.abilityScores.scoreMod[weapon.atk[0]];
+      damageDiceNumber = weapon.dam[0];
+      damageDiceSides = weapon.dam[2];
+    } else {
+      damageMod = this.abilityScores.scoreMod('str'); 
+      damageDiceNumber = 1;
+      damageDiceSides = 4;
+    }
+    return this.roll(damageDiceNumber,damageDiceSides,damageMod);
+  }
+
+  hide(){
+    this.status.hidden = 'true';
+  }
+} // end Character class

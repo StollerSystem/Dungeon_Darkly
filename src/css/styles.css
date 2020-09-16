@@ -164,3 +164,18 @@ body {
   width: 600px;
 }
   
+  .red {
+    color: red;
+  }
+
+  .yellow {
+    color: yellow;
+  }
+  
+  .blue {
+    color: rgb(0, 157, 255);
+  }
+
+  .purple {
+    color: purple
+  }
