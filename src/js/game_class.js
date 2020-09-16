@@ -97,6 +97,13 @@ export default class Game {
       //console.log("look function:",target)
       // this.attack(target);
     } 
+
+    //move;
+    if (splitString[0] === "move") {          
+      this.move();
+      console.log("test")      
+    }
+      
   }
 
 
@@ -106,28 +113,28 @@ export default class Game {
     console.log("player look function:",target);
     // this.environments[0].name
     // this.environments[0].description
-    console.log(this.environments[0].name);
+    console.log(this.environments[this.players[0].location].name);
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`<span class="blue">${this.environments[0].name}</span>`);
-    Display.output(this.environments[0].description);
-    Display.output(`!!! Monster in the room: <span class="red">${this.environments[0].monsters[0].name}</span> !!!`);
+    Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
+    Display.output(this.environments[this.players[0].location].description);
+    Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
   }
 
   //attack(target);
   attack(target) {
-    let location = this.environments[this.environments[0].players[0].location];
+    let location = this.environments[this.players[0].location];
     console.log(`player attack function. target: ${target}`);
     if (location.combat.roundCount == 1){
     let targetMonster;     
-    this.environments[0].monsters.forEach(function(monster){
+    this.environments[this.players[0].location].monsters.forEach(function(monster){
       if (monster.name.toLowerCase().includes(target)) {
         targetMonster = monster
       }
     })
     // this.environments[0].monsters[0]
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`You join in battle with the ${this.environments[0].monsters[0].name}!`);
-    this.combatStart(this.environments[0].players[0],targetMonster);
+    Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
+    this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
     } else {
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
     }
@@ -161,4 +168,20 @@ export default class Game {
     // begin the combatTurn!
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
   } // end combatStart
+
+  move() {
+    let current_location = this.players[0].location
+    if (current_location  >= this.environments.length-1) {
+      Display.output(`<br> You can't move anymore!`)
+    } else {
+      this.players[0].location +=1
+      console.log(current_location)
+      Display.output("You bravely advance into the next area!")
+      this.environments[this.players[0].location].players.push( this.players[0]);
+      this.environments[this.players[0].location-1].players.shift();
+      this.look("")
+      Display.updateMap(this.players[0].location)
+    }    
+  }
 }
+
