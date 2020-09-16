@@ -5,6 +5,7 @@ import './css/styles.css';
 // import Game from './js/game_class.js';
 // import Command from './js/command_parser.js';
 import GameInit from './js/GameInit.js';
+import draw from './js/canvas.js';
 
 let game = GameInit.getGame();
 console.log(game.environments);
@@ -95,3 +96,6 @@ function displayCharStats(player) {
   // }
   });
 }
+
+// Canvas
+draw();
