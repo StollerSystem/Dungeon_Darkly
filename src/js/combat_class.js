@@ -6,6 +6,7 @@ export default class Combat {
     // this.currentTurn = this.turnOrder[0];
   }
 
+  // use arr.indexOf(searchElement[, fromIndex]) for finding the index of an element, or in this case, of a character in the turnOrder array
   combatTurn(participant,target){ // begin turn
     // let participantOrderNumber = this.turnOrder[0]//index of participant
     console.log(`combatTurn function running. participant: ${participant}, target: ${target}`)
