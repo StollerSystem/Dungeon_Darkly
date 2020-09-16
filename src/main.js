@@ -71,7 +71,7 @@ $("#char-create").submit(function (event) {
       break;
   }
 
-  let player1 = game.addPlayer(nameInput, raceInput, pclassInput, 1, 0, hp, mp, 0, [], strInput, dexInput, conInput, wisInput, intInput, chrInput, lckInput);
+  let player1 = game.addPlayer(nameInput, raceInput, pclassInput, 1, 0, hp, mp, 0, [game.addItem("potion", 1, 1, 5, 1, [], [], "common")], strInput, dexInput, conInput, wisInput, intInput, chrInput, lckInput);
   game.environments[0].players.push(player1);
   game.players.push(player1);
   console.log(player1);
@@ -99,6 +99,7 @@ $("#command-form").submit(function (event) {
 
 function displayCharStats(player) {
   const playerKeys = Object.keys(player);
+  console.log(player.inv)
   for (let i = 0; i < playerKeys.length; i++) {
     if (playerKeys[i] === "inv" || playerKeys[i] === "status" || playerKeys[i] === "equip" || playerKeys[i] === "hunger" || playerKeys[i] === "undefined") {
       continue;
