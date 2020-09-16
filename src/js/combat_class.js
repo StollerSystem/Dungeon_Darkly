@@ -54,7 +54,7 @@ export default class Combat {
   }
 
   combatEnd(characterArray){
-    deathCheck(characterArray);
+    this.deathCheck(characterArray);
     //perform end of combat functions
     this.turnOrder = [];
     this.roundCount = 1;
@@ -71,16 +71,16 @@ export default class Combat {
       if (character.hp >= 0){
         aliveCharacter = character;
       }
-    };
+    }
     if (deadCharacter.class){
-      return playerDeath(deadCharacter);
+      return this.playerDeath(aliveCharacter,deadCharacter);
     } else {
-      monsterDeath(aliveCharacter,deadCharacter);
-    };
+      this.monsterDeath(aliveCharacter,deadCharacter);
+    }
   }
 
-  playerDeath(deadCharacter){
-    Display.output(`Congrats ${deadCharacter.name}, you died to the ${target.name}!`);
+  playerDeath(aliveCharacter,deadCharacter){
+    Display.output(`Congrats ${deadCharacter.name}, you died to the ${aliveCharacter.name}!`);
     deadCharacter.status.dead = true;
     // restartGame();
   }
@@ -88,7 +88,7 @@ export default class Combat {
   monsterDeath(aliveCharacter,deadCharacter){
     Display.output(`Congrats ${aliveCharacter.name}, you killed the ${deadCharacter.name}!`);
     //exp and etc that go to the player
-    corpsification(deadCharacter);
+    this.corpsification(deadCharacter);
   }
 
   corpsification(deadCharacter){
