@@ -4,8 +4,8 @@ import $ from 'jquery';
 
 export default class Display {
   
-  static output(html) {    
+  static output(output) {    
     
-    $("#output").append(`Output: ${html}<br>`);
+    $("#terminalOutput").append("<br>>" + output);
   }
 }

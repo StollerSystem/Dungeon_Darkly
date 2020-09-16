@@ -145,4 +145,19 @@ body {
     from { width: 0 }
     to { width: 100% }
   }
+
+  .red {
+    color: red;
+  }
+
+  .yellow {
+    color: yellow;
+  }
   
+  .blue {
+    color: rgb(0, 157, 255);
+  }
+
+  .purple {
+    color: purple
+  }
