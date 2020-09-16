@@ -149,4 +149,11 @@ body {
   .red {
     color: red;
   }
+
+  .yellow {
+    color: yellow;
+  }
   
+  .blue {
+    color: rgb(0, 157, 255);
+  }
