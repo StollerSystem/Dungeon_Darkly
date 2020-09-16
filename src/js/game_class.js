@@ -180,6 +180,7 @@ export default class Game {
       this.environments[this.players[0].location].players.push( this.players[0]);
       this.environments[this.players[0].location-1].players.shift();
       this.look("")
+      Display.updateMap(this.players[0].location)
     }    
   }
 }
