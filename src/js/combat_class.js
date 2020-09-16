@@ -10,20 +10,21 @@ export default class Combat {
   // use arr.indexOf(searchElement[, fromIndex]) for finding the index of an element, or in this case, of a character in the turnOrder array
   combatTurn(participant,target){ // begin turn
     // let participantOrderNumber = this.turnOrder[0]//index of participant
-    // Display.output(`BATTLE ROUND: ${this.roundCount}`)
-    console.log(`combatTurn function running. participant: ${participant}, target: ${target}`)
+    Display.output(`[${participant.name}'s turn!]`)
+    Display.output(`***<span class="purple">combatTurn function running.  ${participant.name}, is moving to attack target: ${target.name}***</span>`)
     if (participant.status.surprised === false){
       //make attack roll
       let attack = participant.attackRoll();
-      Display.output(`YOUR ATK ROLL ${attack} vs ${target.name}'s AC: ${target.ac}`)
-      if (attack >= target.ac){
+      Display.output(`${participant.name}'s ATK ROLL: ${attack} vs ${target.name}'s AC: ${target.baseAc}`)
+      if (attack >= target.baseAc){
         //make damage roll
-        Display.output("HIT")
+        Display.output(`<span class="red">*** HIT! ***</span>`)
         let damage = participant.damageRoll();
         //inflict the damage
+        Display.output(`${participant.name}'s DMG ROLL = ${damage}`)
         target.hp -= damage;
       } else {
-        Display.output("MISS")
+        Display.output(`<span class="red">*** MISS! ***</span>`)
       }
     }
     //perform any remaining turn actions
@@ -47,8 +48,9 @@ export default class Combat {
     target.status.hidden = false;
     target.status.surprised = false;
     //display end of round options to player and await command
-    Display.output(`Combat round ${this.roundCount} has ended. Continue <span class="yellow">fighting</span>, or <span class="yellow">flee?</span>`);
+    Display.output(`Combat round ${this.roundCount} has ended. Continue to <span class="yellow">fight</span>, or <span class="yellow">flee</span> instead?`);
     this.roundCount += 1;
+    this.turnIndex = 0;
   }
 
   combatEnd(participant,target){
