@@ -127,8 +127,34 @@ export default class Game {
     // this.environments[0].monsters[0]
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
     Display.output(`You begin attacking the ${this.environments[0].monsters[0].name}!`);
-    this.environments[0].players[0].combatStart(this.environments[0].players[0],targetMonster);
+    this.combatStart(this.environments[0].players[0],targetMonster);
   }
 
-
+  combatStart(participant,target){
+    let turnOrder = [];
+    // stealth-surprise check
+    // if (this.status.some(status => status.hidden === 'true')){
+    //   let stealthCheck = this.abilityScoreCheck('dex');
+    //   let perceptionCheck = [target].abilityScoreCheck('wis');
+    //   if (stealthCheck > perceptionCheck){
+    //   [target].status.surprised = 'true';
+    //   }
+    // }
+    // roll for initiative, fill turnOrder
+    let participantInit = participant.abilityScoreCheck('dex');
+    let targetInit = target.abilityScoreCheck('dex');
+    console.log(`targetInit: ${targetInit}`);
+    if (participantInit >= targetInit){
+      turnOrder.push(participant);
+      turnOrder.push(target);
+    } else {
+      turnOrder.push(target);
+      turnOrder.push(participant);
+    }
+    let location = this.environments[participant.location];
+    // set the Combat turnOrder
+    location.combat.turnOrder = turnOrder;
+    // begin the combatTurn!
+    location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+  } // end combatStart
 }
