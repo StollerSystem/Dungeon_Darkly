@@ -6,15 +6,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script type="text/javascript" src="bundle.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
   <title>Dungeon, Darkly</title>
 </head>
 
 <body>
+  <div class="homeScreen">
+    <div class="container-fluid">
+      <div id="gameTitle">
+        <h1>_dun<span id="offset">g</span>eon_d<span id="offset">a</span>rkly</h1>
+      </div>
+      <button id="beginBtn">~PL<span id="offset">A</span>Y~</button>
+    </div>
+  </div>
+
   <div class="typewriter" id="main-screen">
     <div class="container-fluid">
       <div id="charCreateDiv">
         <div id="mainHeader">
-          <h1>_dungeon_Darkly</h1>
+          <h1 style="font-size: 30px">_dungeon_Darkly</h1>
           <h5>...</h5>
           <h5>$<>initializing_gameplay:dungeon_darkly</h5>
           <h5>
@@ -94,21 +105,25 @@
 
         <div class="col-md-3">
           <div id="charStatDisplay">
-            <h5>character_stats~</h5>
+            <h5>Character_stats~</h5>
           </div>
 
-          <div class="col-md-3">
             <div id="canvasDiv">
-              <h6>The Castle of Ravenhill</h6>
+              <h5>The Castle of Ravenhill~</h5>
               <canvas id="canvas"></canvas>
             </div>
-          </div>
-
+       
         </div>
         <div class="col-md-3">
           <div id="monstStatDisplay">
-            <h5>monster_stats~</h5>
+            <h5>Monster_stats~</h5>
           </div>
+     
+          <div id="inventDisplay">
+            <h5>Your inventory~</h5>
+            </h5>
+          </div>
+          
         </div>
       </div>
 
