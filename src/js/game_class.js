@@ -83,8 +83,21 @@ export default class Game {
       //console.log("look function:",target)
       this.look(target);
     } 
-  }
 
+    //attack(target);
+    if (splitString[0] === "attack"||splitString[0] === "at") { 
+      let target;
+      if (splitString[1]) {
+        target = splitString[1];
+        this.attack(target);
+      } else {
+        target = "";
+        Display.output("Attack what?")
+      }
+      //console.log("look function:",target)
+      // this.attack(target);
+    } 
+  }
 
 
   
@@ -97,9 +110,19 @@ export default class Game {
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
     Display.output(this.environments[0].name);
     Display.output(this.environments[0].description);
+    Display.output(`!!! Monster in the room: <span class="red">${this.environments[0].monsters[0].name}</span> !!!`);
   }
-  
-  
+
+  //attack(target);
+  attack(target) {
+    //Display.output(target);
+    console.log(`player attack function. target: ${target}`);
+    // this.environments[0].players[0]
+    // this.environments[0].monsters[0]
+    //$("#terminalOutput").append("<br>>" + this.environments[0].name);
+    Display.output(`You begin attacking the ${this.environments[0].monsters[0]}!`);
+    this.environments[0].players[0].combatStart(this.environments[0].players[0],target);
+  }
 
 
 }
