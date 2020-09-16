@@ -143,16 +143,17 @@ export class Character {
   combatStart(participant,target){
     let turnOrder = [];
     // stealth-surprise check
-    if (this.status.some(status => status.hidden === 'true')){
-      let stealthCheck = this.abilityScoreCheck('dex');
-      let perceptionCheck = [target].abilityScoreCheck('wis');
-      if (stealthCheck > perceptionCheck){
-      [target].status.surprised = 'true';
-      }
-    }
+    // if (this.status.some(status => status.hidden === 'true')){
+    //   let stealthCheck = this.abilityScoreCheck('dex');
+    //   let perceptionCheck = [target].abilityScoreCheck('wis');
+    //   if (stealthCheck > perceptionCheck){
+    //   [target].status.surprised = 'true';
+    //   }
+    // }
     // roll for initiative, fill turnOrder
     let participantInit = participant.abilityScoreCheck('dex');
     let targetInit = target.abilityScoreCheck('dex');
+    console.log(`targetInit: ${targetInit}`);
     if (participantInit >= targetInit){
       turnOrder.push(participant);
       turnOrder.push(target);
@@ -160,9 +161,14 @@ export class Character {
       turnOrder.push(target);
       turnOrder.push(participant);
     }
+    this.environments[participant.location].players[0]
     // set the Combat turnOrder
     [this.location].combat.turnOrder = turnOrder;
     // begin the combatTurn!
     return [this.location].combat.combatTurn([this.location].combat.turnOrder[0],[this.location].combat.turnOrder[1]);
   } // end combatStart
 } // end Character class
+
+player1{
+  this.location = `game.environment[0]`
+}
