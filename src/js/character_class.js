@@ -161,11 +161,11 @@ export class Character {
       turnOrder.push(target);
       turnOrder.push(participant);
     }
-    this.environments[participant.location].players[0]
+    let location = this.environments[participant.location].players[0]
     // set the Combat turnOrder
-    [this.location].combat.turnOrder = turnOrder;
+    [location].combat.turnOrder = turnOrder;
     // begin the combatTurn!
-    return [this.location].combat.combatTurn([this.location].combat.turnOrder[0],[this.location].combat.turnOrder[1]);
+    return [location].combat.combatTurn([this.location].combat.turnOrder[0],[this.location].combat.turnOrder[1]);
   } // end combatStart
 } // end Character class
 
