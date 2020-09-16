@@ -30,7 +30,7 @@ export default class Combat {
     //perform any remaining turn actions
     //check if dead
     if (participant.hp <= 0 || target.hp <= 0){
-      return this.combatEnd(participant,target);
+      return this.combatEnd(this.turnOrder);
     }
     //check if all participants have had a turn
     if (this.turnIndex == (this.turnOrder.length -1)){
@@ -53,8 +53,8 @@ export default class Combat {
     this.turnIndex = 0;
   }
 
-  combatEnd(participant,target){
-    deathCheck(participant,target);
+  combatEnd(characterArray){
+    deathCheck(characterArray);
     //perform end of combat functions
     this.turnOrder = [];
     this.roundCount = 1;
@@ -68,20 +68,20 @@ export default class Combat {
       if (character.hp <= 0){
         deadCharacter = character;
       }
-      if (character.class){
+      if (character.hp >= 0){
         aliveCharacter = character;
       }
     };
     if (deadCharacter.class){
       return playerDeath(deadCharacter);
     } else {
-      aliveCharacter = 
       monsterDeath(aliveCharacter,deadCharacter);
     };
   }
 
   playerDeath(deadCharacter){
     Display.output(`Congrats ${deadCharacter.name}, you died to the ${target.name}!`);
+    deadCharacter.status.dead = true;
     // restartGame();
   }
 
