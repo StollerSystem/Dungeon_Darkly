@@ -101,12 +101,21 @@ export default class Game {
     //move;
     if (splitString[0] === "move") {          
       this.move();
-      console.log("test")      
+      //onsole.log("test")      
     }
       
+    //GET
+    if (splitString[0] === "get") {
+      let target;
+      if (splitString[1]) {
+        target = splitString[1];
+        this.get(target);
+      } else {
+        target = "";
+        Display.output("Get what?")      
+      }
+    }
   }
-
-
   
   //look(target);
   look(target) {
@@ -189,5 +198,15 @@ export default class Game {
       Display.updateMap(this.players[0].location)
     }    
   }
-}
 
+  get(target) {
+    let current_location = this.environments[this.players[0].location]
+    for (let i=0;i<current_location.items.length;i++) {
+      if (current_location.items[i].name.toLowerCase().includes(target)) {        
+        Display.output(`[+] You pick up the ${current_location.items[i].name}`)
+        // current_location.items
+        break;
+      }   
+    }  
+  }  
+}
