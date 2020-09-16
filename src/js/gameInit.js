@@ -10,12 +10,12 @@ export default class GameInit {
     game.addEnvironment("Castle Room", "  A dark, dank room. The fung shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a stairway leading down in here as well.", [], [], [], []);
     let goblin = game.addMonster(1, "Goblin", "goblin", 1, 5, 0, [], [], 8, 10, 8, 6, 6, 6, 6);
     game.environments[0].monsters.push(goblin);
-    let potion = game.addItem("potion", 1, 1, 5, 1, [], [], "common");
+    let potion = game.addItem("Potion", 1, 1, 5, 1, [], [], "common");
     game.environments[0].items.push(potion);
-    let dagger = game.addWeapon(3, 6, "dagger", 2, 1, 5, 1, [], [], "common");
+    let dagger = game.addWeapon("mainHand",("str",0),(1,"d",4),"Dagger",1,1,1,1,[],[],"commom");
     game.environments[0].items.push(dagger);
-    let leatherArmor = game.addArmor(3, "leather", "Leather Armor", 3, 5, 5, 1,);
-    game.environments[0].items.push(leatherArmor);
+    // let leatherArmor = game.addArmor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity);
+    // game.environments[0].items.push(leatherArmor);
 
     game.addEnvironment("Torture Chamber", "  Considering the amount of blood and strange contraptions, lord only knows the unfortunate things that have occured down here. It sends a shiver down your spine even thinking about it.", [], [], [], []);
     let goblin2 = game.addMonster(1, "Goblin Torturer", "goblin", 1, 5, 0, [], [], 8, 10, 8, 6, 6, 6, 6);

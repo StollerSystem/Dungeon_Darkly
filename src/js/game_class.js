@@ -117,7 +117,13 @@ export default class Game {
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
     Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
     Display.output(this.environments[this.players[0].location].description);
-    Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+    if (this.environments[this.players[0].location].items.length > 0) {
+      Display.output(`Items in the room:`)
+      this.environments[this.players[0].location].items.forEach(function(item){
+        Display.output(item.name)
+      });    
+    }
+    Display.output(`<br>!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
   }
 
   //attack(target);
