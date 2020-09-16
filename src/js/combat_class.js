@@ -54,10 +54,47 @@ export default class Combat {
   }
 
   combatEnd(participant,target){
+    deathCheck(participant,target);
     //perform end of combat functions
     this.turnOrder = [];
     this.roundCount = 1;
     //display end of combat details to player and await command
-    Display.output(`Congrats ${participant.name}, you killed the ${target.name}!`);
+  }
+
+  deathCheck(characterArray){
+    let deadCharacter;
+    let aliveCharacter;
+    for (let character of characterArray){
+      if (character.hp <= 0){
+        deadCharacter = character;
+      }
+      if (character.class){
+        aliveCharacter = character;
+      }
+    };
+    if (deadCharacter.class){
+      return playerDeath(deadCharacter);
+    } else {
+      aliveCharacter = 
+      monsterDeath(aliveCharacter,deadCharacter);
+    };
+  }
+
+  playerDeath(deadCharacter){
+    Display.output(`Congrats ${deadCharacter.name}, you died to the ${target.name}!`);
+    // restartGame();
+  }
+
+  monsterDeath(aliveCharacter,deadCharacter){
+    Display.output(`Congrats ${aliveCharacter.name}, you killed the ${deadCharacter.name}!`);
+    //exp and etc that go to the player
+    corpsification(deadCharacter);
+  }
+
+  corpsification(deadCharacter){
+    Display.output(`The ${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! Loot corpse?`);
+    //create an array of all items in the dead monsters inv and equip
+    //move weapons into the environment
+    //create a container body item that is holding the item/equip array, inside of the environment
   }
 }
