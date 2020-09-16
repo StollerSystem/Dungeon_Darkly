@@ -29,7 +29,7 @@ export class Combat {
     }
     //action the next participant's turn
     this.turnIndex += 1;
-    return this.combatTurn(this.turnOrder[this.turnIndex])
+    return this.combatTurn([this.location].combat.turnOrder[1],[this.location].combat.turnOrder[0])
   } // end turn
 
   roundEnd(participant,target){
