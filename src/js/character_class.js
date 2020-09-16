@@ -137,6 +137,10 @@ export class Character {
     return this.roll(1,20,damageMod);
   }
 
+  goStealth(){
+    this.status.hidden = 'true';
+  }
+
   combatStart(participant,target){
     let turnOrder = [];
     // stealth-surprise check
@@ -158,8 +162,8 @@ export class Character {
       turnOrder.push(participant);
     }
     // set the Combat turnOrder
-    [this.location].turnOrder = turnOrder;
+    [this.location].combat.turnOrder = turnOrder;
     // begin the combatTurn!
-    return [this.location].combatTurn(participant,target);
+    return [this.location].combat.combatTurn([this.location].combat.turnOrder[0],[this.location].combat.turnOrder[1]);
   }; // end combatStart
 }; // end Character class
