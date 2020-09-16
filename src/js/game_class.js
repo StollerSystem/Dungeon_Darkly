@@ -77,9 +77,9 @@ export default class Game {
     if (splitString[0] === "look"||splitString[0] === "l") {
       let target;
       if (splitString[1]) {
-        target = splitString[1]
+        target = splitString[1];
       } else {
-        target = ""
+        target = "";
       }
       //console.log("look function:",target)
       this.look(target);
@@ -89,16 +89,16 @@ export default class Game {
 
 
   
-    //look(target);
-    look(target) {
-      console.log("player look function:",target)
-      // this.environments[0].name
-      // this.environments[0].description
-      console.log(this.environments[0].name)
-      //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-      Display.output(this.environments[0].name)
-      Display.output(this.environments[0].description)
-    }
+  //look(target);
+  look(target) {
+    console.log("player look function:",target);
+    // this.environments[0].name
+    // this.environments[0].description
+    console.log(this.environments[0].name);
+    //$("#terminalOutput").append("<br>>" + this.environments[0].name);
+    Display.output(this.environments[0].name);
+    Display.output(this.environments[0].description);
+  }
   
   
 

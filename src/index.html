@@ -10,13 +10,21 @@
 </head>
 
 <body>
-  <div id="main-screen">
+  <div class="typewriter" id="main-screen">
     <div class="container-fluid">
+      <div id="charCreateDiv">
       <div id="mainHeader">
         <h1>_dungeon_Darkly</h1>
-        <h5>welcome to dungeon darkly, an epic text-driven rpg game!</h5>
+        <h5>...</h5>
+        <h5>$<>initializing_gameplay:dungeon_darkly</h5>
+        <h5><>initializing_charObject~...</h5>
+        <h5>$<...>initializing_envir~</h5>
+        <h5>initializing_terrifying_monsters~</h5>
+        <h5>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game.</h5>
+        <h5>welcome to dungeon darkly, an epic text-driven rpg game! To start, begin by typing in a name for your character, selecting a character class, and a character race.  Keep in mind that different classes will affect your characters skills and abilities.</h5>
       </div>
       <form id="char-create">
+        <br>
         <div class="form-group">
           <label for="char-name">enter_Your_Name:</label>
           <input id="char-name" type="text">
@@ -57,9 +65,12 @@
             </label>
           </div>
         </div>
-        <button class="btn" id="charCreateBtn">$>_Create Character_</button>
+        <br>
+        <h6>$>root@dungeon_darkly~</h6>
+        <button class="btn" id="charCreateBtn">$>_create_my_Character_</button>
       </form>
     </div>
+  </div>
   </div>
 
   <div id="gameplay-screen">
@@ -68,11 +79,11 @@
       <div class="col-md-6">
       <div id="terminalOutput">
         <h5>...</h5>
-        <h5>$<>initializing_gameplay:dungeon_darkly</h5>
-        <h5><>initializing_charObject~...</h5>
-        <h5>$<...>initializing_envir~</h5>
-        <h5>initializing_terrifying_monsters~</h5>
-        <h5>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game.</h5>
+        <h5 class="typewriter">$<>initializing_gameplay:dungeon_darkly
+        <br><>initializing_charObject~...
+        <br>$<...>initializing_envir~
+        <br>initializing_terrifying_monsters~
+        <br>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game.</h5>
       </div>
       </div>
       <div class="col-md-3">
@@ -82,7 +93,7 @@
     </div>
     <div class="col-md-3">
       <div id="monstStatDisplay">
-        <h5>monster_stats~</h5>
+        <h5 class="typewriter">monster_stats~</h5>
       </div>
     </div>
   </div>
