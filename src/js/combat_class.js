@@ -1,3 +1,4 @@
+import Display from './display_output.js';
 export default class Combat {
   constructor(){
     this.roundCount = 1;
@@ -9,15 +10,20 @@ export default class Combat {
   // use arr.indexOf(searchElement[, fromIndex]) for finding the index of an element, or in this case, of a character in the turnOrder array
   combatTurn(participant,target){ // begin turn
     // let participantOrderNumber = this.turnOrder[0]//index of participant
+    // Display.output(`BATTLE ROUND: ${this.roundCount}`)
     console.log(`combatTurn function running. participant: ${participant}, target: ${target}`)
-    if (participant.status.surprised === 'false'){
+    if (participant.status.surprised === false){
       //make attack roll
       let attack = participant.attackRoll();
+      Display.output(`YOUR ATK ROLL ${attack} vs ${target.name}'s AC: ${target.ac}`)
       if (attack >= target.ac){
-      //make damage roll
-      let damage = participant.damageRoll();
-      //inflict the damage
-      target.hp -= damage;
+        //make damage roll
+        Display.output("HIT")
+        let damage = participant.damageRoll();
+        //inflict the damage
+        target.hp -= damage;
+      } else {
+        Display.output("MISS")
       }
     }
     //perform any remaining turn actions
@@ -34,18 +40,22 @@ export default class Combat {
     return this.combatTurn(target,participant)
   } // end turn
 
-  // roundEnd(participant,target){
-  //   //perform end of round actions
-  //   participant.status.hidden = 'false';
-  //   target.status.surprised = 'false';
-  //   this.roundCount += 1;
-  //   //display end of round options to player and await command
-  // }
+  roundEnd(participant,target){
+    //perform end of round actions
+    participant.status.hidden = false;
+    participant.status.surprised = false;
+    target.status.hidden = false;
+    target.status.surprised = false;
+    //display end of round options to player and await command
+    Display.output(`Combat round ${this.roundCount} has ended. Continue <span class="yellow">fighting</span>, or <span class="yellow">flee?</span>`);
+    this.roundCount += 1;
+  }
 
-  // combatEnd(participant,target){
-  //   //perform end of combat functions
-  //   this.turnOrder = [];
-  //   this.roundCount = 1;
-  //   //display end of combat details to player and await command
-  // }
+  combatEnd(participant,target){
+    //perform end of combat functions
+    this.turnOrder = [];
+    this.roundCount = 1;
+    //display end of combat details to player and await command
+    Display.output(`Congrats ${participant.name}, you killed the ${target.name}!`);
+  }
 }
