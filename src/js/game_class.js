@@ -1,7 +1,7 @@
 import Environment from './environment_class.js';
 import { Player } from './player_class.js'; 
 import Monster from './monster_class.js'; 
-import { Item, Weapon, Armor } from './item_class.js';
+import { Item, Weapon, Armor, Container } from './item_class.js';
 import { AbilityScores } from './character_class.js';
 import Display from './display_output.js';
 
@@ -44,6 +44,11 @@ export default class Game {
   addArmor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity) {
     let newArmor = new Armor(slot,acBonus,type,name,Id,worth,Hp,level,status,flags,rarity);
     return newArmor;
+  }
+
+  addContainer(type,capacity,name,Id,worth,Hp,level,status,flags,rarity) {
+    let newContainer = new Container(type,capacity,name,Id,worth,Hp,level,status,flags,rarity);
+    return newContainer;
   }
 
   roll(num,side,mod,adj){
