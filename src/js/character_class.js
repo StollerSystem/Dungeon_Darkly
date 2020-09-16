@@ -123,14 +123,21 @@ export class Character {
     this.baseAc += totalAcBonus;
   }
 
-  attackRoll(weapon){
-    let attackMod = this.abilityScores.scoreMod[weapon.att[0]]+weapon.att[1]+this.level;
+  attackRoll(){
+    let weapon;
+    let attackMod;
+    if (!this.equip.mainHand[0]){
+      weapon = this.equip.mainHand[0];
+      attackMod = this.abilityScores.scoreMod[weapon.atk[0]]+weapon.atk[1]+this.level;
+    } else {
+      attackMod = this.abilityScores.scoreMod('str')+this.level; 
+    }
     return this.roll(1,20,attackMod);
   }
 
   damageRoll(){
     let weapon = this.equip.mainHand[0];
-    let damageMod = this.abilityScores.scoreMod[weapon.att[0]];
+    let damageMod = this.abilityScores.scoreMod[weapon.atk[0]];
     let damageDiceNumber = weapon.dam[0];
     let damageDiceSides = weapon.dam[2];
     return this.roll(damageDiceNumber,damageDiceSides,damageMod);
