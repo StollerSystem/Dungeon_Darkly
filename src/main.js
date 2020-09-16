@@ -98,27 +98,27 @@ function displayCharStats(player) {
   const playerKeys = Object.keys(player);
   console.log(player.abilityScores.str);
   //playerKeys.forEach(function (key) {
-  for (let i = 0; i <= playerKeys.length; i++) {
+  for (let i = 0; i < playerKeys.length; i++) {
     if (playerKeys[i] === "inv" || playerKeys[i] === "status" || playerKeys[i] === "equip" || playerKeys[i] === "hunger" || playerKeys[i] === "undefined") {
       continue;
     }
     else {
       $("#charStatDisplay").append("<br>" + playerKeys[i] + ": " + player[playerKeys[i]] + "\n");
     }
-  };
+  }
 }
 
 function displayMonsterStats(monster) {
   const monsterKeys = Object.keys(monster);
   console.log(monster.abilityScores.str)
-  for (let i = 0; i <= monsterKeys.length; i++) {
+  for (let i = 0; i < monsterKeys.length; i++) {
     if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id") {
       continue;
     }
     else {
       $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
     }
-  };
+  }
 }
 
 // function displayMonsterStats(monster) {
