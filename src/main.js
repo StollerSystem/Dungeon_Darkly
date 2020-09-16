@@ -5,7 +5,8 @@ import './css/styles.css';
 // import Game from './js/game_class.js';
 // import Command from './js/command_parser.js';
 import GameInit from './js/GameInit.js';
-import draw from './js/canvas.js';
+// import draw from './js/canvas.js';
+import Display from './js/display_output';
 
 let game = GameInit.getGame();
 console.log(game.environments);
@@ -65,10 +66,12 @@ $("#char-create").submit(function (event) {
   
   let player1 = game.addPlayer(nameInput,raceInput,pclassInput,1,0,hp,mp,0,[],strInput,dexInput,conInput,wisInput,intInput,chrInput,lckInput);
   game.environments[0].players.push(player1);
+  game.players.push(player1);
   console.log(player1);
   console.log("Environment: " + game.environments[0].monsters[0].name);
   displayCharStats(player1);
-
+  game.look("");
+  Display.updateMap(game.players[0].location)
   // FOR MAKING THE SCROLLBAR START AT THE BOTTOM! TO BE IMPLEMENTED LATER! :)
   // let messageBody = document.querySelector('#messageBody');
   // messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
@@ -98,4 +101,5 @@ function displayCharStats(player) {
 }
 
 // Canvas
-draw();
+
+
