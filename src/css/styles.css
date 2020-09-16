@@ -5,7 +5,59 @@ body {
   color: rgb(153, 255, 0);
   margin-left: 2px;
 }
+
+#gameTitle h1 {
+  /* animation: text-flicker 4s linear infinite; */
+  color: rgb(166, 255, 0);
+  text-align: center;
+  margin-top: 16%;
+  font-size: 60px;
+  font-family: 'Press Start 2P', cursive;
+  text-shadow: 4px 4px 78px rgb(213, 47, 255);
+  border: solid rgb(196, 47, 255);
+  border-radius: 8px;
+  border-width: 8px;
+  margin-left: 350px;
+  margin-right: 350px;
+  padding: 100px;
+  animation: master-flicker 2s linear infinite;
+  box-shadow: 0px 0px 78px 28px purple;
+}
+.homeScreen #offset {
+  animation: master-flicker .8s linear infinite;
+}
+.homeScreen #beginBtn {
+  font-family: 'Press Start 2P', cursive;
+  margin-left: 43%;
+  margin-top: 10%;
+  background-color: transparent;
+  font-size: 45px;
+  border: none;
+  border-radius: 5px;
+  color: rgb(255, 72, 0);
+  text-shadow: 3px 3px 12px orangered;
+  font-weight: 900;
+  font-stretch: extra-expanded;
+}
+ @keyframes master-flicker {
+  0% {opacity:0.3;}
+  2% {opacity:1;}
+  8% {opacity:0.3;}
+  9% {opacity:1;}
+  12% {opacity:0.3;}
+  18% {opacity:1}
+  25% {opacity:0.3}
+  30% {opacity:1}
+  70% {opacity:0.7}
+  72% {opacity:0.9}
+  77% {opacity:0.3}
+  100% {opacity:0.9}
+}
+
+
+
 #main-screen {
+  display: none;
   color: rgb(153, 255, 0);
   animation: text-flicker 2s linear infinite;
 }
@@ -170,9 +222,9 @@ body {
 #canvasDiv {
   background-color: transparent;
   border: solid rgb(31, 51, 238);
-  color: greenyellow;
-  width: 445px;
-  height: 354px;
+  color: rgb(31, 51, 238);;
+  width: 100%;
+  height: 345px;
   overflow: hidden;
   resize: vertical;
   float: left;
@@ -199,6 +251,15 @@ body {
 
   .purple {
     color: purple
+  }
+
+  #inventDisplay {
+    width: 100%;
+    height: 345px;
+    border: solid greenyellow;
+    color: greenyellow;
+    overflow: auto;
+    resize: vertical;
   }
 
   /* #scrollbarStyle1::-webkit-scrollbar-track

@@ -10,9 +10,14 @@ import Display from './js/display_output';
 
 let game = GameInit.getGame();
 console.log(game.environments);
+
+$("#beginBtn").click(function() {
+  $("#main-screen").show();
+  $(".homeScreen").hide();
+})
+
 $("#char-create").submit(function (event) {
   event.preventDefault();
-
 
   const nameInput = $("#char-name").val();
   const raceInput = $("input:radio[name=char-race]:checked").val();
@@ -96,24 +101,32 @@ $("#command-form").submit(function (event) {
 
 function displayCharStats(player) {
   const playerKeys = Object.keys(player);
-  console.log(player.abilityScores.str);
-  //playerKeys.forEach(function (key) {
   for (let i = 0; i < playerKeys.length; i++) {
     if (playerKeys[i] === "inv" || playerKeys[i] === "status" || playerKeys[i] === "equip" || playerKeys[i] === "hunger" || playerKeys[i] === "undefined") {
       continue;
+    }
+    if (playerKeys[i] === "abilityScores") {
+      let abScoreKeys = Object.keys(player.abilityScores);
+      abScoreKeys.forEach(function(key) {
+        $("#charStatDisplay").append("<br>---" + key + ": " + player.abilityScores[key] + "\n");
+      })
     }
     else {
       $("#charStatDisplay").append("<br>" + playerKeys[i] + ": " + player[playerKeys[i]] + "\n");
     }
   }
 }
-
 function displayMonsterStats(monster) {
   const monsterKeys = Object.keys(monster);
-  console.log(monster.abilityScores.str)
   for (let i = 0; i < monsterKeys.length; i++) {
-    if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id") {
+    if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id" || monsterKeys[i] === "type") {
       continue;
+    }
+    if (monsterKeys[i] === "abilityScores") {
+      let abScoreKeys = Object.keys(monster.abilityScores);
+      abScoreKeys.forEach(function(key) {
+        $("#monstStatDisplay").append("<br>---" + key + ": " + monster.abilityScores[key] + "\n");
+      })
     }
     else {
       $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
