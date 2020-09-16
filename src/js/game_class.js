@@ -85,7 +85,7 @@ export default class Game {
     } 
 
     //attack(target);
-    if (splitString[0] === "attack"||splitString[0] === "at") { 
+    if (splitString[0] === "attack"||splitString[0] === "at"||splitString[0] === "fight") { 
       let target;
       if (splitString[1]) {
         target = splitString[1];
@@ -115,9 +115,9 @@ export default class Game {
 
   //attack(target);
   attack(target) {
-    //Display.output(target);
+    let location = this.environments[this.environments[0].players[0].location];
     console.log(`player attack function. target: ${target}`);
-    // this.environments[0].players[0]
+    if (location.combat.roundCount == 1){
     let targetMonster;     
     this.environments[0].monsters.forEach(function(monster){
       if (monster.name.toLowerCase().includes(target)) {
@@ -126,8 +126,11 @@ export default class Game {
     })
     // this.environments[0].monsters[0]
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`You begin attacking the ${this.environments[0].monsters[0].name}!`);
+    Display.output(`You join in battle with the ${this.environments[0].monsters[0].name}!`);
     this.combatStart(this.environments[0].players[0],targetMonster);
+    } else {
+    location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
+    }
   }
 
   combatStart(participant,target){
@@ -143,6 +146,7 @@ export default class Game {
     // roll for initiative, fill turnOrder
     let participantInit = participant.abilityScoreCheck('dex');
     let targetInit = target.abilityScoreCheck('dex');
+    Display.output(`---rolling combat initiative---<br>${participant.name}'s init roll = ${participantInit} / ${target.name}'s init roll = ${targetInit}`)
     console.log(`targetInit: ${targetInit}`);
     if (participantInit >= targetInit){
       turnOrder.push(participant);
