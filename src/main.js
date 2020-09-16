@@ -99,3 +99,9 @@ function displayCharStats(player) {
 
 // Canvas
 draw();
+
+function restartGame(){
+  game = GameInit.getGame();
+  $("#gameplay-screen").hide();
+  $("#main-screen").show();
+}
