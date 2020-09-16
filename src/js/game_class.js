@@ -5,7 +5,6 @@ import { Item, Weapon, Armor } from './item_class.js';
 import { AbilityScores } from './character_class.js';
 import Display from './display_output.js';
 
-
 export default class Game {
   constructor(players,items,monsters,environments) {
     this.players = players;

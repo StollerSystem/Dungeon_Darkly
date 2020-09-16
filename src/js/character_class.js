@@ -124,20 +124,19 @@ export class Character {
   }
 
   attackRoll(weapon){
-    let abilityScores = this.abilityScores;
-    let attackMod = abilityScores.scoreMod[weapon.att[0]]+weapon.att[2]+this.level;
+    let attackMod = this.abilityScores.scoreMod[weapon.att[0]]+weapon.att[1]+this.level;
     return this.roll(1,20,attackMod);
   }
 
   damageRoll(){
-    let abilityScores = this.abilityScores;
-    let damageMod = abilityScores.scoreMod.str;
-    let damageDiceNumber = 1// insert// consider the adj for dice roll in place of mult dice
-    let damageDiceSides = 1// insert
-    return this.roll(1,20,damageMod);
+    let weapon = this.equip.mainHand[0];
+    let damageMod = this.abilityScores.scoreMod[weapon.att[0]];
+    let damageDiceNumber = weapon.dam[0];
+    let damageDiceSides = weapon.dam[2];
+    return this.roll(damageDiceNumber,damageDiceSides,damageMod);
   }
 
-  goStealth(){
+  hide(){
     this.status.hidden = 'true';
   }
 
@@ -149,8 +148,8 @@ export class Character {
       let perceptionCheck = [target].abilityScoreCheck('wis');
       if (stealthCheck > perceptionCheck){
       [target].status.surprised = 'true';
-      };
-    };
+      }
+    }
     // roll for initiative, fill turnOrder
     let participantInit = participant.abilityScoreCheck('dex');
     let targetInit = target.abilityScoreCheck('dex');
@@ -165,5 +164,5 @@ export class Character {
     [this.location].combat.turnOrder = turnOrder;
     // begin the combatTurn!
     return [this.location].combat.combatTurn([this.location].combat.turnOrder[0],[this.location].combat.turnOrder[1]);
-  }; // end combatStart
-}; // end Character class
+  } // end combatStart
+} // end Character class
