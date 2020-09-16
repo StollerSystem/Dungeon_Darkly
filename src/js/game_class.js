@@ -115,7 +115,7 @@ export default class Game {
     // this.environments[0].description
     console.log(this.environments[this.players[0].location].name);
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`<span class="blue">${this.environments[this.players[0].location].name}</span>`);
+    Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
     Display.output(this.environments[this.players[0].location].description);
     Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
   }
@@ -133,7 +133,7 @@ export default class Game {
     })
     // this.environments[0].monsters[0]
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
+    Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
     this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
     } else {
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
@@ -180,11 +180,7 @@ export default class Game {
       this.environments[this.players[0].location].players.push( this.players[0]);
       this.environments[this.players[0].location-1].players.shift();
       this.look("")
-    }
-    // current_location = this.environments[this.environments.players[0].location].players[0].location
-    // this.environment[location].players[0].location += 1 
-    // Display.output(this.environment[location].players[0].location)
+    }    
   }
-
 }
 
