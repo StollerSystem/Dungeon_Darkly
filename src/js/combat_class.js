@@ -8,6 +8,7 @@ export default class Combat {
 
   combatTurn(participant,target){ // begin turn
     // let participantOrderNumber = this.turnOrder[0]//index of participant
+    console.log(`combatTurn function running. participant: ${participant}, target: ${target}`)
     if (participant.status.surprised === 'false'){
       //make attack roll
       let attack = participant.attackRoll();
