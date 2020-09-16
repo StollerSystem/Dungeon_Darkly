@@ -107,6 +107,11 @@ body {
   border: solid rgb(255, 72, 0);
   border-width: 2px;
   resize: vertical;
+  overflow-anchor: none;
+}
+#anchor {
+  overflow-anchor: auto;
+  height: 1px;
 }
 #gameplay-screen {
   font-size: 20px;
