@@ -108,7 +108,7 @@ export default class Game {
     // this.environments[0].description
     console.log(this.environments[0].name);
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(this.environments[0].name);
+    Display.output(`<span class="blue">${this.environments[0].name}</span>`);
     Display.output(this.environments[0].description);
     Display.output(`!!! Monster in the room: <span class="red">${this.environments[0].monsters[0].name}</span> !!!`);
   }
@@ -118,10 +118,16 @@ export default class Game {
     //Display.output(target);
     console.log(`player attack function. target: ${target}`);
     // this.environments[0].players[0]
+    let targetMonster;     
+    this.environments[0].monsters.forEach(function(monster){
+      if (monster.name.toLowerCase().includes(target)) {
+        targetMonster = monster
+      }
+    })
     // this.environments[0].monsters[0]
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`You begin attacking the ${this.environments[0].monsters[0]}!`);
-    this.environments[0].players[0].combatStart(this.environments[0].players[0],target);
+    Display.output(`You begin attacking the ${this.environments[0].monsters[0].name}!`);
+    this.environments[0].players[0].combatStart(this.environments[0].players[0],targetMonster);
   }
 
 
