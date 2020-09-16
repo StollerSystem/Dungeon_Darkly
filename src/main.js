@@ -65,9 +65,11 @@ $("#char-create").submit(function (event) {
   
   let player1 = game.addPlayer(nameInput,raceInput,pclassInput,1,0,hp,mp,0,[],strInput,dexInput,conInput,wisInput,intInput,chrInput,lckInput);
   game.environments[0].players.push(player1);
+  game.players.push(player1);
   console.log(player1);
   console.log("Environment: " + game.environments[0].monsters[0].name);
   displayCharStats(player1);
+  game.look("");
 
   // FOR MAKING THE SCROLLBAR START AT THE BOTTOM! TO BE IMPLEMENTED LATER! :)
   // let messageBody = document.querySelector('#messageBody');
@@ -98,4 +100,5 @@ function displayCharStats(player) {
 }
 
 // Canvas
+
 draw();
