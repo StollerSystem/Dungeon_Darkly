@@ -54,14 +54,18 @@ export default class Combat {
   }
 
   combatEnd(characterArray){
+    console.log(`combatEnd has been triggered. characterArray: ${characterArray}`)
     this.deathCheck(characterArray);
     //perform end of combat functions
     this.turnOrder = [];
     this.roundCount = 1;
     //display end of combat details to player and await command
+    console.log(`combatEnd has been completed. this.turnOrder: ${this.turnOrder} and this.roundCount: ${this.roundCount} now, after resetting.`)
+
   }
 
   deathCheck(characterArray){
+    console.log(`deathCheck has been triggered. characterArray: ${characterArray}`)
     let deadCharacter;
     let aliveCharacter;
     for (let character of characterArray){
@@ -72,6 +76,7 @@ export default class Combat {
         aliveCharacter = character;
       }
     }
+    console.log(`deadCharacter: ${deadCharacter}, aliveCharacter: ${aliveCharacter}`)
     if (deadCharacter.class){
       return this.playerDeath(aliveCharacter,deadCharacter);
     } else {
@@ -80,13 +85,14 @@ export default class Combat {
   }
 
   playerDeath(aliveCharacter,deadCharacter){
-    Display.output(`Congrats ${deadCharacter.name}, you died to the ${aliveCharacter.name}!`);
+    Display.output(`Bummer ${deadCharacter.name}, you died to the ${aliveCharacter.name}!`);
     deadCharacter.status.dead = true;
     // restartGame();
   }
 
   monsterDeath(aliveCharacter,deadCharacter){
     Display.output(`Congrats ${aliveCharacter.name}, you killed the ${deadCharacter.name}!`);
+    deadCharacter.status.dead = true;
     //exp and etc that go to the player
     this.corpsification(deadCharacter);
   }
