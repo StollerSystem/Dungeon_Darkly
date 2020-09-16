@@ -89,6 +89,8 @@ body {
   overflow: auto;
   resize: both;
 }
+
+
 #gameplay-screen {
   display: none;
   animation: textShadow 4.6s infinite;
@@ -146,6 +148,22 @@ body {
     to { width: 100% }
   }
 
+/* New Box for Canvas */
+#gameplay-screen #canvasDiv {
+  background-color: transparent;
+  border: solid rgb(31, 51, 238);
+  color: greenyellow;
+  overflow: auto;
+  resize: both;
+}
+
+#canvas {
+  /* outline: solid 1px blue; */
+  /* background-color:rgb(2, 145, 61); */
+  height: 400px;
+  width: 600px;
+}
+  
   .red {
     color: red;
   }

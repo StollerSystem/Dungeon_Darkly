@@ -76,37 +76,47 @@
   <div id="gameplay-screen">
     <div class="container-fluid">
       <div class="row">
-      <div class="col-md-6">
-      <div id="terminalOutput">
-        <h5>...</h5>
-        <h5 class="typewriter">$<>initializing_gameplay:dungeon_darkly
-        <br><>initializing_charObject~...
-        <br>$<...>initializing_envir~
-        <br>initializing_terrifying_monsters~
-        <br>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game.</h5>
+        <div class="col-md-6">
+          <div id="terminalOutput">
+            <h5>...</h5>
+            <h5 class="typewriter">$<>initializing_gameplay:dungeon_darkly
+            <br><>initializing_charObject~...
+            <br>$<...>initializing_envir~
+            <br>initializing_terrifying_monsters~
+            <br>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game.</h5>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div id="charStatDisplay">
+            <h5>char_stats~</h5>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div id="monstStatDisplay">
+            <h5 class="typewriter">monster_stats~</h5>
+          </div>
+        </div>
       </div>
-      </div>
-      <div class="col-md-3">
-      <div id="charStatDisplay">
-        <h5>char_stats~</h5>
-      </div>
-    </div>
-    <div class="col-md-3">
-      <div id="monstStatDisplay">
-        <h5 class="typewriter">monster_stats~</h5>
-      </div>
-    </div>
-  </div>
-      <div id="commandForm">
-        <form id="command-form">
-          <p>root@dungeon_darkly~</p>
-          <label for="commandLine">$></label>
-          <input type="text" id="commandLine">
-          <button class="btn" id="commandLineBtn">_submit_</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</body>
+      <div class = "row">
+        <div class="col-md-6">
+          <div id="commandForm">
+            <form id="command-form">
+              <p>root@dungeon_darkly~</p>
+              <label for="commandLine">$></label>
+              <input type="text" id="commandLine">
+              <button class="btn" id="commandLineBtn">_submit_</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div id="canvasDiv">
+            <h6>The Grand City of Aylor</h6>
+            <canvas id="canvas"></canvas>
+          </div>
+          
+        </div>
 
+
+    </div>
+</body>
 </html>
