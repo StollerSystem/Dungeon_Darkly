@@ -104,17 +104,13 @@ body {
 #terminalOutput {
   margin-top: 5px;
   width: 100%;
-  height: 800px;
+  height: 850px;
   overflow: auto;
   border: solid rgb(255, 72, 0);
   border-width: 2px;
   resize: vertical;
-  overflow-anchor: none;
 }
-#anchor {
-  overflow-anchor: auto;
-  height: 1px;
-}
+
 #gameplay-screen {
   font-size: 20px;
 }
@@ -154,12 +150,15 @@ body {
   }
 
 /* New Box for Canvas */
-#gameplay-screen #canvasDiv {
+#canvasDiv {
   background-color: transparent;
   border: solid rgb(31, 51, 238);
   color: greenyellow;
-  overflow: auto;
-  resize: both;
+  width: 445px;
+  height: 354px;
+  overflow: hidden;
+  resize: vertical;
+  float: left;
 }
 
 #canvas {
@@ -184,3 +183,27 @@ body {
   .purple {
     color: purple
   }
+
+  /* #scrollbarStyle1::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+#style-16::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+#style-16::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #FFF;
+	background-image: -webkit-linear-gradient(top,
+											  #e4f5fc 0%,
+											  #bfe8f9 50%,
+											  #9fd8ef 51%,
+											  #2ab0ed 100%);
+} */
