@@ -77,14 +77,11 @@ $("#char-create").submit(function (event) {
   console.log(player1);
   console.log("Environment: " + game.environments[0].monsters[0].name);
   displayCharStats(player1);
-  let monster = game.environments[0].monsters[0]
+  let monster = game.environments[0].monsters[0];
   displayMonsterStats(monster);
 
   game.look("");
-  Display.updateMap(game.players[0].location)
-  // FOR MAKING THE SCROLLBAR START AT THE BOTTOM! TO BE IMPLEMENTED LATER! :)
-  // let messageBody = document.querySelector('#messageBody');
-  // messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+  Display.updateMap(game.players[0].location);
 
   $("#main-screen").hide();
   $("#gameplay-screen").show();
@@ -96,6 +93,7 @@ $("#command-form").submit(function (event) {
   $("#terminalOutput").append(`<br>>>>><span class="yellow">${command}<span>`);
   $("#commandLine").val("");
   game.inputParser(command);
+  updateScroll();
 });
 
 
@@ -109,7 +107,7 @@ function displayCharStats(player) {
       let abScoreKeys = Object.keys(player.abilityScores);
       abScoreKeys.forEach(function(key) {
         $("#charStatDisplay").append("<br>---" + key + ": " + player.abilityScores[key] + "\n");
-      })
+      });
     }
     else {
       $("#charStatDisplay").append("<br>" + playerKeys[i] + ": " + player[playerKeys[i]] + "\n");
@@ -126,22 +124,14 @@ function displayMonsterStats(monster) {
       let abScoreKeys = Object.keys(monster.abilityScores);
       abScoreKeys.forEach(function(key) {
         $("#monstStatDisplay").append("<br>---" + key + ": " + monster.abilityScores[key] + "\n");
-      })
+      });
     }
     else {
       $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
     }
   }
 }
-
-// function displayMonsterStats(monster) {
-//   console.log("Passed into function: " + monster.name);
-//   const monsterKeys = Object.keys(monster);
-//   monsterKeys.forEach(function (key) {
-//     $("#monstStatDisplay").append("<br>" + key + ": " + monster[key] + "\n");
-//   });
-// }
-
-// Canvas
-
-
+function updateScroll(){
+  let element = document.getElementById("terminalOutput");
+  element.scrollTop = element.scrollHeight;
+}

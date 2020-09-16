@@ -5,30 +5,29 @@ body {
   color: rgb(153, 255, 0);
   margin-left: 2px;
 }
-
 #gameTitle h1 {
   /* animation: text-flicker 4s linear infinite; */
   color: rgb(166, 255, 0);
   text-align: center;
   margin-top: 16%;
-  font-size: 60px;
+  font-size:3.5vw;
   font-family: 'Press Start 2P', cursive;
   text-shadow: 4px 4px 78px rgb(213, 47, 255);
   border: solid rgb(196, 47, 255);
   border-radius: 8px;
   border-width: 8px;
-  margin-left: 350px;
-  margin-right: 350px;
   padding: 100px;
-  animation: master-flicker 2s linear infinite;
+  margin-left: 12%;
+  margin-right: 12%;
   box-shadow: 0px 0px 78px 28px purple;
+  animation: master-flicker 2s linear infinite;
 }
 .homeScreen #offset {
-  animation: master-flicker .8s linear infinite;
+  animation: master-flicker 2.5s linear infinite;
 }
 .homeScreen #beginBtn {
   font-family: 'Press Start 2P', cursive;
-  margin-left: 43%;
+  margin-left: 42%;
   margin-top: 10%;
   background-color: transparent;
   font-size: 45px;
@@ -38,6 +37,7 @@ body {
   text-shadow: 3px 3px 12px orangered;
   font-weight: 900;
   font-stretch: extra-expanded;
+  animation: master-flicker 3s linear infinite;
 }
  @keyframes master-flicker {
   0% {opacity:0.3;}
@@ -54,7 +54,11 @@ body {
   100% {opacity:0.9}
 }
 
-
+/*
+THIS IS FOR MAKING THE SCROLLBARS INVISIBLE.
+ .example::-webkit-scrollbar {
+   display: none
+  */
 
 #main-screen {
   display: none;
@@ -80,19 +84,21 @@ body {
 }
 #charCreateDiv {
   padding: 10px;
-  margin-top: 5px;
-  margin-left: 10px;
+  margin-top: 10px;
+  margin-left: 12%;
   margin-top: 50px;
   width: 75%;
   height: 800px;
   overflow: auto;
   border: solid rgb(255, 72, 0);
-  border-width: 3px;
+  border-width: 5px;
   resize: auto;
+  box-shadow: 0px 0px 78px 48px purple;
 }
 #charCreateBtn {
   background-color: transparent;
   color: rgb(248, 81, 3);
+  font-size: 20px;
   border: none;
   border-radius: 0;
 }
@@ -164,7 +170,6 @@ body {
   resize: vertical;
   animation: text-flicker 2s linear infinite;
 }
-
 #gameplay-screen {
   font-size: 20px;
 }
@@ -285,3 +290,25 @@ body {
 											  #9fd8ef 51%,
 											  #2ab0ed 100%);
 } */
+
+::-webkit-scrollbar {
+  width: 20px;
+  border-radius: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #adadad; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(132, 2, 144); 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(82, 3, 75); 
+}
