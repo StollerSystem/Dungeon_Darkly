@@ -28,3 +28,11 @@ export class Armor extends Item {
     this.slot = slot;
   }
 }
+
+export class Consumable extends Item {
+  constructor(action,type,name,Id,worth,Hp,level,status,flags,rarity) {
+    super(name,Id,worth,Hp,level,status,flags,rarity);
+    this.action = action;
+    this.type = type; 
+  }
+}
