@@ -132,7 +132,10 @@ export default class Game {
         Display.output(item.name)
       });    
     }
-    Display.output(`<br>!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+    if (this.environments[this.players[0].location].monsters.length > 0) {
+      Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+    }
+    
   }
 
   //attack(target);
