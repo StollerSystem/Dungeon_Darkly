@@ -28,7 +28,7 @@ export class Armor extends Item {
     this.slot = slot;
   }
 }
-
+ 
 export class Container extends Item {
   constructor(type,capacity,name,Id,worth,Hp,level,status,flags,rarity) {
     super(name,Id,worth,Hp,level,status,flags,rarity);
