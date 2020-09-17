@@ -10,9 +10,14 @@ import Display from './js/display_output';
 
 let game = GameInit.getGame();
 console.log(game.environments);
+
+$("#beginBtn").click(function() {
+  $("#main-screen").show();
+  $(".homeScreen").hide();
+})
+
 $("#char-create").submit(function (event) {
   event.preventDefault();
-
 
   const nameInput = $("#char-name").val();
   const raceInput = $("input:radio[name=char-race]:checked").val();
@@ -71,15 +76,12 @@ $("#char-create").submit(function (event) {
   game.players.push(player1);
   console.log(player1);
   console.log("Environment: " + game.environments[0].monsters[0].name);
-  displayCharStats(player1);
-  let monster = game.environments[0].monsters[0]
-  displayMonsterStats(monster);
+  // Display.displayCharStats(player1);
+  //let monster = game.environments[0].monsters[0];
+  
 
   game.look("");
-  Display.updateMap(game.players[0].location)
-  // FOR MAKING THE SCROLLBAR START AT THE BOTTOM! TO BE IMPLEMENTED LATER! :)
-  // let messageBody = document.querySelector('#messageBody');
-  // messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+  Display.updateMap(game.players[0].location);
 
   $("#main-screen").hide();
   $("#gameplay-screen").show();
@@ -91,46 +93,15 @@ $("#command-form").submit(function (event) {
   $("#terminalOutput").append(`<br>>>>><span class="yellow">${command}<span>`);
   $("#commandLine").val("");
   game.inputParser(command);
+  updateScroll();
+  console.log("Update scroll");
 });
 
 
-function displayCharStats(player) {
-  const playerKeys = Object.keys(player);
-  console.log(player.abilityScores.str);
-  //playerKeys.forEach(function (key) {
-  for (let i = 0; i < playerKeys.length; i++) {
-    if (playerKeys[i] === "inv" || playerKeys[i] === "status" || playerKeys[i] === "equip" || playerKeys[i] === "hunger" || playerKeys[i] === "undefined") {
-      continue;
-    }
-    else {
-      $("#charStatDisplay").append("<br>" + playerKeys[i] + ": " + player[playerKeys[i]] + "\n");
-    }
-  }
+function updateScroll(){
+  let element = document.getElementById("terminalOutput");
+  element.scrollTop = element.scrollHeight;
 }
-
-function displayMonsterStats(monster) {
-  const monsterKeys = Object.keys(monster);
-  console.log(monster.abilityScores.str)
-  for (let i = 0; i < monsterKeys.length; i++) {
-    if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id") {
-      continue;
-    }
-    else {
-      $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
-    }
-  }
-}
-
-// function displayMonsterStats(monster) {
-//   console.log("Passed into function: " + monster.name);
-//   const monsterKeys = Object.keys(monster);
-//   monsterKeys.forEach(function (key) {
-//     $("#monstStatDisplay").append("<br>" + key + ": " + monster[key] + "\n");
-//   });
-// }
-
-// Canvas
-
 // function restartGame(){
 //   game = GameInit.getGame();
 //   $("#gameplay-screen").hide();

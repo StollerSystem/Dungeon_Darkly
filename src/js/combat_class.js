@@ -51,6 +51,15 @@ export default class Combat {
     target.status.hidden = false;
     target.status.surprised = false;
     //display end of round options to player and await command
+    if (participant.type) {
+      console.log("DISPLAY MONSTER TRUE")
+      Display.displayMonsterStats(participant);
+      Display.displayCharStats(target);
+    } else {
+      Display.displayMonsterStats(target);
+      Display.displayCharStats(participant);
+    } 
+    //Display.displayMonsterStats(target);
     Display.output(`Combat round ${this.roundCount} has ended. Continue to <span class="yellow">fight</span>, or <span class="yellow">flee</span> instead?`);
     this.roundCount += 1;
     this.turnIndex = 0;
@@ -64,7 +73,10 @@ export default class Combat {
     this.roundCount = 1;
     //display end of combat details to player and await command
     console.log(`combatEnd has been completed. this.turnOrder: ${this.turnOrder} and this.roundCount: ${this.roundCount} now, after resetting.`)
-
+    // if (target.type) { //from merge. needs change with characterArray vs target variable usage
+    //   Display.displayMonsterStats("none");
+    // }
+    // Display.output(`Congrats ${participant.name}, you killed the ${target.name}!`);
   }
 
   deathCheck(characterArray){

@@ -109,15 +109,26 @@ export default class Game {
     //move;
     if (splitString[0] === "move") {          
       this.move();
-      console.log("test")      
+      //onsole.log("test")      
     }
       
+    //GET
+    if (splitString[0] === "get") {
+      let target;
+      if (splitString[1]) {
+        target = splitString[1];
+        this.get(target);
+      } else {
+        target = "";
+        Display.output("Get what?")      
+      }
+    }
   }
-
-
   
   //look(target);
   look(target) {
+    Display.displayCharStats(this.players[0]);
+    Display.displayMonsterStats(this.environments[this.players[0].location].monsters[0]);
     console.log("player look function:",target);
     // this.environments[0].name
     // this.environments[0].description
@@ -125,7 +136,16 @@ export default class Game {
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
     Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
     Display.output(this.environments[this.players[0].location].description);
-    Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+    if (this.environments[this.players[0].location].items.length > 0) {
+      Display.output(`Items in the room:`)
+      this.environments[this.players[0].location].items.forEach(function(item){
+        Display.output(`${item.name}`)
+      });    
+    }
+    if (this.environments[this.players[0].location].monsters.length > 0) {
+      Display.output(`Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span>`);
+    }
+    
   }
 
   //attack(target);
@@ -154,7 +174,7 @@ export default class Game {
         }
         location.combat.loot = [];
         console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
-        console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+        // console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
         for (let combatMonster of location.monsters){
           if (combatMonster.status.dead === true){
             console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
@@ -165,6 +185,8 @@ export default class Game {
       }
     }
   }
+  
+  
 
   combatStart(participant,target){
     let turnOrder = [];
@@ -202,7 +224,7 @@ export default class Game {
       }
       location.combat.loot = [];
       console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
-      console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+      // console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
       for (let combatMonster of location.monsters){
         if (combatMonster.status.dead === true){
           console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
@@ -227,5 +249,27 @@ export default class Game {
       Display.updateMap(this.players[0].location)
     }    
   }
-}
 
+  get(target) {
+    let current_location = this.environments[this.players[0].location]
+    for (let i=0;i<current_location.items.length;i++) {
+      if (current_location.items[i].name.toLowerCase().includes(target)) {        
+        //this.look("")
+        Display.output(`[+] You pick up the ${current_location.items[i].name}`)
+        this.players[0].inv.push(current_location.items[i]);
+
+        current_location.items.splice(i-1,1)
+        console.log(current_location.items)
+        // current_location.items = newArray        
+        break;
+      }   
+    } 
+    this.updateInvDisplay(); 
+  } 
+  
+  updateInvDisplay() {
+    this.players[0].inv.forEach(function(item){
+      Display.addInv(item.name);
+    })
+  }
+}
