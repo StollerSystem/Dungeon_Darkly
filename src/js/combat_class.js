@@ -4,7 +4,6 @@ export default class Combat {
     this.roundCount = 1;
     this.turnOrder = [];
     this.turnIndex = 0;
-    // this.currentTurn = this.turnOrder[0];
   }
 
   // use arr.indexOf(searchElement[, fromIndex]) for finding the index of an element, or in this case, of a character in the turnOrder array
@@ -86,7 +85,7 @@ export default class Combat {
   }
 
   playerDeath(aliveCharacter,deadCharacter){
-    console.log(`playerDeath has been triggered. ${deadCharacter.name} died to ${aliveCharacter.name}`)
+    console.log(`playerDeath has been triggered. ${deadCharacter.name} died to ${aliveCharacter.name}`);
     Display.output(`Bummer ${deadCharacter.name}, you died to ${aliveCharacter.name}!`);
     deadCharacter.status.dead = true;
     console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`)
