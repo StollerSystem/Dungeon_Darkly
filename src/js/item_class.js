@@ -29,6 +29,15 @@ export class Armor extends Item {
   }
 }
 
+export class Container extends Item {
+  constructor(type,capacity,name,Id,worth,Hp,level,status,flags,rarity) {
+    super(name,Id,worth,Hp,level,status,flags,rarity);
+    this.type = type;
+    this.contents = [];
+    this.capacity = capacity;
+  }
+}
+
 export class Consumable extends Item {
   constructor(action,type,name,Id,worth,Hp,level,status,flags,rarity) {
     super(name,Id,worth,Hp,level,status,flags,rarity);

@@ -102,3 +102,8 @@ function updateScroll(){
   let element = document.getElementById("terminalOutput");
   element.scrollTop = element.scrollHeight;
 }
+// function restartGame(){
+//   game = GameInit.getGame();
+//   $("#gameplay-screen").hide();
+//   $("#main-screen").show();
+// }

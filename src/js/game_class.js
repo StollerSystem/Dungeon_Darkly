@@ -1,7 +1,7 @@
 import Environment from './environment_class.js';
 import { Player } from './player_class.js'; 
 import Monster from './monster_class.js'; 
-import { Item, Weapon, Armor } from './item_class.js';
+import { Item, Weapon, Armor, Container } from './item_class.js';
 import { AbilityScores } from './character_class.js';
 import Display from './display_output.js';
 
@@ -46,6 +46,11 @@ export default class Game {
     return newArmor;
   }
 
+  addContainer(type,capacity,name,Id,worth,Hp,level,status,flags,rarity) {
+    let newContainer = new Container(type,capacity,name,Id,worth,Hp,level,status,flags,rarity);
+    return newContainer;
+  }
+
   roll(num,side,mod,adj){
     let total;
     if (!mod){
@@ -63,6 +68,9 @@ export default class Game {
       let roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
       total += roll;
       console.log(`d${side} rolled: ${roll}`);
+    }
+    if (total < num){
+      total = num;
     }
     console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
     return total;
@@ -145,18 +153,36 @@ export default class Game {
     let location = this.environments[this.players[0].location];
     console.log(`player attack function. target: ${target}`);
     if (location.combat.roundCount == 1){
-    let targetMonster;     
-    this.environments[this.players[0].location].monsters.forEach(function(monster){
-      if (monster.name.toLowerCase().includes(target)) {
-        targetMonster = monster
-      }
-    })
-    // this.environments[0].monsters[0]
-    //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
-    this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
+      let targetMonster;     
+      this.environments[this.players[0].location].monsters.forEach(function(monster){
+        if (monster.name.toLowerCase().includes(target)) {
+          targetMonster = monster
+        }
+      })
+      // this.environments[0].monsters[0]
+      //$("#terminalOutput").append("<br>>" + this.environments[0].name);
+      Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
+      this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
     } else {
-    location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
+      location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+      //begin combat loot migration protocol
+      if (location.combat.loot[0]){
+        console.log(`combat environment has loot. Loot push to environment engaged.`);
+        for (let loot of location.combat.loot){
+        location.items.push(loot);
+        console.log(`loot pushed: ${loot.name}`);
+        }
+        location.combat.loot = [];
+        console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+        // console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+        for (let combatMonster of location.monsters){
+          if (combatMonster.status.dead === true){
+            console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
+            location.monsters = [];
+            //remove this monster from location.monsters
+          }
+        }
+      }
     }
   }
   
@@ -165,11 +191,11 @@ export default class Game {
   combatStart(participant,target){
     let turnOrder = [];
     // stealth-surprise check
-    // if (this.status.some(status => status.hidden === 'true')){
+    // if (this.status.some(status => status.hidden === true)){
     //   let stealthCheck = this.abilityScoreCheck('dex');
     //   let perceptionCheck = [target].abilityScoreCheck('wis');
     //   if (stealthCheck > perceptionCheck){
-    //   [target].status.surprised = 'true';
+    //   [target].status.surprised = true;
     //   }
     // }
     // roll for initiative, fill turnOrder
@@ -189,6 +215,24 @@ export default class Game {
     location.combat.turnOrder = turnOrder;
     // begin the combatTurn!
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+    //begin combat loot migration protocol
+    if (location.combat.loot[0]){
+      console.log(`combat environment has loot. Loot push to environment engaged.`);
+      for (let loot of location.combat.loot){
+      location.items.push(loot);
+      console.log(`loot pushed: ${loot.name}`);
+      }
+      location.combat.loot = [];
+      console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+      // console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+      for (let combatMonster of location.monsters){
+        if (combatMonster.status.dead === true){
+          console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
+          location.monsters = [];
+          //remove this monster from location.monsters
+        }
+      }
+    }
   } // end combatStart
 
   move() {
