@@ -69,6 +69,9 @@ export default class Game {
       total += roll;
       console.log(`d${side} rolled: ${roll}`);
     }
+    if (total < num){
+      total = num;
+    }
     console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
     return total;
   }
