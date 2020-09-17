@@ -77,8 +77,8 @@ $("#char-create").submit(function (event) {
   console.log(player1);
   console.log("Environment: " + game.environments[0].monsters[0].name);
   displayCharStats(player1);
-  let monster = game.environments[0].monsters[0];
-  displayMonsterStats(monster);
+  //let monster = game.environments[0].monsters[0];
+  
 
   game.look("");
   Display.updateMap(game.players[0].location);
@@ -116,23 +116,23 @@ function displayCharStats(player) {
     }
   }
 }
-function displayMonsterStats(monster) {
-  const monsterKeys = Object.keys(monster);
-  for (let i = 0; i < monsterKeys.length; i++) {
-    if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id" || monsterKeys[i] === "type") {
-      continue;
-    }
-    if (monsterKeys[i] === "abilityScores") {
-      let abScoreKeys = Object.keys(monster.abilityScores);
-      abScoreKeys.forEach(function(key) {
-        $("#monstStatDisplay").append("<br>---" + key + ": " + monster.abilityScores[key] + "\n");
-      });
-    }
-    else {
-      $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
-    }
-  }
-}
+// function displayMonsterStats(monster) {
+//   const monsterKeys = Object.keys(monster);
+//   for (let i = 0; i < monsterKeys.length; i++) {
+//     if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id" || monsterKeys[i] === "type") {
+//       continue;
+//     }
+//     if (monsterKeys[i] === "abilityScores") {
+//       let abScoreKeys = Object.keys(monster.abilityScores);
+//       abScoreKeys.forEach(function(key) {
+//         $("#monstStatDisplay").append("<br>---" + key + ": " + monster.abilityScores[key] + "\n");
+//       });
+//     }
+//     else {
+//       $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
+//     }
+//   }
+// }
 function updateScroll(){
   let element = document.getElementById("terminalOutput");
   element.scrollTop = element.scrollHeight;

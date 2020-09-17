@@ -119,6 +119,7 @@ export default class Game {
   
   //look(target);
   look(target) {
+    Display.displayMonsterStats(this.environments[this.players[0].location].monsters[0]);
     console.log("player look function:",target);
     // this.environments[0].name
     // this.environments[0].description
