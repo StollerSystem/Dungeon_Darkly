@@ -1,4 +1,6 @@
 import Display from './display_output.js';
+import Container from './item_class.js';
+
 export default class Combat {
   constructor(){
     this.roundCount = 1;
@@ -103,9 +105,23 @@ export default class Combat {
   }
 
   corpsification(deadCharacter){
-    Display.output(`${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! Loot corpse?`);
-    //create an array of all items in the dead monsters inv and equip
+    Display.output(`${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! <span class="yellow">Loot corpse</span>?`);
+    //create a container body item that will hold all of deadCharacter's inv and equip
+    let newCorpse = new Container(`corpse`,100,[deadCharacter.name],6,1,1,1,[],[],"common");
+    //newCorpse.description = `The fresh corpse of a ${deadCharacter.mainType}.`
     //move weapons into the environment
-    //create a container body item that is holding the item/equip array, inside of the environment
+    this.loot.push(deadCharacter.equip.mainHand);
+    //push items from deadCharacter into corpse
+    for (let item of deadCharacter.inv){
+      newCorpse.contents.push(item);
+    }
+    //push equip from deadCharacter into corpse
+    for (let equipSlot in deadCharacter.equip){      
+      for (let eqpiece of deadCharacter.equip[equipSlot]){ 
+        newCorpse.contents.push(eqpiece);              
+      }
+    }
+    //push corpse into combat.loot for later migration into environment.items
+    this.loot.push(newCorpse);
   }
 }
