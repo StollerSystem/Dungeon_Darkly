@@ -71,14 +71,14 @@ $("#char-create").submit(function (event) {
       break;
   }
 
-  let player1 = game.addPlayer(nameInput, raceInput, pclassInput, 1, 0, hp, mp, 0, [game.addItem("potion", 1, 1, 5, 1, [], [], "common")], strInput, dexInput, conInput, wisInput, intInput, chrInput, lckInput);
+  let player1 = game.addPlayer(nameInput, raceInput, pclassInput, 1, 0, hp, mp, 0, [], strInput, dexInput, conInput, wisInput, intInput, chrInput, lckInput);
   game.environments[0].players.push(player1);
   game.players.push(player1);
   console.log(player1);
   console.log("Environment: " + game.environments[0].monsters[0].name);
-  displayCharStats(player1);
-  let monster = game.environments[0].monsters[0];
-  displayMonsterStats(monster);
+  // Display.displayCharStats(player1);
+  //let monster = game.environments[0].monsters[0];
+  
 
   game.look("");
   Display.updateMap(game.players[0].location);
@@ -98,42 +98,12 @@ $("#command-form").submit(function (event) {
 });
 
 
-function displayCharStats(player) {
-  const playerKeys = Object.keys(player);
-  console.log(player.inv)
-  for (let i = 0; i < playerKeys.length; i++) {
-    if (playerKeys[i] === "inv" || playerKeys[i] === "status" || playerKeys[i] === "equip" || playerKeys[i] === "hunger" || playerKeys[i] === "undefined") {
-      continue;
-    }
-    if (playerKeys[i] === "abilityScores") {
-      let abScoreKeys = Object.keys(player.abilityScores);
-      abScoreKeys.forEach(function(key) {
-        $("#charStatDisplay").append("<br>---" + key + ": " + player.abilityScores[key] + "\n");
-      });
-    }
-    else {
-      $("#charStatDisplay").append("<br>" + playerKeys[i] + ": " + player[playerKeys[i]] + "\n");
-    }
-  }
-}
-function displayMonsterStats(monster) {
-  const monsterKeys = Object.keys(monster);
-  for (let i = 0; i < monsterKeys.length; i++) {
-    if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id" || monsterKeys[i] === "type") {
-      continue;
-    }
-    if (monsterKeys[i] === "abilityScores") {
-      let abScoreKeys = Object.keys(monster.abilityScores);
-      abScoreKeys.forEach(function(key) {
-        $("#monstStatDisplay").append("<br>---" + key + ": " + monster.abilityScores[key] + "\n");
-      });
-    }
-    else {
-      $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
-    }
-  }
-}
 function updateScroll(){
   let element = document.getElementById("terminalOutput");
   element.scrollTop = element.scrollHeight;
 }
+// function restartGame(){
+//   game = GameInit.getGame();
+//   $("#gameplay-screen").hide();
+//   $("#main-screen").show();
+// }

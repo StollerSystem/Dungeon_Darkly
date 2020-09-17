@@ -91,9 +91,10 @@ export class Character {
     for (let i=0;i<num;i++){
       let roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
       total += roll;
-      // console.log(`d${side} rolled: ${roll}`);
     }
-    // console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
+    if (total < num){
+      total = num;
+    }
     return total;
   }
 
