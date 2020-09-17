@@ -213,9 +213,7 @@ export default class Game {
 
         current_location.items.splice(i-1,1)
         console.log(current_location.items)
-        // current_location.items = newArray
-
-        
+        // current_location.items = newArray        
         break;
       }   
     } 
