@@ -14,4 +14,13 @@ export default class Display {
   static updateMap(number) {
     draw(number);
   }
+
+  static clearInv() {
+    $("#inventDisplay").html("output")
+  }
+
+  static addInv(output) {
+    $("#inventDisplay").append(output)    
+  }
 }
+

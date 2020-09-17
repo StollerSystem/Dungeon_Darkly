@@ -129,11 +129,11 @@ export default class Game {
     if (this.environments[this.players[0].location].items.length > 0) {
       Display.output(`Items in the room:`)
       this.environments[this.players[0].location].items.forEach(function(item){
-        Display.output(item.name)
+        Display.output(`${item.name}`)
       });    
     }
     if (this.environments[this.players[0].location].monsters.length > 0) {
-      Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+      Display.output(`Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span>`);
     }
     
   }
@@ -206,12 +206,24 @@ export default class Game {
     let current_location = this.environments[this.players[0].location]
     for (let i=0;i<current_location.items.length;i++) {
       if (current_location.items[i].name.toLowerCase().includes(target)) {        
+        //this.look("")
         Display.output(`[+] You pick up the ${current_location.items[i].name}`)
-        this.players[0].inv.push(current_location.items[i])
-        let newArray = current_location.items.splice(i,1)
-        current_location.items = newArray
+        this.players[0].inv.push(current_location.items[i]);
+
+        current_location.items.splice(i-1,1)
+        console.log(current_location.items)
+        // current_location.items = newArray
+
+        
         break;
       }   
-    }  
-  }  
+    } 
+    this.updateInvDisplay(); 
+  } 
+  
+  updateInvDisplay() {
+    this.players[0].inv.forEach(function(item){
+      Display.addInv(item.name);
+    })
+  }
 }
