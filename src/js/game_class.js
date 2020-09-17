@@ -143,14 +143,15 @@ export default class Game {
     } else {
       location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
       //begin combat loot migration protocol
-      if (location.combat.loot){
+      if (location.combat.loot[0]){
         console.log(`combat environment has loot. Loot push to environment engaged.`);
         for (let loot of location.combat.loot){
         location.items.push(loot);
-        console.log(`loot pushed`);
+        console.log(`loot pushed: ${loot.name}`);
         }
         location.combat.loot = [];
         console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+        console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
       }
     }
   }
@@ -183,14 +184,15 @@ export default class Game {
     // begin the combatTurn!
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
     //begin combat loot migration protocol
-    if (location.combat.loot){
+    if (location.combat.loot[0]){
       console.log(`combat environment has loot. Loot push to environment engaged.`);
       for (let loot of location.combat.loot){
       location.items.push(loot);
-      console.log(`loot pushed`);
+      console.log(`loot pushed: ${loot.name}`);
       }
       location.combat.loot = [];
       console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+      console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
     }
   } // end combatStart
 
