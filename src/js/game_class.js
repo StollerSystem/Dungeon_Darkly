@@ -386,8 +386,9 @@ export default class Game {
         this.players[0].inv.splice(i-1,1); //removes the item. should only happen to consumable
         console.log(`item has been consumed and removed`);
         }
-        console.log(`this.players inv: ${this.players[0].inv}`);        
-        break;
+        console.log(`this.players inv: ${this.players[0].inv}`);
+        this.updateInvDisplay();        
+        return;
       }   
     }
     // then check in environment to use
@@ -406,10 +407,11 @@ export default class Game {
         console.log(`item has been consumed and removed`);
         }
         console.log(current_location.items);        
-        break;
+        this.updateInvDisplay();        
+        return;
       }   
     } 
-    this.updateInvDisplay();
+    // this.updateInvDisplay();
   } // end use method
 
   heal(effectOrigin,effectTarget,diceAmount,sideNumber,mod){
