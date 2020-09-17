@@ -25,9 +25,9 @@ export default class Display {
 
   static displayMonsterStats(monster) {
     if (monster === "none") {
-      $("#monstStatDisplay").text("No monsters...")
+      $("#monstStatDisplay").html(`Monster_stats~<br>_No Monsters in area_`)
     } else {
-      $("#monstStatDisplay").text("")
+      $("#monstStatDisplay").html(`Monster_stats~<br>`)
       const monsterKeys = Object.keys(monster);
       for (let i = 0; i < monsterKeys.length; i++) {
       if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id" || monsterKeys[i] === "type") {
@@ -44,6 +44,25 @@ export default class Display {
       }
      } 
     }    
+  }
+
+  static displayCharStats(player) {
+    const playerKeys = Object.keys(player);
+    console.log(player.inv)
+    for (let i = 0; i < playerKeys.length; i++) {
+      if (playerKeys[i] === "inv" || playerKeys[i] === "status" || playerKeys[i] === "equip" || playerKeys[i] === "hunger" || playerKeys[i] === "undefined") {
+        continue;
+      }
+      if (playerKeys[i] === "abilityScores") {
+        let abScoreKeys = Object.keys(player.abilityScores);
+        abScoreKeys.forEach(function(key) {
+          $("#charStatDisplay").append("<br>---" + key + ": " + player.abilityScores[key] + "\n");
+        });
+      }
+      else {
+        $("#charStatDisplay").append("<br>" + playerKeys[i] + ": " + player[playerKeys[i]] + "\n");
+      }
+    }
   }
 
 
