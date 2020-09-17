@@ -13,6 +13,10 @@ export default class GameInit {
     game.environments[0].monsters.push(rabidWolf);
     let potion = game.addItem("Health Potion",1,1,5,1,[],[],"common");
     game.environments[0].items.push(potion);
+    let dagger = game.addWeapon("mainHand",["str",0], [1,"d",6],"Goblin Dagger", 2, 1, 5, 1, [], [], "common");
+    game.environments[0].items.push(dagger);
+
+
     //1
     game.addEnvironment("Foyer", "     <span class='white'>Quite the entrance! The room is filled with grandiose decor, with a huge piano, some suits of armor, a massive chandelier worth more than its weight in gold, and plenty of other trinkets the owner has most likely acquired COMPLETELY legally in their past adventures. There's two stairways and multiple hallways but feel a strange energy towards the corridor in front of you.</span>", [], [], [], []);
     let demonButt = game.addMonster(2, "Demonic Butler", "Demon", 2, 8, 0, [], [], 6, 8, 10, 8, 8, 6, 6);

@@ -16,11 +16,11 @@ export default class Display {
   }
 
   static clearInv() {
-    $("#inventDisplay").html("output");
+    $("#inventDisplay").html("Your inventory~<br>")
   }
 
   static addInv(output) {
-    $("#inventDisplay").append(output);    
+    $("#inventDisplay").append(`${output}<br>`)    
   }
 
   static displayMonsterStats(monster) {
