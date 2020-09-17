@@ -4,6 +4,6 @@ describe('Combat', () => {
 
   test('should create a combat object', () =>{
     let combat1 = new Combat();
-    expect(combat1.TEST).toEqual("test")   
+    expect(combat1.roundCount).toEqual(1)   
   });
 })
