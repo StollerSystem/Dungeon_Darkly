@@ -108,7 +108,7 @@ export default class Combat {
   corpsification(deadCharacter){
     Display.output(`${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! <span class="yellow">Loot corpse</span>?`);
     //create a container body item that will hold all of deadCharacter's inv and equip
-    let newCorpse = new Container(`corpse`,100,[deadCharacter.name],6,1,1,1,[],[],"common");
+    let newCorpse = new Container(`corpse`,100,`Corpse of ${deadCharacter.name}`,6,1,1,1,[],[],"common");
     //newCorpse.description = `The fresh corpse of a ${deadCharacter.mainType}.`
     //move weapons into the environment
     console.log(`about to push the deadCharacter's weapon into the combat.loot. the weapon's name is: ${deadCharacter.equip.mainHand[0].name}`)
