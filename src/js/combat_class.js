@@ -12,22 +12,22 @@ export default class Combat {
   // use arr.indexOf(searchElement[, fromIndex]) for finding the index of an element, or in this case, of a character in the turnOrder array
   combatTurn(participant,target){ // begin turn
     // let participantOrderNumber = this.turnOrder[0]//index of participant
-    Display.output(`[${participant.name}'s turn!]`)
-    Display.output(`***<span class="purple">combatTurn function running.  ${participant.name}, is moving to attack target: ${target.name}***</span>`)
+    Display.output(`[${participant.name}'s turn!]`);
+    Display.output(`***<span class="purple">combatTurn function running.  ${participant.name}, is moving to attack target: ${target.name}***</span>`);
     if (participant.status.surprised === false){
       //make attack roll
       let attack = participant.attackRoll();
-      Display.output(`${participant.name}'s ATK ROLL: ${attack} vs ${target.name}'s AC: ${target.baseAc}`)
+      Display.output(`${participant.name}'s ATK ROLL: ${attack} vs ${target.name}'s AC: ${target.baseAc}`);
       if (attack >= target.baseAc){
         //make damage roll
-        Display.output(`<span class="red">*** HIT! ***</span>`)
+        Display.output(`<span class="red">*** HIT! ***</span>`);
         let damage = participant.damageRoll();
         //inflict the damage
-        Display.output(`${participant.name}'s DMG ROLL = ${damage}`)
+        Display.output(`${participant.name}'s DMG ROLL = ${damage}`);
         target.hp -= damage;
-        Display.output(`${target.name} took ${damage} damage, leaving them with ${target.hp} HP`)
+        Display.output(`${target.name} took ${damage} damage, leaving them with ${target.hp} HP`);
       } else {
-        Display.output(`<span class="red">*** MISS! ***</span>`)
+        Display.output(`<span class="red">*** MISS! ***</span>`);
       }
     }
     //perform any remaining turn actions
@@ -41,7 +41,7 @@ export default class Combat {
     }
     //action the next participant's turn
     this.turnIndex += 1;
-    return this.combatTurn(target,participant)
+    return this.combatTurn(target,participant);
   } // end turn
 
   roundEnd(participant,target){
@@ -52,7 +52,7 @@ export default class Combat {
     target.status.surprised = false;
     //display end of round options to player and await command
     if (participant.type) {
-      console.log("DISPLAY MONSTER TRUE")
+      console.log("DISPLAY MONSTER TRUE");
       Display.displayMonsterStats(participant);
       Display.displayCharStats(target);
     } else {
@@ -66,13 +66,13 @@ export default class Combat {
   }
 
   combatEnd(characterArray){
-    console.log(`combatEnd has been triggered. characterArray: ${characterArray[0].name} and ${characterArray[1].name}`)
+    console.log(`combatEnd has been triggered. characterArray: ${characterArray[0].name} and ${characterArray[1].name}`);
     this.deathCheck(characterArray);
     //perform end of combat functions
     this.turnOrder = [];
     this.roundCount = 1;
     //display end of combat details to player and await command
-    console.log(`combatEnd has been completed. this.turnOrder: ${this.turnOrder} and this.roundCount: ${this.roundCount} now, after resetting.`)
+    console.log(`combatEnd has been completed. this.turnOrder: ${this.turnOrder} and this.roundCount: ${this.roundCount} now, after resetting.`);
     // if (target.type) { //from merge. needs change with characterArray vs target variable usage
     //   Display.displayMonsterStats("none");
     // }
@@ -80,7 +80,7 @@ export default class Combat {
   }
 
   deathCheck(characterArray){
-    console.log(`deathCheck has been triggered. characterArray: ${characterArray[0].name} and ${characterArray[1].name}`)
+    console.log(`deathCheck has been triggered. characterArray: ${characterArray[0].name} and ${characterArray[1].name}`);
     let deadCharacter;
     let aliveCharacter;
     for (let character of characterArray){
@@ -91,7 +91,7 @@ export default class Combat {
         aliveCharacter = character;
       }
     }
-    console.log(`deadCharacter: ${deadCharacter.name}, aliveCharacter: ${aliveCharacter.name}`)
+    console.log(`deadCharacter: ${deadCharacter.name}, aliveCharacter: ${aliveCharacter.name}`);
     if (deadCharacter.pclass){
       return this.playerDeath(aliveCharacter,deadCharacter);
     } else {
@@ -103,16 +103,16 @@ export default class Combat {
     console.log(`playerDeath has been triggered. ${deadCharacter.name} died to ${aliveCharacter.name}`);
     Display.output(`Bummer ${deadCharacter.name}, you died to ${aliveCharacter.name}!`);
     deadCharacter.status.dead = true;
-    console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`)
+    console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`);
 
     // restartGame();
   }
 
   monsterDeath(aliveCharacter,deadCharacter){
-    console.log(`monsterDeath has been triggered. ${deadCharacter.name} died to ${aliveCharacter.name}`)
+    console.log(`monsterDeath has been triggered. ${deadCharacter.name} died to ${aliveCharacter.name}`);
     Display.output(`Congrats ${aliveCharacter.name}, you killed ${deadCharacter.name}!`);
     deadCharacter.status.dead = true;
-    console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`)
+    console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`);
     //exp and etc that go to the player
     this.corpsification(deadCharacter);
   }
@@ -124,8 +124,8 @@ export default class Combat {
     //newCorpse.description = `The fresh corpse of a ${deadCharacter.mainType}.`
     //move weapons into the environment
     if (deadCharacter.equip.mainHand[0]){
-    console.log(`about to push the deadCharacter's weapon into the combat.loot. the weapon's name is: ${deadCharacter.equip.mainHand[0].name}`);
-    this.loot.push(deadCharacter.equip.mainHand[0]);
+      console.log(`about to push the deadCharacter's weapon into the combat.loot. the weapon's name is: ${deadCharacter.equip.mainHand[0].name}`);
+      this.loot.push(deadCharacter.equip.mainHand[0]);
     } else {
       console.log(`deadCharacter has no weapon to pass into the combat.loot. Moving onto corpsemaking`);
     }

@@ -1,6 +1,6 @@
 import Game from './game_class.js';
 
-  //addMonster(id,name,mainType,cr,hp,mp,[],[],str,dex,con,wis,int,chr,lck)
+//addMonster(id,name,mainType,cr,hp,mp,[],[],str,dex,con,wis,int,chr,lck)
 // Double check that values are up to date! :D
 
 export default class GameInit {
