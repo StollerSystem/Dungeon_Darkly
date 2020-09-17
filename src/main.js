@@ -23,7 +23,7 @@ $("#char-create").submit(function (event) {
   const raceInput = $("input:radio[name=char-race]:checked").val();
   const pclassInput = $("input:radio[name=char-class]:checked").val();
   if (nameInput === "") {
-    nameInput = "Nemo the Forgetful"
+    nameInput = "Nemo the Forgetful";
   }
   console.log(nameInput, raceInput, pclassInput);
   let strInput;

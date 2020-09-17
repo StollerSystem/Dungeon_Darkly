@@ -22,7 +22,7 @@ export default class GameInit {
     //2
     game.addEnvironment("Dining Hall", "     <span class='white'>Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>", [], [], [], []);
     let goblin = game.addMonster(3, "Goblin", "Goblinski", 2, 7, 0, [], [], 6, 12, 8, 8, 6,
-    6, 6);
+      6, 6);
     game.environments[2].monsters.push(goblin);
 
     //3
@@ -52,7 +52,7 @@ export default class GameInit {
     //7
     game.addEnvironment("Dungeon", "     <span class='white'>This room has barely any light to it. A single torch hanging on the wall does little to illuminate this dungeon. Although considering the many hanging chains and the fact that you can hear some type of liquid dripping, maybe that's for the best...</span>", [], [], [], []);
     let toadKing = game.addMonster(8, "Toad King", "Amphibian", 3, 12, 0, [], [], 14, 12, 10, 6, 8,
-    2, 2);
+      2, 2);
     game.environments[7].monsters.push(toadKing);
 
     //8
