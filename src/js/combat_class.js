@@ -23,6 +23,7 @@ export default class Combat {
         //inflict the damage
         Display.output(`${participant.name}'s DMG ROLL = ${damage}`)
         target.hp -= damage;
+        Display.output(`${target.name} took ${damage} damage, leaving them with ${target.hp} HP`)
       } else {
         Display.output(`<span class="red">*** MISS! ***</span>`)
       }
