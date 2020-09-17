@@ -19,12 +19,16 @@ export default class GameInit {
 
     game.addEnvironment("Torture Chamber", "  Considering the amount of blood and strange contraptions, lord only knows the unfortunate things that have occured down here. It sends a shiver down your spine even thinking about it.", [], [], [], []);
     let goblin2 = game.addMonster(1, "Goblin Torturer", "goblin", 1, 5, 0, [], [], 8, 10, 8, 6, 6, 6, 6);
+    let goblinDagger = game.addWeapon("mainHand",["str",0], [1,"d",6],"Goblin Dagger", 2, 1, 5, 1, [], [], "common");
+    goblin2.addItemEquip(goblinDagger);
+    let goblinTrinket = game.addItem("Goblin Trinket", 1, 1, 5, 1, [], [], "common");
+    goblin2.addItemInv(goblinTrinket);
     game.environments[1].monsters.push(goblin2);
     let potion2 = game.addItem("poison", 1, 1, 5, 1, [], [], "common");
     game.environments[1].items.push(potion2);
-    let dagger2 = game.addWeapon(3, 6, "Bone Saw", 2, 1, 5, 1, [], [], "common");
+    let dagger2 = game.addWeapon("mainHand",["str",0], [1,"d",6], "Bone Saw", 2, 1, 5, 1, [], [], "common");
     game.environments[1].items.push(dagger2);
-    let leatherboots = game.addArmor(3, "leather", "Leather Boots", 3, 5, 5, 1,);
+    let leatherboots = game.addArmor("body",3, "leather", "Leather Boots", 3, 5, 5, 1,[],[],"common");
     game.environments[1].items.push(leatherboots);
 
 
