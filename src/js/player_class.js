@@ -16,7 +16,7 @@ export class Player extends Character{
     this.inv = inv;
     this.equip = new Equip();
     this.baseAc = 10+ abilityScores.scoreMod('dex');
-    this.location = 0
+    this.location = 0;
   }  
 
   

@@ -14,14 +14,17 @@ console.log(game.environments);
 $("#beginBtn").click(function() {
   $("#main-screen").show();
   $(".homeScreen").hide();
-})
+});
 
 $("#char-create").submit(function (event) {
   event.preventDefault();
 
-  const nameInput = $("#char-name").val();
+  let nameInput = $("#char-name").val();
   const raceInput = $("input:radio[name=char-race]:checked").val();
   const pclassInput = $("input:radio[name=char-class]:checked").val();
+  if (nameInput === "") {
+    nameInput = "Nemo the Forgetful";
+  }
   console.log(nameInput, raceInput, pclassInput);
   let strInput;
   let dexInput;
@@ -34,42 +37,42 @@ $("#char-create").submit(function (event) {
   let mp;
 
   switch (pclassInput) {
-    case ("Warrior"):
-      hp = 6;
-      mp = 10;
-      strInput = 16;
-      dexInput = 13;
-      conInput = 14;
-      wisInput = 7;
-      intInput = 8;
-      chrInput = 10;
-      lckInput = 9;
-      break;
+  case ("Warrior"):
+    hp = 6;
+    mp = 10;
+    strInput = 16;
+    dexInput = 13;
+    conInput = 14;
+    wisInput = 7;
+    intInput = 8;
+    chrInput = 10;
+    lckInput = 9;
+    break;
 
-    case ("Paladin"):
-      hp = 12;
-      mp = 0;
-      strInput = 14;
-      dexInput = 8;
-      conInput = 18;
-      wisInput = 14;
-      intInput = 10;
-      chrInput = 6;
-      lckInput = 12;
-      break;
-    // OTHER CLASSES HERE
-    default:
-      hp = 10;
-      mp = 0;
-      strInput = 10;
-      dexInput = 10;
-      conInput = 10;
-      wisInput = 10;
-      intInput = 10;
-      chrInput = 10;
-      lckInput = 10;
-      break;
-  }
+  case ("Paladin"):
+    hp = 12;
+    mp = 0;
+    strInput = 14;
+    dexInput = 8;
+    conInput = 18;
+    wisInput = 14;
+    intInput = 10;
+    chrInput = 6;
+    lckInput = 12;
+    break;
+  // OTHER CLASSES HERE
+  default:
+    hp = 10;
+    mp = 0;
+    strInput = 10;
+    dexInput = 10;
+    conInput = 10;
+    wisInput = 10;
+    intInput = 10;
+    chrInput = 10;
+    lckInput = 10;
+    break;
+  } 
 
   let player1 = game.addPlayer(nameInput, raceInput, pclassInput, 1, 0, hp, mp, 0, [], strInput, dexInput, conInput, wisInput, intInput, chrInput, lckInput);
   game.environments[0].players.push(player1);
@@ -90,11 +93,10 @@ $("#char-create").submit(function (event) {
 $("#command-form").submit(function (event) {
   event.preventDefault();
   let command = $("#commandLine").val();
-  $("#terminalOutput").append(`<br>>>>><span class="yellow">${command}<span>`);
+  $("#terminalOutput").append(`<br>>>>><span class="cyan">${command}<span>`);
   $("#commandLine").val("");
   game.inputParser(command);
   updateScroll();
-  console.log("Update scroll");
 });
 
 
