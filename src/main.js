@@ -19,9 +19,12 @@ $("#beginBtn").click(function() {
 $("#char-create").submit(function (event) {
   event.preventDefault();
 
-  const nameInput = $("#char-name").val();
+  let nameInput = $("#char-name").val();
   const raceInput = $("input:radio[name=char-race]:checked").val();
   const pclassInput = $("input:radio[name=char-class]:checked").val();
+  if (nameInput === "") {
+    nameInput = "Nemo the Forgetful";
+  }
   console.log(nameInput, raceInput, pclassInput);
   let strInput;
   let dexInput;
@@ -90,11 +93,10 @@ $("#char-create").submit(function (event) {
 $("#command-form").submit(function (event) {
   event.preventDefault();
   let command = $("#commandLine").val();
-  $("#terminalOutput").append(`<br>>>>><span class="yellow">${command}<span>`);
+  $("#terminalOutput").append(`<br>>>>><span class="cyan">${command}<span>`);
   $("#commandLine").val("");
   game.inputParser(command);
   updateScroll();
-  console.log("Update scroll");
 });
 
 

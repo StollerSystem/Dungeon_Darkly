@@ -60,7 +60,7 @@ export default class Combat {
       Display.displayCharStats(participant);
     } 
     //Display.displayMonsterStats(target);
-    Display.output(`Combat round ${this.roundCount} has ended. Continue to <span class="yellow">fight</span>, or <span class="yellow">flee</span> instead?`);
+    Display.output(`Combat round ${this.roundCount} has ended. Continue to <span class="cyan">fight</span>, or <span class="cyan">flee</span> instead?`);
     this.roundCount += 1;
     this.turnIndex = 0;
   }
@@ -118,7 +118,7 @@ export default class Combat {
   }
 
   corpsification(deadCharacter){
-    Display.output(`${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! <span class="yellow">Loot corpse</span>?`);
+    Display.output(`${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! <span class="cyan">Loot</span> corpse?`);
     //create a container body item that will hold all of deadCharacter's inv and equip
     let newCorpse = new Container(`corpse`,100,`Corpse of ${deadCharacter.name}`,6,1,1,1,[],[],"common");
     //newCorpse.description = `The fresh corpse of a ${deadCharacter.mainType}.`

@@ -100,7 +100,7 @@ export default class Game {
         this.attack(target);
       } else {
         target = "";
-        Display.output("Attack what?");
+        Display.output("<span class='cyan'>Attack</span> what?");
       }
       //console.log("look function:",target)
       // this.attack(target);
@@ -120,7 +120,7 @@ export default class Game {
         this.get(target);
       } else {
         target = "";
-        Display.output("Get what?");    
+        Display.output("<span class='cyan'>Get</span> what?");     
       }
     }
   }
