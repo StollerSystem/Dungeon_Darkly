@@ -45,3 +45,4 @@ export class Consumable extends Item {
     this.type = type; 
   }
 }
+// ex: let healingPotion1 = new Consumable (["heal","self",1,"d",8,1],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common")
