@@ -19,6 +19,9 @@ export default class GameInit {
     let scaryShiz2 = game.addMonster(2, "Demonic Butler", "shiz", 1, 7, 0, [], [], 6, 12, 10, 6, 6,
     6, 6);
     game.environments[1].monsters.push(scaryShiz2);
+    let healingPotion1 = new Consumable (["heal","self",1,"d",8,1],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
+    game.environments[1].items.push(healingPotion1);
+
 
     //2
     game.addEnvironment("Dining Hall", "     Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...", [], [], [], []);
