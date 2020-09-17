@@ -1,7 +1,7 @@
 import Environment from './environment_class.js';
 import { Player } from './player_class.js'; 
 import Monster from './monster_class.js'; 
-import { Item, Weapon, Armor } from './item_class.js';
+import { Item, Weapon, Armor, Container } from './item_class.js';
 import { AbilityScores } from './character_class.js';
 import Display from './display_output.js';
 
@@ -46,6 +46,11 @@ export default class Game {
     return newArmor;
   }
 
+  addContainer(type,capacity,name,Id,worth,Hp,level,status,flags,rarity) {
+    let newContainer = new Container(type,capacity,name,Id,worth,Hp,level,status,flags,rarity);
+    return newContainer;
+  }
+
   roll(num,side,mod,adj){
     let total;
     if (!mod){
@@ -63,6 +68,9 @@ export default class Game {
       let roll = ((min-1) + Math.ceil(Math.random() * (side-min + 1)));
       total += roll;
       console.log(`d${side} rolled: ${roll}`);
+    }
+    if (total < num){
+      total = num;
     }
     console.log(`${num}d${side} rolled, with a modifier of ${mod}. Total is: ${total}`);
     return total;
@@ -101,15 +109,26 @@ export default class Game {
     //move;
     if (splitString[0] === "move") {          
       this.move();
-      console.log("test")      
+      //onsole.log("test")      
     }
       
+    //GET
+    if (splitString[0] === "get") {
+      let target;
+      if (splitString[1]) {
+        target = splitString[1];
+        this.get(target);
+      } else {
+        target = "";
+        Display.output("Get what?")      
+      }
+    }
   }
-
-
   
   //look(target);
   look(target) {
+    Display.displayCharStats(this.players[0]);
+    Display.displayMonsterStats(this.environments[this.players[0].location].monsters[0]);
     console.log("player look function:",target);
     // this.environments[0].name
     // this.environments[0].description
@@ -117,8 +136,14 @@ export default class Game {
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
     Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
     Display.output(this.environments[this.players[0].location].description);
+    if (this.environments[this.players[0].location].items.length > 0) {
+      Display.output(`Items in the room:`)
+      this.environments[this.players[0].location].items.forEach(function(item){
+        Display.output(`${item.name}`)
+      });    
+    }
     if (this.environments[this.players[0].location].monsters.length > 0) {
-      Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+      Display.output(`Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span>`);
     }
     
   }
@@ -128,29 +153,49 @@ export default class Game {
     let location = this.environments[this.players[0].location];
     console.log(`player attack function. target: ${target}`);
     if (location.combat.roundCount == 1){
-    let targetMonster;     
-    this.environments[this.players[0].location].monsters.forEach(function(monster){
-      if (monster.name.toLowerCase().includes(target)) {
-        targetMonster = monster
-      }
-    })
-    // this.environments[0].monsters[0]
-    //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
-    this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
+      let targetMonster;     
+      this.environments[this.players[0].location].monsters.forEach(function(monster){
+        if (monster.name.toLowerCase().includes(target)) {
+          targetMonster = monster
+        }
+      })
+      // this.environments[0].monsters[0]
+      //$("#terminalOutput").append("<br>>" + this.environments[0].name);
+      Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
+      this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
     } else {
-    location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
+      location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+      //begin combat loot migration protocol
+      if (location.combat.loot[0]){
+        console.log(`combat environment has loot. Loot push to environment engaged.`);
+        for (let loot of location.combat.loot){
+        location.items.push(loot);
+        console.log(`loot pushed: ${loot.name}`);
+        }
+        location.combat.loot = [];
+        console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+        // console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+        for (let combatMonster of location.monsters){
+          if (combatMonster.status.dead === true){
+            console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
+            location.monsters = [];
+            //remove this monster from location.monsters
+          }
+        }
+      }
     }
   }
+  
+  
 
   combatStart(participant,target){
     let turnOrder = [];
     // stealth-surprise check
-    // if (this.status.some(status => status.hidden === 'true')){
+    // if (this.status.some(status => status.hidden === true)){
     //   let stealthCheck = this.abilityScoreCheck('dex');
     //   let perceptionCheck = [target].abilityScoreCheck('wis');
     //   if (stealthCheck > perceptionCheck){
-    //   [target].status.surprised = 'true';
+    //   [target].status.surprised = true;
     //   }
     // }
     // roll for initiative, fill turnOrder
@@ -170,6 +215,24 @@ export default class Game {
     location.combat.turnOrder = turnOrder;
     // begin the combatTurn!
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+    //begin combat loot migration protocol
+    if (location.combat.loot[0]){
+      console.log(`combat environment has loot. Loot push to environment engaged.`);
+      for (let loot of location.combat.loot){
+      location.items.push(loot);
+      console.log(`loot pushed: ${loot.name}`);
+      }
+      location.combat.loot = [];
+      console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+      // console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+      for (let combatMonster of location.monsters){
+        if (combatMonster.status.dead === true){
+          console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
+          location.monsters = [];
+          //remove this monster from location.monsters
+        }
+      }
+    }
   } // end combatStart
 
   move() {
@@ -186,5 +249,27 @@ export default class Game {
       Display.updateMap(this.players[0].location)
     }    
   }
-}
 
+  get(target) {
+    let current_location = this.environments[this.players[0].location]
+    for (let i=0;i<current_location.items.length;i++) {
+      if (current_location.items[i].name.toLowerCase().includes(target)) {        
+        //this.look("")
+        Display.output(`[+] You pick up the ${current_location.items[i].name}`)
+        this.players[0].inv.push(current_location.items[i]);
+
+        current_location.items.splice(i-1,1)
+        console.log(current_location.items)
+        // current_location.items = newArray        
+        break;
+      }   
+    } 
+    this.updateInvDisplay(); 
+  } 
+  
+  updateInvDisplay() {
+    this.players[0].inv.forEach(function(item){
+      Display.addInv(item.name);
+    })
+  }
+}
