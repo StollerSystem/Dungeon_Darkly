@@ -123,8 +123,12 @@ export default class Combat {
     let newCorpse = new Container(`corpse`,100,`Corpse of ${deadCharacter.name}`,6,1,1,1,[],[],"common");
     //newCorpse.description = `The fresh corpse of a ${deadCharacter.mainType}.`
     //move weapons into the environment
-    console.log(`about to push the deadCharacter's weapon into the combat.loot. the weapon's name is: ${deadCharacter.equip.mainHand[0].name}`)
+    if (deadCharacter.equip.mainHand[0]){
+    console.log(`about to push the deadCharacter's weapon into the combat.loot. the weapon's name is: ${deadCharacter.equip.mainHand[0].name}`);
     this.loot.push(deadCharacter.equip.mainHand[0]);
+    } else {
+      console.log(`deadCharacter has no weapon to pass into the combat.loot. Moving onto corpsemaking`);
+    }
     //push items from deadCharacter into corpse
     for (let item of deadCharacter.inv){
       newCorpse.contents.push(item);
