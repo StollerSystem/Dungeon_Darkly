@@ -78,7 +78,7 @@ export default class Combat {
       }
     }
     console.log(`deadCharacter: ${deadCharacter.name}, aliveCharacter: ${aliveCharacter.name}`)
-    if (deadCharacter.class){
+    if (deadCharacter.pclass){
       return this.playerDeath(aliveCharacter,deadCharacter);
     } else {
       this.monsterDeath(aliveCharacter,deadCharacter);
@@ -86,7 +86,8 @@ export default class Combat {
   }
 
   playerDeath(aliveCharacter,deadCharacter){
-    Display.output(`Bummer ${deadCharacter.name}, you died to the ${aliveCharacter.name}!`);
+    console.log(`playerDeath has been triggered. ${deadCharacter.name} died to ${aliveCharacter.name}`)
+    Display.output(`Bummer ${deadCharacter.name}, you died to ${aliveCharacter.name}!`);
     deadCharacter.status.dead = true;
     console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`)
 
@@ -94,7 +95,8 @@ export default class Combat {
   }
 
   monsterDeath(aliveCharacter,deadCharacter){
-    Display.output(`Congrats ${aliveCharacter.name}, you killed the ${deadCharacter.name}!`);
+    console.log(`monsterDeath has been triggered. ${deadCharacter.name} died to ${aliveCharacter.name}`)
+    Display.output(`Congrats ${aliveCharacter.name}, you killed ${deadCharacter.name}!`);
     deadCharacter.status.dead = true;
     console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`)
     //exp and etc that go to the player
@@ -102,7 +104,7 @@ export default class Combat {
   }
 
   corpsification(deadCharacter){
-    Display.output(`The ${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! Loot corpse?`);
+    Display.output(`${deadCharacter.name} falls to the floor in a limp and bloody pile. Their life is now empty, but their pockets may be full! Loot corpse?`);
     //create an array of all items in the dead monsters inv and equip
     //move weapons into the environment
     //create a container body item that is holding the item/equip array, inside of the environment
