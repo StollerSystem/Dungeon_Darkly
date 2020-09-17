@@ -123,6 +123,19 @@ export default class Game {
         Display.output("Get what?")      
       }
     }
+
+    //equip
+    if (splitString[0] === "equip") {
+      let target;
+      if (splitString[1]) {
+        target = splitString[1];
+        this.equip(target);
+      } else {
+        target = "";
+        this.viewEquip();
+        //Display.output("Equip what?")      
+      }
+    }
   }
   
   //look(target);
@@ -183,6 +196,61 @@ export default class Game {
           }
         }
       }
+    }
+  }
+
+  // equip
+  equip(target) {
+    for (let element of this.players[0].inv) {
+      console.log("E- equip cmd scan inv");
+      if (element.name.toLowerCase().includes(target)) {
+        let equip = element;
+        console.log("E-",equip)
+        //equip
+        if (equip.slot) {
+          console.log("E- is equip")
+          let slot = equip.slot;
+          if (!this.players[0].equip[slot][0]) {
+            // go ahead and equip here
+            this.players[0].addItemEquip(equip)
+            // remove rom inv!
+            for (let i=0;i<this.players[0].inv.length;i++) {
+              if (this.players[0].inv[i] === equip) {
+                this.players[0].inv.splice(i-1,1)
+              }
+            }
+            console.log(this.players[0].equip)
+            Display.output(`[+] ${equip.name} equipped to ${equip.slot}!`)
+          } else {
+            Display.output("[-] You Already have something equiped there")
+          }
+        } else {
+          Display.output("[-] You can't equip that");
+        }
+      } else {
+        console.log("equip cmd scan envir");
+        for (let element of this.environments[this.players[0].location].items) {
+          if (element.name.toLowerCase().includes(target)) {
+            //equip
+
+          } else {
+            Display.output("[-] You can't equip that");
+          }
+        }
+      }
+    }
+    this.updateInvDisplay(); 
+  }
+
+  viewEquip() {
+    for (const slot in this.players[0].equip) {
+      if (this.players[0].equip[slot][0]) {
+        console.log(this.players[0].equip[slot])
+        Display.output(`-${slot}: <span class=blue">${this.players[0].equip[slot][0].name}</span>`)
+      } else {
+        Display.output(`-${slot}: <span class="red">nothing</span>`)
+      }
+      
     }
   }
   
@@ -258,8 +326,9 @@ export default class Game {
         Display.output(`[+] You pick up the ${current_location.items[i].name}`)
         this.players[0].inv.push(current_location.items[i]);
 
-        current_location.items.splice(i-1,1)
-        console.log(current_location.items)
+        current_location.items.splice(i,1)
+        console.log("location items:",current_location.items)
+        console.log("INV",this.players[0].inv)
         // current_location.items = newArray        
         break;
       }   
@@ -268,6 +337,7 @@ export default class Game {
   } 
   
   updateInvDisplay() {
+    Display.clearInv();
     this.players[0].inv.forEach(function(item){
       Display.addInv(item.name);
     })

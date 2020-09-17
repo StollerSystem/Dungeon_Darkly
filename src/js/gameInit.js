@@ -9,11 +9,15 @@ export default class GameInit {
     // Add CastleRoom
     //0
     game.addEnvironment("Castle Entrance", "     Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!", [], [], [], []);
-    let scaryShiz = game.addMonster(2, "Rabid Wolf", "shiz", 1, 20, 0, [], [], 20, 12, 10, 6, 6,
+    let scaryShiz = game.addMonster(2, "Rabid Wolf", "shiz", 1, 6, 0, [], [], 6, 12, 10, 6, 6,
     6, 6);
     game.environments[0].monsters.push(scaryShiz);
     let potion = game.addItem("Health Potion",1,1,5,1,[],[],"common");
     game.environments[0].items.push(potion);
+    let dagger = game.addWeapon("mainHand",["str",0], [1,"d",6],"Goblin Dagger", 2, 1, 5, 1, [], [], "common");
+    game.environments[0].items.push(dagger);
+
+
     //1
     game.addEnvironment("Foyer", "     Quite the entrance! The room is filled with grandiose decor, with a huge piano, some suits of armor, a massive chandelier worth more than its weight in gold, and plenty of other trinkets the owner has most likely acquired COMPLETELY legally in their past adventures. There's two stairways and multiple hallways but feel a strange energy towards the corridor in front of you.", [], [], [], []);
     let scaryShiz2 = game.addMonster(2, "Demonic Butler", "shiz", 1, 7, 0, [], [], 6, 12, 10, 6, 6,
