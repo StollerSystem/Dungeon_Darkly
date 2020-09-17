@@ -152,6 +152,13 @@ export default class Game {
         location.combat.loot = [];
         console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
         console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+        for (let combatMonster of location.monsters){
+          if (combatMonster.status.dead === true){
+            console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
+            location.monsters = [];
+            //remove this monster from location.monsters
+          }
+        }
       }
     }
   }
@@ -193,6 +200,13 @@ export default class Game {
       location.combat.loot = [];
       console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
       console.log(`environment items = ${location.items[0].name} and ${location.items[1].name} and ${location.items[2].name} and ${location.items[3].name} and ${location.items[4].name}. Inside of ${location.items[4].name}: ${location.items[4].contents[0].name}`);
+      for (let combatMonster of location.monsters){
+        if (combatMonster.status.dead === true){
+          console.log(`${combatMonster.name} is dead and should be removed from environment.monsters now.`);
+          location.monsters = [];
+          //remove this monster from location.monsters
+        }
+      }
     }
   } // end combatStart
 
