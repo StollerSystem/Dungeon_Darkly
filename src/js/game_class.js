@@ -100,7 +100,7 @@ export default class Game {
         this.attack(target);
       } else {
         target = "";
-        Display.output("Attack what?")
+        Display.output("Attack what?");
       }
       //console.log("look function:",target)
       // this.attack(target);
@@ -120,7 +120,7 @@ export default class Game {
         this.get(target);
       } else {
         target = "";
-        Display.output("Get what?")      
+        Display.output("Get what?");    
       }
     }
   }
@@ -137,9 +137,9 @@ export default class Game {
     Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
     Display.output(this.environments[this.players[0].location].description);
     if (this.environments[this.players[0].location].items.length > 0) {
-      Display.output(`Items in the room:`)
+      Display.output(`Items in the room:`);
       this.environments[this.players[0].location].items.forEach(function(item){
-        Display.output(`${item.name}`)
+        Display.output(`${item.name}`);
       });    
     }
     if (this.environments[this.players[0].location].monsters.length > 0) {
@@ -156,9 +156,9 @@ export default class Game {
       let targetMonster;     
       this.environments[this.players[0].location].monsters.forEach(function(monster){
         if (monster.name.toLowerCase().includes(target)) {
-          targetMonster = monster
+          targetMonster = monster;
         }
-      })
+      });
       // this.environments[0].monsters[0]
       //$("#terminalOutput").append("<br>>" + this.environments[0].name);
       Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
@@ -169,8 +169,8 @@ export default class Game {
       if (location.combat.loot[0]){
         console.log(`combat environment has loot. Loot push to environment engaged.`);
         for (let loot of location.combat.loot){
-        location.items.push(loot);
-        console.log(`loot pushed: ${loot.name}`);
+          location.items.push(loot);
+          console.log(`loot pushed: ${loot.name}`);
         }
         location.combat.loot = [];
         console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
@@ -201,7 +201,7 @@ export default class Game {
     // roll for initiative, fill turnOrder
     let participantInit = participant.abilityScoreCheck('dex');
     let targetInit = target.abilityScoreCheck('dex');
-    Display.output(`---rolling combat initiative---<br>${participant.name}'s init roll = ${participantInit} / ${target.name}'s init roll = ${targetInit}`)
+    Display.output(`---rolling combat initiative---<br>${participant.name}'s init roll = ${participantInit} / ${target.name}'s init roll = ${targetInit}`);
     console.log(`targetInit: ${targetInit}`);
     if (participantInit >= targetInit){
       turnOrder.push(participant);
@@ -219,8 +219,8 @@ export default class Game {
     if (location.combat.loot[0]){
       console.log(`combat environment has loot. Loot push to environment engaged.`);
       for (let loot of location.combat.loot){
-      location.items.push(loot);
-      console.log(`loot pushed: ${loot.name}`);
+        location.items.push(loot);
+        console.log(`loot pushed: ${loot.name}`);
       }
       location.combat.loot = [];
       console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
@@ -236,30 +236,30 @@ export default class Game {
   } // end combatStart
 
   move() {
-    let current_location = this.players[0].location
+    let current_location = this.players[0].location;
     if (current_location  >= this.environments.length-1) {
-      Display.output(`<br> You can't move anymore!`)
+      Display.output(`<br> You can't move anymore!`);
     } else {
-      this.players[0].location +=1
-      console.log(current_location)
-      Display.output("You bravely advance into the next area!")
+      this.players[0].location +=1;
+      console.log(current_location);
+      Display.output("You bravely advance into the next area!");
       this.environments[this.players[0].location].players.push( this.players[0]);
       this.environments[this.players[0].location-1].players.shift();
-      this.look("")
-      Display.updateMap(this.players[0].location)
+      this.look("");
+      Display.updateMap(this.players[0].location);
     }    
   }
 
   get(target) {
-    let current_location = this.environments[this.players[0].location]
+    let current_location = this.environments[this.players[0].location];
     for (let i=0;i<current_location.items.length;i++) {
       if (current_location.items[i].name.toLowerCase().includes(target)) {        
         //this.look("")
-        Display.output(`[+] You pick up the ${current_location.items[i].name}`)
+        Display.output(`[+] You pick up the ${current_location.items[i].name}`);
         this.players[0].inv.push(current_location.items[i]);
 
-        current_location.items.splice(i-1,1)
-        console.log(current_location.items)
+        current_location.items.splice(i-1,1);
+        console.log(current_location.items);
         // current_location.items = newArray        
         break;
       }   
@@ -270,6 +270,6 @@ export default class Game {
   updateInvDisplay() {
     this.players[0].inv.forEach(function(item){
       Display.addInv(item.name);
-    })
+    });
   }
 }
