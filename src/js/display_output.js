@@ -47,6 +47,8 @@ export default class Display {
   }
 
   static displayCharStats(player) {
+    $("#charStatDisplay").html(`Character_stats~<br>`)
+    console.log("player stats refresh!")
     const playerKeys = Object.keys(player);
     console.log(player.inv)
     for (let i = 0; i < playerKeys.length; i++) {

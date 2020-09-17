@@ -51,9 +51,11 @@ export default class Combat {
     if (participant.type) {
       console.log("DISPLAY MONSTER TRUE")
       Display.displayMonsterStats(participant);
+      Display.displayCharStats(target);
     } else {
       Display.displayMonsterStats(target);
-    }
+      Display.displayCharStats(participant);
+    } 
     //Display.displayMonsterStats(target);
     Display.output(`Combat round ${this.roundCount} has ended. Continue to <span class="yellow">fight</span>, or <span class="yellow">flee</span> instead?`);
     this.roundCount += 1;
