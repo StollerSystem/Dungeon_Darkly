@@ -1,11 +1,12 @@
 import Display from './display_output.js';
-import Container from './item_class.js';
+import { Container } from './item_class.js';
 
 export default class Combat {
   constructor(){
     this.roundCount = 1;
     this.turnOrder = [];
     this.turnIndex = 0;
+    this.loot = [];
   }
 
   // use arr.indexOf(searchElement[, fromIndex]) for finding the index of an element, or in this case, of a character in the turnOrder array
@@ -110,7 +111,8 @@ export default class Combat {
     let newCorpse = new Container(`corpse`,100,[deadCharacter.name],6,1,1,1,[],[],"common");
     //newCorpse.description = `The fresh corpse of a ${deadCharacter.mainType}.`
     //move weapons into the environment
-    this.loot.push(deadCharacter.equip.mainHand);
+    console.log(`about to push the deadCharacter's weapon into the combat.loot. the weapon's name is: ${deadCharacter.equip.mainHand[0].name}`)
+    this.loot.push(deadCharacter.equip.mainHand[0]);
     //push items from deadCharacter into corpse
     for (let item of deadCharacter.inv){
       newCorpse.contents.push(item);
