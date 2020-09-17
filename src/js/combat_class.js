@@ -114,6 +114,7 @@ export default class Combat {
     deadCharacter.status.dead = true;
     console.log(`deadCharacter.status.dead = ${deadCharacter.status.dead}`)
     //exp and etc that go to the player
+    Display.displayMonsterStats("none")
     this.corpsification(deadCharacter);
   }
 

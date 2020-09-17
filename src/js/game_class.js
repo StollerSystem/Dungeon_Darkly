@@ -136,12 +136,28 @@ export default class Game {
         //Display.output("Equip what?")      
       }
     }
+
+    //loot
+    if (splitString[0] === "loot") {
+      let target;
+      if (splitString[1]) {
+        target = splitString[1];
+        this.loot(target);
+      } else {
+        target = "";
+        Display.output("Loot what?")  
+      }
+    }
   }
-  
   //look(target);
   look(target) {
     Display.displayCharStats(this.players[0]);
-    Display.displayMonsterStats(this.environments[this.players[0].location].monsters[0]);
+    if (this.environments[this.players[0].location].monsters[0]) {
+      Display.displayMonsterStats(this.environments[this.players[0].location].monsters[0]);
+    } else {
+      Display.displayMonsterStats("none");
+    }
+    
     console.log("player look function:",target);
     // this.environments[0].name
     // this.environments[0].description
@@ -341,5 +357,30 @@ export default class Game {
     this.players[0].inv.forEach(function(item){
       Display.addInv(item.name);
     })
+  }
+
+  loot(target) {
+    let player = this.players[0]
+    let current_location = this.environments[this.players[0].location]
+    for (const item of current_location.items) {
+      if (item.contents) {
+        console.log("L- found a container")
+        if (item.name.toLowerCase().includes(target)) {
+          console.log("L- found loot target")
+          item.contents.forEach(function(thing){  
+            console.log("L- ",thing) 
+            console.log(player.inv)         
+            player.inv.push(thing)
+          })
+          item.contents = []
+          item.name.concat(" (looted)")
+        } else {
+          //Display.output(`[-] Nothing to loot here`)
+        }
+      } else {
+        //Display.output(`[-] Nothing to loot here`)
+      }
+    }
+    this.updateInvDisplay();
   }
 }

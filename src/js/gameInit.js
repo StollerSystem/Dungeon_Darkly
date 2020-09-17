@@ -9,7 +9,8 @@ export default class GameInit {
     // Add CastleRoom
     //0
     game.addEnvironment("Castle Entrance", "     Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!", [], [], [], []);
-    let scaryShiz = game.addMonster(2, "Rabid Wolf", "shiz", 1, 6, 0, [], [], 6, 12, 10, 6, 6,
+    let bird = game.addItem("Half eaten bird",1,1,5,1,[],[],"common");
+    let scaryShiz = game.addMonster(2, "Rabid Wolf", "shiz", 1, 6, 0, [bird], [], 6, 12, 10, 6, 6,
     6, 6);
     game.environments[0].monsters.push(scaryShiz);
     let potion = game.addItem("Health Potion",1,1,5,1,[],[],"common");
