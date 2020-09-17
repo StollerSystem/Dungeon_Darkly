@@ -130,18 +130,28 @@ export default class Game {
     let location = this.environments[this.players[0].location];
     console.log(`player attack function. target: ${target}`);
     if (location.combat.roundCount == 1){
-    let targetMonster;     
-    this.environments[this.players[0].location].monsters.forEach(function(monster){
-      if (monster.name.toLowerCase().includes(target)) {
-        targetMonster = monster
-      }
-    })
-    // this.environments[0].monsters[0]
-    //$("#terminalOutput").append("<br>>" + this.environments[0].name);
-    Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
-    this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
+      let targetMonster;     
+      this.environments[this.players[0].location].monsters.forEach(function(monster){
+        if (monster.name.toLowerCase().includes(target)) {
+          targetMonster = monster
+        }
+      })
+      // this.environments[0].monsters[0]
+      //$("#terminalOutput").append("<br>>" + this.environments[0].name);
+      Display.output(`<br>You join in battle with the ${this.environments[this.players[0].location].monsters[0].name}!`);
+      this.combatStart(this.environments[this.players[0].location].players[0],targetMonster);
     } else {
-    location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
+      location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+      //begin combat loot migration protocol
+      if (location.combat.loot){
+        console.log(`combat environment has loot. Loot push to environment engaged.`);
+        for (let loot of location.combat.loot){
+        location.items.push(loot);
+        console.log(`loot pushed`);
+        }
+        location.combat.loot = [];
+        console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+      }
     }
   }
 
@@ -172,6 +182,16 @@ export default class Game {
     location.combat.turnOrder = turnOrder;
     // begin the combatTurn!
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1]);
+    //begin combat loot migration protocol
+    if (location.combat.loot){
+      console.log(`combat environment has loot. Loot push to environment engaged.`);
+      for (let loot of location.combat.loot){
+      location.items.push(loot);
+      console.log(`loot pushed`);
+      }
+      location.combat.loot = [];
+      console.log(`combat loot emptied. See? combat.loot = ${location.combat.loot}`);
+    }
   } // end combatStart
 
   move() {
