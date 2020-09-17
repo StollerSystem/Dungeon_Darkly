@@ -255,7 +255,7 @@ export default class Game {
             // remove rom inv!
             for (let i=0;i<this.players[0].inv.length;i++) {
               if (this.players[0].inv[i] === equip) {
-                this.players[0].inv.splice(i-1,1)
+                this.players[0].inv.splice(i,1)
               }
             }
             console.log(this.players[0].equip)
