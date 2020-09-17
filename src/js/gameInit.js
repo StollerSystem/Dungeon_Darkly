@@ -19,7 +19,7 @@ export default class GameInit {
     let scaryShiz2 = game.addMonster(2, "Demonic Butler", "shiz", 1, 7, 0, [], [], 6, 12, 10, 6, 6,
     6, 6);
     game.environments[1].monsters.push(scaryShiz2);
-    let healingPotion1 = new Consumable (["heal","self",1,"d",8,1],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
+    let healingPotion1 = game.addConsumable(["heal","self",1,"d",8,1],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
     game.environments[1].items.push(healingPotion1);
 
 
