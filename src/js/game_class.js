@@ -204,7 +204,9 @@ export default class Game {
     for (let i=0;i<current_location.items.length;i++) {
       if (current_location.items[i].name.toLowerCase().includes(target)) {        
         Display.output(`[+] You pick up the ${current_location.items[i].name}`)
-        // current_location.items
+        this.players[0].inv.push(current_location.items[i])
+        let newArray = current_location.items.splice(i,1)
+        current_location.items = newArray
         break;
       }   
     }  
