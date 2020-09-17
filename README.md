@@ -19,15 +19,19 @@ As a minimun viable product, this game
 1. Creates a playable tutorial quest
 1. Includes the following basic game mechanics: movement, exploration, and combat
 
-Originally built as a JavaScript capstone project for Epicodus, we have plans to continue buidling out this game because, why wouldn't we?
+Originally built as a JavaScript capstone project for Epicodus, we have plans to continue buidling out this game because . . . why wouldn't we? Have you seen this game yet?
 
 ## Specifications
-| Behavior | Input    | Output   |
-| -------- | -------- | -------- |
-|  |  |  |
-|  |  |  |
-|  |  |  |
-|  |  |  |
+| Spec | Name | Behavior |
+| -----| ----- | ----- |
+| 1 | Character Creation/ Display Screen | When a user presses play, the player is prompted to enter new character details, which are then loaded to a new display screen  that includes the following sections: an input and output terminal, a map, inventory details, monster details, and character details, which has the name, race, and class selected by the user and other attributes which are calculated based on the race and class selected.|
+| 2| Text Submit and Terminal | When a user types in the terminal and hits enter, the entered text is grabbed andrun through a parser to determine and initialize the correct command. |
+| 3 | Look Command  | When a user types 'look' or 'l' in the "terminal submit" section, the room name, room description, and items/monsters in the room are printed to the "terminal" section. |
+| 4 | Get Command | When a user types 'get <object>' in the "terminal submit" section, the object is added to the player's inventory and displayed in the inventory screen. |
+| 5 | Move Command | When a user types 'move' in the 'terminal submit' section, the player moves into the next room, and the map is updated to show where the user is in the castle. |
+| 6 | Attack Command | When the user types 'attack <object>' or 'fight <object> in the "terminal submit" section, the program runs one round of battle in which player rolls determine hits or misses and the amount of damage incurred to each player. Player and monster stats change as a result of the round and all round details are printed to the 'terminal.' At the end of a round, the user is prommpted to either keep fighting or flee.|
+| 7 | Corpsification | After each combat round, a check is run to see if either player has died. If the monster dies, the monste is removed from the game and their death is printed to the screen. If a player dies, that information is printed to the screen, and the game is effectively over. |
+
 
 ## Setup/Installation Requirements
 
@@ -46,7 +50,11 @@ Run 'npm run build' to bundle your code, and then open dist/index.html in a web 
 ## Known Bugs
 
 _There are no known bugs at this time; however, we have lots of visions for future work:_
-
+* Create a tutorial quest that allows teaches users how and when to use each command while they play a mini quest
+* Add more interactable environement features
+* Enable randomly generated items to appear in each room
+* Add more commands
+* Add puzzles, feats, and skills
 
 ## Support and contact details
 
