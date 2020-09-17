@@ -8,7 +8,7 @@ export default class GameInit {
     let game = new Game([], [], [], []);
     // Add CastleRoom
     game.addEnvironment("Castle Room", "  A dark, dank room. The fung shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a stairway leading down in here as well.", [], [], [], []);
-    let goblin = game.addMonster(1, "Goblin", "goblin", 1, 5, 0, [], [], 8, 10, 8, 6, 6, 6, 6);
+    let goblin = game.addMonster(1, "Goblin", "goblin", 1, 100, 0, [], [], 20, 10, 8, 6, 6, 6, 6);
     game.environments[0].monsters.push(goblin);
     let potion = game.addItem("potion", 1, 1, 5, 1, [], [], "common");
     game.environments[0].items.push(potion);
