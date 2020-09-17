@@ -119,6 +119,7 @@ export default class Game {
   
   //look(target);
   look(target) {
+    Display.displayCharStats(this.players[0]);
     Display.displayMonsterStats(this.environments[this.players[0].location].monsters[0]);
     console.log("player look function:",target);
     // this.environments[0].name
@@ -158,6 +159,8 @@ export default class Game {
     location.combat.combatTurn(location.combat.turnOrder[0],location.combat.turnOrder[1])
     }
   }
+  
+  
 
   combatStart(participant,target){
     let turnOrder = [];
