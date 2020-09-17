@@ -117,7 +117,10 @@ export default class Game {
     //$("#terminalOutput").append("<br>>" + this.environments[0].name);
     Display.output(`<br><span class="blue">${this.environments[this.players[0].location].name}</span>`);
     Display.output(this.environments[this.players[0].location].description);
-    Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+    if (this.environments[this.players[0].location].monsters.length > 0) {
+      Display.output(`!!! Monster in the room: <span class="red">${this.environments[this.players[0].location].monsters[0].name}</span> !!!`);
+    }
+    
   }
 
   //attack(target);

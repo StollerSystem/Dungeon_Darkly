@@ -94,6 +94,7 @@ $("#command-form").submit(function (event) {
   $("#commandLine").val("");
   game.inputParser(command);
   updateScroll();
+  console.log("Update scroll");
 });
 
 
