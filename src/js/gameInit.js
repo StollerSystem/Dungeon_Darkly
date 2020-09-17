@@ -23,6 +23,10 @@ export default class GameInit {
     game.environments[1].monsters.push(demonButt);
     let rottingBoots = game.addArmor("legs", 1, "light", "Rotting Boots",1,1,5,1,[],[],"common");
     game.environments[1].items.push(rottingBoots);
+    let healingPotion1 = game.addConsumable(["heal","self",1,"d",8,1],"potion","Healing Potion",1,100,1,5,[],["consume on use"],"common");
+    game.environments[1].items.push(healingPotion1);
+    let healingPotion2 = game.addConsumable(["heal","self",1,"d",8,1],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
+    demonButt.addItemInv(healingPotion2);
     //2
     game.addEnvironment("Dining Hall", "     <span class='white'>Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>", [], [], [], []);
     let goblin = game.addMonster(3, "Goblin", "Goblinski", 2, 7, 0, [], [], 6, 12, 8, 8, 6,
