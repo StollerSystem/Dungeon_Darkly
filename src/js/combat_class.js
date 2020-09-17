@@ -48,6 +48,10 @@ export default class Combat {
     target.status.hidden = false;
     target.status.surprised = false;
     //display end of round options to player and await command
+    // if (participant === Monster) {
+    //   console.log("MONSTER")
+    // }
+    Display.displayMonsterStats(target);
     Display.output(`Combat round ${this.roundCount} has ended. Continue to <span class="yellow">fight</span>, or <span class="yellow">flee</span> instead?`);
     this.roundCount += 1;
     this.turnIndex = 0;

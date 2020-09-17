@@ -24,9 +24,12 @@ export default class Display {
   }
 
   static displayMonsterStats(monster) {
-    $("#monstStatDisplay").text("")
-    const monsterKeys = Object.keys(monster);
-    for (let i = 0; i < monsterKeys.length; i++) {
+    if (monster === "none") {
+      $("#monstStatDisplay").text("No monsters...")
+    } else {
+      $("#monstStatDisplay").text("")
+      const monsterKeys = Object.keys(monster);
+      for (let i = 0; i < monsterKeys.length; i++) {
       if (monsterKeys[i] === "inv" || monsterKeys[i] === "status" || monsterKeys[i] === "equip" || monsterKeys[i] === "hunger" || monsterKeys[i] === "id" || monsterKeys[i] === "type") {
         continue;
       }
@@ -39,7 +42,8 @@ export default class Display {
       else {
         $("#monstStatDisplay").append("<br>" + monsterKeys[i] + ": " + monster[monsterKeys[i]] + "\n");
       }
-    }
+     } 
+    }    
   }
 
 
