@@ -1,9 +1,19 @@
 body {
   background-color: rgb(44, 27, 2);
-  background-image: radial-gradient(rgb(6, 27, 2), rgb(25, 1, 31), rgb(34, 14, 1));
+  background-image: radial-gradient(rgb(10, 36, 5), rgb(30, 2, 37), rgb(12, 5, 0));
   font-family:"VT323",monospace;
   color: rgb(153, 255, 0);
   margin-left: 2px;
+}
+.typewriter {
+  overflow: hidden;
+  border-right: .15em solid greenyellow; /* The typwriter cursor */
+  white-space: wrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 0.6s steps(40, end),
+    blink-caret .75s step-end infinite;
 }
 #gameTitle h1 {
   color: rgb(166, 255, 0);
@@ -37,6 +47,9 @@ body {
   font-weight: 900;
   font-stretch: extra-expanded;
   animation: master-flicker 3s linear infinite;
+}
+.homeScreen {
+  animation: fadeIn ease 7s;
 }
  @keyframes master-flicker {
   0% {opacity:0.3;}
@@ -136,7 +149,7 @@ body {
   background-color: transparent;
   border: none;
   border-color: black;
-  color: greenyellow;
+  color: rgb(47, 255, 245);
   overflow: auto;
   resize: both;
 }
@@ -162,7 +175,10 @@ body {
 }
 #gameplay-screen {
   font-size: 20px;
+  animation: fadeIn ease 2s;
+  animation: textShadow 4.6s infinite;
 }
+
 #charStatDisplay {
   margin-top: 5px;
   width: 100%;
@@ -170,6 +186,7 @@ body {
   border: solid rgb(162, 0, 255);
   overflow: auto;
   resize: vertical;
+  animation: lesser-text-flicker 1.5s linear infinite;
 }
 #monstStatDisplay {
     margin-top: 5px;
@@ -179,16 +196,7 @@ body {
     color: red;
     overflow: auto;
     resize: vertical;
-  }
-  .typewriter {
-    overflow: hidden;
-    border-right: .15em solid greenyellow; /* The typwriter cursor */
-    white-space: wrap; /* Keeps the content on a single line */
-    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-    letter-spacing: .15em; /* Adjust as needed */
-    animation: 
-      typing 0.6s steps(40, end),
-      blink-caret .75s step-end infinite;
+    animation: lesser-text-flicker 1s linear infinite;
   }
   @keyframes typing {
     from { width: 0 }
@@ -208,6 +216,20 @@ body {
     77% {opacity:0.7}
     100% {opacity:0.9}
   }
+  @keyframes lesser-text-flicker {
+    0% {opacity:0.8;}
+    2% {opacity:1;}
+    8% {opacity:0.8;}
+    9% {opacity:1;}
+    12% {opacity:0.8;}
+    18% {opacity:1}
+    25% {opacity:0.8}
+    30% {opacity:1}
+    70% {opacity:0.8}
+    72% {opacity:0.9}
+    77% {opacity:0.8}
+    100% {opacity:0.9}
+  }
 #canvasDiv {
   background-color: transparent;
   border: solid rgb(31, 51, 238);
@@ -225,14 +247,18 @@ body {
   .red {
     color: red;
   }
-  .yellow {
-    color: yellow;
+  .cyan {
+    color: rgb(0, 247, 255);
+    
   }
   .blue {
     color: rgb(0, 157, 255);
   }
   .purple {
-    color: purple
+    color: purple;
+  }
+  .white {
+    color: rgb(252, 246, 218);
   }
   #inventDisplay {
     width: 100%;
@@ -241,6 +267,8 @@ body {
     color: greenyellow;
     overflow: auto;
     resize: vertical;
+
+    animation: lesser-text-flicker 1s linear infinite;
   }
 ::-webkit-scrollbar {
   width: 20px;
@@ -257,3 +285,23 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(82, 3, 75); 
 }
+.gameOverScreen {
+  display: none;
+  font-size: 3.5vw;
+  font-family: 'Press Start 2P', cursive;
+  margin-left: 42%;
+  margin-top: 10%;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  color: rgb(255, 72, 0);
+  text-shadow: 3px 3px 12px orangered;
+  font-weight: 900;
+  font-stretch: extra-expanded;
+  animation: master-flicker 3s linear infinite;
+}
+
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+  }
