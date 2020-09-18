@@ -255,11 +255,7 @@ export default class Game {
             // remove rom inv!
             for (let i=0;i<this.players[0].inv.length;i++) {
               if (this.players[0].inv[i] === equip) {
-<<<<<<< HEAD
-                this.players[0].inv.splice(i,1)
-=======
                 this.players[0].inv.splice(i,1);
->>>>>>> master
               }
             }
             console.log(this.players[0].equip);
@@ -275,7 +271,6 @@ export default class Game {
         for (let element of this.environments[this.players[0].location].items) {
           if (element.name.toLowerCase().includes(target)) {
             //equip
-
           } else {
             Display.output("[-] You can't equip that");
           }
