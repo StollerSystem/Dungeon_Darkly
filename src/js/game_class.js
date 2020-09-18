@@ -264,7 +264,7 @@ export default class Game {
             Display.output("[-] You Already have something equiped there");
           }
         } else {
-          Display.output("[-] You can't equip that");
+          //Display.output("[-] You can't equip that");
         }
       } else {
         console.log("equip cmd scan envir");
@@ -273,7 +273,7 @@ export default class Game {
             //equip
 
           } else {
-            Display.output("[-] You can't equip that");
+            //Display.output("[-] You can't equip that");
           }
         }
       }
@@ -461,7 +461,8 @@ export default class Game {
               Display.output(`[+] Looted ${thing.name}`);
             });
             item.contents = [];
-            item.name.concat(" (looted)");
+            // console.log
+            item.name = item.name.concat(" (looted)");
           }
         } else {
           this.get(target);
