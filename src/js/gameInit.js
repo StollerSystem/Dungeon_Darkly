@@ -27,6 +27,7 @@ export default class GameInit {
     game.environments[1].items.push(healingPotion1);
     let healingPotion2 = game.addConsumable(["heal","self",1,"d",8,1],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
     demonButt.addItemInv(healingPotion2);
+
     //2
     game.addEnvironment("Dining Hall", "     <span class='white'>Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>", [], [], [], []);
     let goblin = game.addMonster(3, "Goblin", "Goblinski", 2, 7, 0, [], [], 6, 12, 8, 8, 6,
@@ -39,6 +40,7 @@ export default class GameInit {
     game.environments[3].monsters.push(creepyChef);
     let knife = game.addWeapon("mainHand", 2, 2, "Butcher's Knife",1,1,5,1,[],[],"common");
     game.environments[3].items.push(knife);
+
     //4
     game.addEnvironment("Castle Room", "     <span class='white'>After meandering through the halls for a short time, you come across a dark, dank room. The feng shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a stairway leading down in here as well.</span>", [], [], [], []);
     let zombie = game.addMonster(5, "Zombie", "Undead", 1, 6, 0, [], [], 10, 10, 6, 6, 6, 6, 6);
@@ -50,12 +52,12 @@ export default class GameInit {
     game.environments[5].monsters.push(banshee);
     let necklace = game.addArmor("neck",1,"light","Pearl Necklace",1,1, 5, 1, [],[],"common");
     game.environments[5].items.push(necklace);
+
     //6
     game.addEnvironment("Torture Chamber", "     <span class='white'>Considering the amount of blood and strange contraptions, lord only knows the unfortunate things that have occured down here. It sends a shiver down your spine even thinking about it.</span>", [], [], [], []);
     let goblinTort = game.addMonster(7, "Goblin Torturer", "shiz", 3, 11, 0, [], [], 12, 12, 10, 8, 4,
       4, 6);
     game.environments[6].monsters.push(goblinTort);
-    
     
     //7
     game.addEnvironment("Dungeon", "     <span class='white'>This room has barely any light to it. A single torch hanging on the wall does little to illuminate this dungeon. Although considering the many hanging chains and the fact that you can hear some type of liquid dripping, maybe that's for the best...</span>", [], [], [], []);
