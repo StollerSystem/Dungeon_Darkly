@@ -150,7 +150,7 @@ export default class Game {
         this.loot(target);
       } else {
         target = "";
-        Display.output("Loot what?")  
+        Display.output("Loot what?");
       }
     }
     
@@ -162,7 +162,7 @@ export default class Game {
         this.use(target);
       } else {
         target = "";
-        Display.output("Use what?")      
+        Display.output("Use what?");     
       }
     }
 
@@ -244,24 +244,28 @@ export default class Game {
       console.log("E- equip cmd scan inv");
       if (element.name.toLowerCase().includes(target)) {
         let equip = element;
-        console.log("E-",equip)
+        console.log("E-",equip);
         //equip
         if (equip.slot) {
-          console.log("E- is equip")
+          console.log("E- is equip");
           let slot = equip.slot;
           if (!this.players[0].equip[slot][0]) {
             // go ahead and equip here
-            this.players[0].addItemEquip(equip)
+            this.players[0].addItemEquip(equip);
             // remove rom inv!
             for (let i=0;i<this.players[0].inv.length;i++) {
               if (this.players[0].inv[i] === equip) {
+<<<<<<< HEAD
                 this.players[0].inv.splice(i,1)
+=======
+                this.players[0].inv.splice(i,1);
+>>>>>>> master
               }
             }
-            console.log(this.players[0].equip)
-            Display.output(`[+] ${equip.name} equipped to ${equip.slot}!`)
+            console.log(this.players[0].equip);
+            Display.output(`[+] ${equip.name} equipped to ${equip.slot}!`);
           } else {
-            Display.output("[-] You Already have something equiped there")
+            Display.output("[-] You Already have something equiped there");
           }
         } else {
           Display.output("[-] You can't equip that");
@@ -284,10 +288,10 @@ export default class Game {
   viewEquip() {
     for (const slot in this.players[0].equip) {
       if (this.players[0].equip[slot][0]) {
-        console.log(this.players[0].equip[slot])
-        Display.output(`-${slot}: <span class=blue">${this.players[0].equip[slot][0].name}</span>`)
+        console.log(this.players[0].equip[slot]);
+        Display.output(`-${slot}: <span class=blue">${this.players[0].equip[slot][0].name}</span>`);
       } else {
-        Display.output(`-${slot}: <span class="red">nothing</span>`)
+        Display.output(`-${slot}: <span class="red">nothing</span>`);
       }
       
     }
@@ -365,9 +369,9 @@ export default class Game {
         Display.output(`[+] You pick up the ${current_location.items[i].name}`);
         this.players[0].inv.push(current_location.items[i]);
 
-        current_location.items.splice(i,1)
-        console.log("location items:",current_location.items)
-        console.log("INV",this.players[0].inv)
+        current_location.items.splice(i,1);
+        console.log("location items:",current_location.items);
+        console.log("INV",this.players[0].inv);
         // current_location.items = newArray        
         break;
       }   
@@ -389,13 +393,13 @@ export default class Game {
         let mod = this.players[0].inv[i].action[5];
         this[this.players[0].inv[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod);
         if (this.players[0].inv[i].flags[0] === "consume on use"){
-        this.players[0].inv.splice(i-1,1); //removes the item. should only happen to consumable
-        console.log(`item has been consumed and removed`);
+          this.players[0].inv.splice(i-1,1); //removes the item. should only happen to consumable
+          console.log(`item has been consumed and removed`);
         }
         console.log(`this.players inv: ${this.players[0].inv}`);
         this.updateInvDisplay();        
         return;
-      }   
+      }
     }
     // then check in environment to use
     console.log(`Could not find target in inv. Checking environment.items for target`);
@@ -409,8 +413,8 @@ export default class Game {
         let mod = current_location.items[i].action[5];
         this[current_location.items[i].action[0]](this.players[0],effectTarget,diceAmount,sideNumber,mod);
         if (current_location.items[i].flags[0] === "consume on use"){
-        current_location.items.splice(i-1,1); //removes the item. should only happen to consumable
-        console.log(`item has been consumed and removed`);
+          current_location.items.splice(i-1,1); //removes the item. should only happen to consumable
+          console.log(`item has been consumed and removed`);
         }
         console.log(current_location.items);        
         this.updateInvDisplay();        
@@ -421,8 +425,8 @@ export default class Game {
   } // end use method
 
   heal(effectOrigin,effectTarget,diceAmount,sideNumber,mod){
-    console.log(`effectOrigin.name: ${effectOrigin.name}, effectTarget: ${effectTarget}, diceAmount: ${diceAmount}, sideNumber: ${sideNumber}, mod: ${mod} `)
-    console.log(`typeof effectOrigin.name: ${typeof effectOrigin.name}, typeof effectTarget: ${typeof effectTarget}, typeof diceAmount: ${typeof diceAmount}, typeof sideNumber: ${typeof sideNumber}, typeof mod: ${typeof mod} `)
+    console.log(`effectOrigin.name: ${effectOrigin.name}, effectTarget: ${effectTarget}, diceAmount: ${diceAmount}, sideNumber: ${sideNumber}, mod: ${mod} `);
+    console.log(`typeof effectOrigin.name: ${typeof effectOrigin.name}, typeof effectTarget: ${typeof effectTarget}, typeof diceAmount: ${typeof diceAmount}, typeof sideNumber: ${typeof sideNumber}, typeof mod: ${typeof mod} `);
     console.log(`heal function activated`);
     let healAmount = this.roll(diceAmount,sideNumber,mod);
     if (effectTarget === "self"){ //"self"
@@ -443,20 +447,20 @@ export default class Game {
   }
 
   loot(target) {
-    let player = this.players[0]
-    let current_location = this.environments[this.players[0].location]
+    let player = this.players[0];
+    let current_location = this.environments[this.players[0].location];
     for (const item of current_location.items) {
       if (item.contents) {
-        console.log("L- found a container")
+        console.log("L- found a container");
         if (item.name.toLowerCase().includes(target)) {
-          console.log("L- found loot target")
+          console.log("L- found loot target");
           item.contents.forEach(function(thing){  
-            console.log("L- ",thing) 
-            console.log(player.inv)         
-            player.inv.push(thing)
-          })
-          item.contents = []
-          item.name.concat(" (looted)")
+            console.log("L- ",thing);
+            console.log(player.inv);      
+            player.inv.push(thing);
+          });
+          item.contents = [];
+          item.name.concat(" (looted)");
         } else {
           //Display.output(`[-] Nothing to loot here`)
         }
@@ -475,7 +479,7 @@ export default class Game {
     <sight-based> -> type "look" (looks at room.) or type "look at ___" to look at something specific.<br>
     <combat> -> type "attack *enemy*" or "fight *enemy*" If an enemy is not specified, you will be asked what you're attacking.<br>
     <looting> type "loot corpse" when an enemy is defeated. If an item is present in the environment, type "get item"<br>
-    <equip> type <equip item *body part*> to equip an item to the appropriate slot on your character.</span>`)
+    <equip> type <equip item *body part*> to equip an item to the appropriate slot on your character.</span>`);
   }
   
 }
