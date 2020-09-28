@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="bundle.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <title>Dungeon, Darkly</title>
+</head>
+
+<body>
+  <div class="homeScreen">
+    <div class="container-fluid">
+      <div id="gameTitle">
+        <h1>_dun<span id="offset">g</span>eon_d<span id="offset">a</span>rkly</h1>
+      </div>
+      <button id="beginBtn">~PL<span id="offset">A</span>Y~</button>
+    </div>
+  </div>
+
+  <div class="typewriter" id="main-screen">
+    <div class="container-fluid">
+      <div id="charCreateDiv">
+        <div id="mainHeader">
+          <h1 style="font-size: 30px">_dungeon_Darkly</h1>
+          <h5>...</h5>
+          <h5>$<>initializing_gameplay:dungeon_darkly</h5>
+          <h5>
+            <>initializing_charObject~...
+          </h5>
+          <h5>$<...>initializing_envir~</h5>
+          <h5>initializing_terrifying_monsters~</h5>
+          <h5>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game.</h5>
+          <h5>welcome to dungeon darkly, an epic text-driven rpg game! To start, begin by typing in a name for your
+            character, selecting a character class, and a character race. Keep in mind that different classes will
+            affect your characters skills and abilities.</h5>
+        </div>
+        <form id="char-create">
+          <br>
+          <div class="form-group">
+            <label for="char-name">enter_Your_Name:</label>
+            <input autocomplete="off" id="char-name" type="text">
+          </div>
+          <div class="form-group">
+            <label for="char-race">select_A_Race [Click_to_Change];</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="char-race" value="Human" checked>
+                <span id="inputval">{ Human }</span>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="char-race" value="Elf">
+                <span id="inputval">{ Elf }</span>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="char-race" value="Dwarf">
+                <span id="inputval">{ Dwarf }</span>
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="char-class">Choose_Your_Class:</label>
+            <div class="radio">
+              <label>
+                <input type="radio" name="char-class" value="Warrior" checked>
+                <span id="inputval">{ Warrior }</span>
+              </label>
+            </div>
+            <div class="radio">
+              <label>
+                <input type="radio" name="char-class" value="Paladin">
+                <span id="inputval">{ Paladin }</span>
+              </label>
+            </div>
+          </div>
+          <br>
+          <h6>$>root@dungeon_darkly~</h6>
+          <button class="btn" id="charCreateBtn">$>_create_my_Character_</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameplay-screen">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+          <div id="terminalOutput">
+            <h5>...</h5>
+            <h5 class="typewriter">$<>initializing_gameplay:dungeon_darkly
+                <br>
+                <>initializing_charObject~...
+                  <br>$<...>initializing_envir~
+                    <br>initializing_terrifying_monsters~
+                    <br>$>_welcome_to_Dungeon_Darkly, an epic text-driven rpg game. If you need a list of possible commands, type <span class="cyan">--help</span></h5>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+          <div id="charStatDisplay">
+            <h5 class="typewriter">Character_stats~</h5>
+          </div>
+
+            <div id="canvasDiv">
+              <h5 class="typewriter">The Castle of Ravenhill~</h5>
+              <canvas id="canvas"></canvas>
+            </div>
+       
+        </div>
+        <div class="col-md-3">
+          <div id="monstStatDisplay">
+            <h5 class="typewriter">Monster_stats~</h5>
+          </div>
+     
+          <div id="inventDisplay">
+            <h5 class="typewriter">Your inventory~</h5>
+            
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div id="commandForm">
+            <form id="command-form">
+              <p>root@dungeon_darkly~</p>
+              <label for="commandLine">$></label>
+              <input autocomplete="off" type="text" id="commandLine">
+              <button class="btn" id="commandLineBtn">_submit_</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- <div class="row"> -->
+
+      <!-- </div> -->
+    </div>
+  </div>
+
+  <div class="gameOverScreen">
+    <div class="container-fluid"></div>
+    <p>GAME OVER</p>
+  </div>
+  </div>
+<script type="text/javascript" src="bundle.js"></script></body>
+
+</html>
+  
