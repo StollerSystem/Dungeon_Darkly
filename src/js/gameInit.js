@@ -11,8 +11,10 @@ export default class GameInit {
     game.addEnvironment("Castle Entrance", "     <span class='white'>Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>", [], [], [], []);
     let rabidWolf = game.addMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, [], [], 8, 12, 8, 6, 6, 6, 6);
     game.environments[0].monsters.push(rabidWolf);
-    let potion = game.addItem("Health Potion",1,1,5,1,[],[],"common");
-    game.environments[0].items.push(potion);
+    let bonePile1 = game.addContainer("box",1000,"Pile of bones",1,500,30,1,[],[],"common");
+    game.environments[0].items.push(bonePile1);
+    let rustedBreastplate = game.addArmor("body", 1, "medium", "Rusted Breastplate",3,1,5,1,[],[],"common");
+    game.environments[0].items[0].contents.push(rustedBreastplate);
     let dagger = game.addWeapon("mainHand",["str",0], [1,"d",6],"Goblin Dagger", 2, 1, 5, 1, [], [], "common");
     game.environments[0].items.push(dagger);
 
@@ -27,6 +29,7 @@ export default class GameInit {
     game.environments[1].items.push(healingPotion1);
     let healingPotion2 = game.addConsumable(["heal","self",1,"d",8,1],"potion","Demon Butler's Healing Potion",1,100,1,5,[],["consume on use"],"common");
     demonButt.addItemInv(healingPotion2);
+
     //2
     game.addEnvironment("Dining Hall", "     <span class='white'>Jeez, the table in here is longer than the distance it took you to get to the castle... Does this guy really have that many friends? Nevertheless the table seemed to be being prepared at some point, but was interrupted. The a fire burns bright in the fireplace and only half of the chairs seem to have any settings. There is some sort of smell in the air though. And there's a door open on the other side of the room...</span>", [], [], [], []);
     let goblin = game.addMonster(3, "Goblin", "Goblinski", 2, 7, 0, [], [], 6, 12, 8, 8, 6,
@@ -39,6 +42,7 @@ export default class GameInit {
     game.environments[3].monsters.push(creepyChef);
     let knife = game.addWeapon("mainHand", 2, 2, "Butcher's Knife",1,1,5,1,[],[],"common");
     game.environments[3].items.push(knife);
+
     //4
     game.addEnvironment("Castle Room", "     <span class='white'>After meandering through the halls for a short time, you come across a dark, dank room. The feng shuay in here leaves a lot to be desired... A simple study, a very stained rug, and some very strange paintings occupy this room. There is a stairway leading down in here as well.</span>", [], [], [], []);
     let zombie = game.addMonster(5, "Zombie", "Undead", 1, 6, 0, [], [], 10, 10, 6, 6, 6, 6, 6);
@@ -50,12 +54,12 @@ export default class GameInit {
     game.environments[5].monsters.push(banshee);
     let necklace = game.addArmor("neck",1,"light","Pearl Necklace",1,1, 5, 1, [],[],"common");
     game.environments[5].items.push(necklace);
+
     //6
     game.addEnvironment("Torture Chamber", "     <span class='white'>Considering the amount of blood and strange contraptions, lord only knows the unfortunate things that have occured down here. It sends a shiver down your spine even thinking about it.</span>", [], [], [], []);
     let goblinTort = game.addMonster(7, "Goblin Torturer", "shiz", 3, 11, 0, [], [], 12, 12, 10, 8, 4,
       4, 6);
     game.environments[6].monsters.push(goblinTort);
-    
     
     //7
     game.addEnvironment("Dungeon", "     <span class='white'>This room has barely any light to it. A single torch hanging on the wall does little to illuminate this dungeon. Although considering the many hanging chains and the fact that you can hear some type of liquid dripping, maybe that's for the best...</span>", [], [], [], []);
@@ -67,6 +71,8 @@ export default class GameInit {
     game.addEnvironment("The Altar", "  The room is massive... way bigger than you'd think to be in a castle by itself... But at the far end you can see it: A man! Who is also a demon! A demon man if you will... And he's opening a portal to hell to summon more demon men! This is it! The final battle! You must do your duty and stop him!", [], [], [], []);
     let demonMan = game.addMonster(9, "Demon", "Man", 4, 15, 0, [], [], 10, 12, 10, 10, 10, 10, 10);
     game.environments[8].monsters.push(demonMan);
+    let demonMask = game.addArmor("face", 10, "light", "Demon's Mask",666,1,5,1,[],[],"rare");
+    game.environments[8].monsters[0].addItemEquip(demonMask);
 
     return game;
   }
