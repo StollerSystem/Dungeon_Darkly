@@ -271,7 +271,6 @@ export default class Game {
         for (let element of this.environments[this.players[0].location].items) {
           if (element.name.toLowerCase().includes(target)) {
             //equip
-
           } else {
             Display.output("[-] You can't equip that");
           }
