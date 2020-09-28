@@ -11,7 +11,7 @@ export default class GameInit {
     game.addEnvironment("Castle Entrance", "     <span class='white'>Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>", [], [], [], []);
     let rabidWolf = game.addMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, [], [], 8, 12, 8, 6, 6, 6, 6);
     game.environments[0].monsters.push(rabidWolf);
-    let bonePile1 = game.addContainer("box",1000,"Pile of bones",1,500,30,1,[],[],"common");
+    let bonePile1 = game.addContainer("box",1000,"Pile of bones",1,500,30,1,[],["container"],"common");
     game.environments[0].items.push(bonePile1);
     let rustedBreastplate = game.addArmor("body", 1, "medium", "Rusted Breastplate",3,1,5,1,[],[],"common");
     game.environments[0].items[0].contents.push(rustedBreastplate);

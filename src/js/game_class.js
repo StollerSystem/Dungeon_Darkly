@@ -264,7 +264,7 @@ export default class Game {
             Display.output("[-] You Already have something equiped there");
           }
         } else {
-          Display.output("[-] You can't equip that");
+          //Display.output("[-] You can't equip that");
         }
       } else {
         console.log("equip cmd scan envir");
@@ -272,7 +272,7 @@ export default class Game {
           if (element.name.toLowerCase().includes(target)) {
             //equip
           } else {
-            Display.output("[-] You can't equip that");
+            //Display.output("[-] You can't equip that");
           }
         }
       }
@@ -445,26 +445,64 @@ export default class Game {
     let player = this.players[0];
     let current_location = this.environments[this.players[0].location];
     for (const item of current_location.items) {
-      if (item.contents) {
-        console.log("L- found a container");
-        if (item.name.toLowerCase().includes(target)) {
-          console.log("L- found loot target");
-          item.contents.forEach(function(thing){  
-            console.log("L- ",thing);
-            console.log(player.inv);      
-            player.inv.push(thing);
-          });
-          item.contents = [];
-          item.name.concat(" (looted)");
+      console.log("L-",item);
+      if (item.name.toLowerCase().includes(target)) {
+        console.log("L- found target");
+        if (item.flags.includes("container")) {
+          console.log("L- is a cont..");
+          if (item.contents.length === 0) {
+            Display.output(`[-] It's empty!`);
+          } else {
+            item.contents.forEach(function(thing){  
+              console.log("L- ",thing);
+              // console.log(player.inv);      
+              player.inv.push(thing);
+              Display.output(`[+] Looted ${thing.name}`);
+            });
+            item.contents = [];
+            // console.log
+            item.name = item.name.concat(" (looted)");
+          }
         } else {
-          //Display.output(`[-] Nothing to loot here`)
+          this.get(target);
         }
       } else {
-        //Display.output(`[-] Nothing to loot here`)
+        //Display.output(`[-] Loot what?`);
+        //break;
       }
     }
     this.updateInvDisplay();
   }
+
+  //     if (item.flags.includes("container")) {
+
+  //       if (item.contents.length === 0) {
+  //         Display.output(`[-] It's empty!`);
+  //       } else {
+  //         console.log("L- found a container");
+
+  //         if (item.name.toLowerCase().includes(target)) {
+  //           console.log("L- found loot target");
+  //           item.contents.forEach(function(thing){  
+  //             console.log("L- ",thing);
+  //             console.log(player.inv);      
+  //             player.inv.push(thing);
+  //           });
+  //           item.contents = [];
+  //           item.name.concat(" (looted)");
+  //         } else {
+  //             Display.output(`[-] Loot what?`)
+  //             break;
+  //         }
+  //       }        
+  //     } else {
+  //       //Display.output(`[-] You can't loot that`);
+  //       this.get(target);
+  //       break;
+  //     }
+  //   }
+  //   this.updateInvDisplay();
+  // }
 
   help() {
     Display.output(`<span class="white"><HELP FILE>
