@@ -11,8 +11,10 @@ export default class GameInit {
     game.addEnvironment("Castle Entrance", "     <span class='white'>Whew! That was quite the trek! But you've finally found it! Ravenhill Castle... You've heard a lot about it. Some strange things have been going on here, including, but not limited to kidnappings, experiments, torture... atrocious interior decorating... such HORRORS! And they must be stopped! Go now my friend!</span>", [], [], [], []);
     let rabidWolf = game.addMonster(1, "Rabid Wolf", "Canis Lupis", 1, 5, 0, [], [], 8, 12, 8, 6, 6, 6, 6);
     game.environments[0].monsters.push(rabidWolf);
-    let potion = game.addItem("Health Potion",1,1,5,1,[],[],"common");
-    game.environments[0].items.push(potion);
+    let bonePile1 = game.addContainer("box",1000,"Pile of bones",1,500,30,1,[],[],"common");
+    game.environments[0].items.push(bonePile1);
+    let rustedBreastplate = game.addArmor("body", 1, "medium", "Rusted Breastplate",3,1,5,1,[],[],"common");
+    game.environments[0].items[0].contents.push(rustedBreastplate);
     let dagger = game.addWeapon("mainHand",["str",0], [1,"d",6],"Goblin Dagger", 2, 1, 5, 1, [], [], "common");
     game.environments[0].items.push(dagger);
 
@@ -69,6 +71,8 @@ export default class GameInit {
     game.addEnvironment("The Altar", "  The room is massive... way bigger than you'd think to be in a castle by itself... But at the far end you can see it: A man! Who is also a demon! A demon man if you will... And he's opening a portal to hell to summon more demon men! This is it! The final battle! You must do your duty and stop him!", [], [], [], []);
     let demonMan = game.addMonster(9, "Demon", "Man", 4, 15, 0, [], [], 10, 12, 10, 10, 10, 10, 10);
     game.environments[8].monsters.push(demonMan);
+    let demonMask = game.addArmor("face", 10, "light", "Demon's Mask",666,1,5,1,[],[],"rare");
+    game.environments[8].monsters[0].addItemEquip(demonMask);
 
     return game;
   }
