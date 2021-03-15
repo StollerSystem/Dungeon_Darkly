@@ -2,6 +2,8 @@
 
 _17 September 2020_
 
+** ScreenShot Added by Garrett Brown on 03/15/2021
+
 #### _A text-based adventure game_
 
 #### By _**Garrett Brown, Emme Buentiempo, Janet Karpenske, Vanessa Stewart, Ben Stoller**_
@@ -12,6 +14,25 @@ Harken back to the days of text adventures, MUDs and RPGs! _Dungeon Darkly_
 is a fresh take on an old classic, with players picking up their
 clubs and leather armor to traverse a dark and dangerous terrain in search
 of guts, glory, and goods. 
+
+__ A few screenshots of what we accomplished: 
+
+Title Page: 
+
+<img src="READMEImgs\HomeScreenCap.JPG">
+
+Character Creation Page:
+
+<img src="READMEImgs\CharCap.JPG">
+
+Game Screen Pt.1:
+
+<img src="READMEImgs\GameScr1.JPG">
+
+Game Screen Pt.2:
+
+<img src="READMEImgs\GameScr2.JPG">
+
 
 As a minimun viable product, this game 
 1. Uses a retro UI in homage to the classic text adventure experience
